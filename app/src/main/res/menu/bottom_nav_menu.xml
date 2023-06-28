@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/productsFragment"
+        android:icon="@drawable/ic_tab_products"
+        android:title="@string/products" />
+
+    <item
+        android:id="@+id/paymentsFragment"
+        android:icon="@drawable/ic_tab_payments"
+        android:title="@string/payments" />
+
+    <item
+        android:id="@+id/expensesFragment"
+        android:icon="@drawable/ic_tab_expenses"
+        android:title="@string/expenses" />
+
+    <item
+        android:id="@+id/chatsFragment"
+        android:icon="@drawable/ic_tab_chats"
+        android:title="@string/ultra_chats" />
+</menu>

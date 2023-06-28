@@ -1,0 +1,27 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url 'https://gitlab.typi.team/api/v4/projects/14/packages/maven'
+            name 'GitLab'
+            credentials(HttpHeaderCredentials) {
+                name = "some-name"
+                value = "some-value"
+            }
+            authentication {
+                header(HttpHeaderAuthentication)
+            }
+        }
+    }
+}
+rootProject.name = "Ultra Sample"
+include ':app'
