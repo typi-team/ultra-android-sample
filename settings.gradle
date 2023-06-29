@@ -11,11 +11,11 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven {
-            url 'https://gitlab.typi.team/api/v4/projects/14/packages/maven'
+            url 'https://gitlab.typi.team/api/v4/projects/19/packages/maven'
             name 'GitLab'
             credentials(HttpHeaderCredentials) {
-                name = "some-name"
-                value = "some-value"
+                name = 'Deploy-Token'
+                value = '{some-token}'
             }
             authentication {
                 header(HttpHeaderAuthentication)
