@@ -8,7 +8,6 @@ import androidx.core.net.toUri
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.typi.ultra.FileDownloadService
 import com.typi.ultra.UltraScreenStarter
 import com.typi.ultra.UltraService
 import com.typi.ultra.sample.R
@@ -42,7 +41,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 when (action) {
                     is MainAction.StartServices -> {
                         startService(Intent(this, UltraService::class.java))
-                        startService(Intent(this, FileDownloadService::class.java))
                     }
                 }
             }

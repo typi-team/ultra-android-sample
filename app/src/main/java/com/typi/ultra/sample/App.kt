@@ -13,6 +13,7 @@ import com.typi.ultra.auth.api.UltraAuthProvider
 import com.typi.ultra.core.integration.BaseDependencyHolder
 import com.typi.ultra.core.integration.BaseFeatureDependencies
 import com.typi.ultra.core.integration.DependencyHolder
+import com.typi.ultra.network.UltraNetworkDelegate
 import com.typi.ultra.push.api.UltraPushDelegate
 import com.typi.ultra.push.api.UltraPushProvider
 import com.typi.ultra.sample.core.di.KoinManager
@@ -29,6 +30,7 @@ class App : Application() {
     private val pushDelegate: UltraPushDelegate by inject()
     private val themeDelegate: UltraThemeDelegate by inject()
     private val screenDelegate: UltraScreenDelegate by inject()
+    private val networkDelegate: UltraNetworkDelegate by inject()
 
     private val ultraApi: UltraApi by lazy { UltraComponentHolder.get() }
 
@@ -52,6 +54,8 @@ class App : Application() {
                         get() = this@App.themeDelegate
                     override val screenDelegate: UltraScreenDelegate
                         get() = this@App.screenDelegate
+                    override val networkDelegate: UltraNetworkDelegate
+                        get() = this@App.networkDelegate
                     override val dependencyHolder: BaseDependencyHolder<out BaseFeatureDependencies> = dependencies
                 }
             }.dependencies

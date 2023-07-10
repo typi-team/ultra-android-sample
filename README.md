@@ -16,10 +16,9 @@
 ### Gradle
 
 Для получения доступа, нужно добавить приватный репозиторий. Данные для подключения нужно получить у соответствующих лиц.
-После добавления приватного репозитория, добавляем зависимости в **gradle файл**:
+После добавления приватного репозитория, добавляем зависимость в **gradle файл**:
 
 ```groovy
-implementation 'com.typi.ultra:proto:1.0-25405'
 implementation 'com.typi.ultra:ultra:1.0.0-beta.1'
 ```
 
@@ -31,6 +30,10 @@ implementation 'com.typi.ultra:ultra:1.0.0-beta.1'
 
 Вы можете внедрить предоставляемые классы в свой DI граф. Получить предоставляемые классы нужно через
 `UltraComponentHolder.get()` которая возвращает интерфейс `UltraApi`. В нем содержатся необходимые классы.
+
+### Endpoint
+
+- Нужно передать url сервера в `UltraNetworkDelegate` чтобы SDK знала куда обращаться.
 
 ### Авторизация
 
@@ -50,7 +53,6 @@ implementation 'com.typi.ultra:ultra:1.0.0-beta.1'
 
 ```kotlin
     startService(Intent(this, UltraService::class.java))
-    startService(Intent(this, FileDownloadService::class.java))
 ```
 
 ### Google Maps
