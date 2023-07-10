@@ -6,21 +6,39 @@
 
 ## Как подключить
 
-Пример подключения можете посмотреть в модуле `sample`.
+Чтобы подключить sdk, необходимо добавить данные приватного репозитория:
+
+```groovy
+repositories {
+    google()
+    mavenCentral()
+    maven {
+        url 'https://gitlab.typi.team/api/v4/projects/19/packages/maven'
+        name 'GitLab'
+        credentials(HttpHeaderCredentials) {
+            name = 'Deploy-Token'
+            value = '{some-token}'
+        }
+        authentication {
+            header(HttpHeaderAuthentication)
+        }
+    }
+}
+```
+
+Токен нужно получить у соответствующих лиц.
+После добавления приватного репозитория, добавляем зависимость в **gradle файл**:
+
+```groovy
+implementation 'com.typi.ultra:ultra:1.0.0-beta.2'
+```
+
+Пример подключения можете посмотреть в модуле `app`.
 
 ### Немного о Component Holder
 
 При разработке был использован подход Component Holder. Если вы не знакомы с этим подходом, рекомендую прочитать статью 
 [Ленивая склейка модулей Android-приложения](https://habr.com/ru/articles/536106/).
-
-### Gradle
-
-Для получения доступа, нужно добавить приватный репозиторий. Данные для подключения нужно получить у соответствующих лиц.
-После добавления приватного репозитория, добавляем зависимость в **gradle файл**:
-
-```groovy
-implementation 'com.typi.ultra:ultra:1.0.0-beta.1'
-```
 
 ### Инициализация ComponentHolder
 
