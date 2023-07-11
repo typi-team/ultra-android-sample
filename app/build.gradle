@@ -49,7 +49,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.typi.ultra:ultra:1.0.0-beta.2'
+    implementation 'com.typi.ultra:ultra:1.0.0-beta.3'
 
     //AndroidX
     implementation 'androidx.core:core-ktx:1.10.1'
