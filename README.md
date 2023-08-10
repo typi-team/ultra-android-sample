@@ -33,7 +33,7 @@ repositories {
 implementation 'com.typi.ultra:ultra:1.0.0-beta.3'
 ```
 
-Пример подключения можете посмотреть в модуле `app`.
+Пример подключения можете посмотреть в модуле `sample`.
 
 ### Немного о Component Holder
 
@@ -44,14 +44,11 @@ implementation 'com.typi.ultra:ultra:1.0.0-beta.3'
 
 Чтобы инициализировать `UltraComponentHolder` нужно передать зависимости. Зависимости обьявлены в`UltraDependencies`
 который содержит интерфейсы которые нужно реализовать. Примеры реализации демонстрированы в папке 
-`com.typi.ultra.sample.ultra`. Теперь **component holder** готов к использованию. 
+`com.ultra.sample.ultra`. Теперь **component holder** готов к использованию. 
 
 Вы можете внедрить предоставляемые классы в свой DI граф. Получить предоставляемые классы нужно через
 `UltraComponentHolder.get()` которая возвращает интерфейс `UltraApi`. В нем содержатся необходимые классы.
 
-### Endpoint
-
-- Нужно передать url сервера в `UltraNetworkDelegate` чтобы SDK знала куда обращаться.
 
 ### Авторизация
 
@@ -67,11 +64,7 @@ implementation 'com.typi.ultra:ultra:1.0.0-beta.3'
 ### Сервисы
 
 - Для корректной работы сервисов, необходимо добавить слушатель для `UltraLifecycleObserver`.
-- В `MainActivity` нужно добавить вызов сервисов:
 
-```kotlin
-    startService(Intent(this, UltraService::class.java))
-```
 
 ### Google Maps
 

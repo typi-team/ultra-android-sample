@@ -24,4 +24,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Ultra Sample"
-include ':app'
+include ':sample'
