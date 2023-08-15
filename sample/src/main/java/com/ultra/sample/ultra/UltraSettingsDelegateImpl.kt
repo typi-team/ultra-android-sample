@@ -13,7 +13,7 @@ class UltraSettingsDelegateImpl : UltraSettingsDelegate {
 
     private fun createNetworkSettings(): UltraNetworkSettings {
         return UltraNetworkSettings(
-            url = "some-url",
+            url = "ultra-dev.typi.team",
             port = 443
         )
     }

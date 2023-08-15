@@ -11,8 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.typi.ultra.user.model.ContactModel
-import com.typi.ultra.user.model.SyncedContact
+import com.ultra.sample.contacts.model.ContactDetail
+import com.ultra.sample.contacts.model.ContactInfo
 import com.ultra.sample.contacts.ui.ContactsState
 import com.ultra.sample.contacts.ui.model.GroupContact
 import com.ultra.sample.core.ui.LoadingView
@@ -23,7 +23,7 @@ internal fun ContactsScreen(
     state: ContactsState,
     title: String,
     onBackClicked: () -> Unit,
-    onContactClicked: (SyncedContact) -> Unit,
+    onContactClicked: (ContactDetail) -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -49,7 +49,7 @@ internal fun ContactsScreen(
 internal fun ContactsContent(
     modifier: Modifier,
     items: List<GroupContact>,
-    onContactClicked: (SyncedContact) -> Unit,
+    onContactClicked: (ContactDetail) -> Unit,
 ) {
     LazyColumn(
         modifier = modifier
@@ -76,16 +76,16 @@ private fun ContactsScreenPreview() {
                     GroupContact(
                         initial = 'A',
                         contacts = listOf(
-                            SyncedContact(
-                                contactModel = ContactModel(
+                            ContactDetail(
+                                contactInfo = ContactInfo(
                                     phone = "+7 701 255 7303",
                                     firstName = "Аслан",
                                     lastName = ""
                                 ),
                                 isClient = true
                             ),
-                            SyncedContact(
-                                contactModel = ContactModel(
+                            ContactDetail(
+                                contactInfo = ContactInfo(
                                     phone = "+7 701 255 7303",
                                     firstName = "Ануар",
                                     lastName = "Аманбеков"
@@ -97,8 +97,8 @@ private fun ContactsScreenPreview() {
                     GroupContact(
                         initial = 'Б',
                         contacts = listOf(
-                            SyncedContact(
-                                contactModel = ContactModel(
+                            ContactDetail(
+                                contactInfo = ContactInfo(
                                     phone = "+7 701 255 7303",
                                     firstName = "Бека",
                                     lastName = "Коллега"

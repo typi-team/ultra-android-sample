@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class SyncContactResponse(
     @SerializedName("contacts")
-    val contacts: List<SyncContact>,
+    val contacts: List<ContactRequest>,
 )

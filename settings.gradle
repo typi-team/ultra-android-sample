@@ -15,7 +15,7 @@ dependencyResolutionManagement {
             name 'GitLab'
             credentials(HttpHeaderCredentials) {
                 name = 'Deploy-Token'
-                value = '{some-token}'
+                value = '8XvktUFCRs4bxK9_iwHd'
             }
             authentication {
                 header(HttpHeaderAuthentication)

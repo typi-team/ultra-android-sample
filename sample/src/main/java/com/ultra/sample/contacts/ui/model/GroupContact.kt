@@ -1,8 +1,8 @@
 package com.ultra.sample.contacts.ui.model
 
-import com.typi.ultra.user.model.SyncedContact
+import com.ultra.sample.contacts.model.ContactDetail
 
 data class GroupContact(
     val initial: Char,
-    val contacts: List<SyncedContact>,
+    val contacts: List<ContactDetail>,
 )

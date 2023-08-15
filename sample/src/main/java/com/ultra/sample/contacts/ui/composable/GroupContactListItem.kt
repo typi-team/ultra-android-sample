@@ -11,15 +11,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.typi.ultra.user.model.ContactModel
-import com.typi.ultra.user.model.SyncedContact
+import com.ultra.sample.contacts.model.ContactDetail
+import com.ultra.sample.contacts.model.ContactInfo
 import com.ultra.sample.contacts.ui.model.GroupContact
 import com.ultra.sample.theme.AppTheme
 
 @Composable
 fun GroupContactListItem(
     item: GroupContact,
-    onContactClicked: (SyncedContact) -> Unit,
+    onContactClicked: (ContactDetail) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -70,16 +70,16 @@ private fun GroupContactListItemPreview() {
             item = GroupContact(
                 initial = 'A',
                 contacts = listOf(
-                    SyncedContact(
-                        contactModel = ContactModel(
+                    ContactDetail(
+                        contactInfo = ContactInfo(
                             phone = "+7 701 255 7303",
                             firstName = "Аслан",
                             lastName = ""
                         ),
                         isClient = true
                     ),
-                    SyncedContact(
-                        contactModel = ContactModel(
+                    ContactDetail(
+                        contactInfo = ContactInfo(
                             phone = "+7 701 255 7303",
                             firstName = "Ануар",
                             lastName = "Аманбеков"

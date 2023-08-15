@@ -18,16 +18,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.typi.ultra.user.model.ContactModel
-import com.typi.ultra.user.model.SyncedContact
 import com.ultra.sample.R
+import com.ultra.sample.contacts.model.ContactDetail
+import com.ultra.sample.contacts.model.ContactInfo
 import com.ultra.sample.core.ui.ImagePlaceholder
 import com.ultra.sample.theme.AppTheme
 
 @Composable
 internal fun ContactListItem(
-    item: SyncedContact,
-    onContactClicked: (SyncedContact) -> Unit,
+    item: ContactDetail,
+    onContactClicked: (ContactDetail) -> Unit,
 ) {
     Row(
         modifier = Modifier
@@ -39,7 +39,7 @@ internal fun ContactListItem(
     ) {
         ImagePlaceholder(
             modifier = Modifier.size(34.dp),
-            initials = item.contactModel.placeholder,
+            initials = item.contactInfo.placeholder,
         )
         Column(
             modifier = Modifier
@@ -50,7 +50,7 @@ internal fun ContactListItem(
             Text(
                 modifier = Modifier
                     .fillMaxWidth(),
-                text = item.contactModel.fullName,
+                text = item.contactInfo.fullName,
                 style = AppTheme.typography.title,
                 color = AppTheme.colors.text.title,
             )
@@ -58,7 +58,7 @@ internal fun ContactListItem(
             Text(
                 modifier = Modifier
                     .fillMaxWidth(),
-                text = item.contactModel.phone,
+                text = item.contactInfo.phone,
                 style = AppTheme.typography.body,
                 color = AppTheme.colors.text.subtitle,
             )
@@ -85,8 +85,8 @@ internal fun ContactListItem(
 private fun ContactListItemPreview() {
     AppTheme {
         ContactListItem(
-            item = SyncedContact(
-                contactModel = ContactModel(
+            item = ContactDetail(
+                contactInfo = ContactInfo(
                     phone = "+7 701 255 7303",
                     firstName = "Аслан",
                     lastName = ""

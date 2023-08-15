@@ -1,4 +1,4 @@
-package com.ultra.sample.contacts.store
+package com.ultra.sample.contacts.data.store
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,14 +10,14 @@ import android.provider.ContactsContract.CommonDataKinds.StructuredName.GIVEN_NA
 import android.provider.ContactsContract.CommonDataKinds.StructuredName.LOOKUP_KEY
 import android.provider.ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME
 import android.provider.ContactsContract.Data.DISPLAY_NAME
-import com.typi.ultra.user.model.ContactModel
+import com.ultra.sample.contacts.model.ContactInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import android.provider.ContactsContract.CommonDataKinds.Phone.LOOKUP_KEY as PHONE_LOOKUP_KEY
 
 interface ContactsDataStore {
 
-    suspend fun getContacts(): List<ContactModel>
+    suspend fun getContacts(): List<ContactInfo>
 }
 
 class ContactsDataStoreImpl(
@@ -25,8 +25,8 @@ class ContactsDataStoreImpl(
 ) : ContactsDataStore {
 
     @SuppressLint("Range")
-    override suspend fun getContacts(): List<ContactModel> = withContext(Dispatchers.IO) {
-        val contactsMap = mutableMapOf<String, MutableList<ContactModel>>()
+    override suspend fun getContacts(): List<ContactInfo> = withContext(Dispatchers.IO) {
+        val contactsMap = mutableMapOf<String, MutableList<ContactInfo>>()
 
         val projectionNames = arrayOf(
             LOOKUP_KEY,
@@ -95,7 +95,7 @@ class ContactsDataStoreImpl(
                     }
                 }
 
-                val phoneContact = ContactModel(
+                val phoneContact = ContactInfo(
                     phone = number,
                     firstName = contactFirstName,
                     lastName = lastName.orEmpty()
