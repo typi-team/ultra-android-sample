@@ -60,6 +60,10 @@ class MainViewModel(
     fun onVideoPlayerClicked(messageId: String) {
         _effect.trySend(MainEffect.ShowScreen("video_player/$messageId"))
     }
+
+    fun onLoggedOut() {
+        _effect.trySend(MainEffect.Logout)
+    }
 }
 
 data class MainState(
@@ -69,4 +73,5 @@ data class MainState(
 sealed class MainEffect {
 
     data class ShowScreen(val route: String) : MainEffect()
+    object Logout : MainEffect()
 }

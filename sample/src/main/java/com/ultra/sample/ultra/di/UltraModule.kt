@@ -17,7 +17,7 @@ object UltraModule {
         single { appDependencies.screenStarter }
         single { appDependencies.cacheProvider }
 
-        single<UltraSettingsDelegate> { UltraSettingsDelegateImpl() }
+        single<UltraSettingsDelegate> { UltraSettingsDelegateImpl(get()) }
         single<UltraAuthDelegate> { UltraAuthDelegateImpl(get()) }
         single<UltraThemeDelegate> { UltraThemeDelegateImpl(get()) }
     }

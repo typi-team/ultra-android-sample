@@ -7,4 +7,6 @@ interface SettingsManager {
     var phone: String
     var firstName: String
     var lastName: String
+
+    fun clear()
 }

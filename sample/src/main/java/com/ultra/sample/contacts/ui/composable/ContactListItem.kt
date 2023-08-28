@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.ultra.sample.R
 import com.ultra.sample.contacts.model.ContactDetail
 import com.ultra.sample.contacts.model.ContactInfo
-import com.ultra.sample.core.ui.ImagePlaceholder
+import com.ultra.sample.core.ui.AvatarImage
 import com.ultra.sample.theme.AppTheme
 
 @Composable
@@ -37,9 +37,10 @@ internal fun ContactListItem(
             .padding(vertical = 6.dp, horizontal = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        ImagePlaceholder(
+        AvatarImage(
             modifier = Modifier.size(34.dp),
-            initials = item.contactInfo.placeholder,
+            url = item.contactInfo.avatarUrl,
+            placeholder = item.contactInfo.placeholder,
         )
         Column(
             modifier = Modifier

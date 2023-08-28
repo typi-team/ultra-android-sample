@@ -4,12 +4,21 @@ import com.typi.ultra.settings.UltraNetworkSettings
 import com.typi.ultra.settings.UltraPushSettings
 import com.typi.ultra.settings.UltraSettingsDelegate
 import com.ultra.sample.R
+import com.ultra.sample.core.network.AvatarInterceptor
+import okhttp3.Interceptor
 
-class UltraSettingsDelegateImpl : UltraSettingsDelegate {
+class UltraSettingsDelegateImpl(
+    interceptor: AvatarInterceptor
+) : UltraSettingsDelegate {
 
     override val networkSettings: UltraNetworkSettings = createNetworkSettings()
 
     override val pushSettings: UltraPushSettings = createPushSettings()
+
+    override val avatarInterceptor: Interceptor = interceptor
+
+    override fun getAvatarUrl(phoneNumber: String): String =
+        "http://ultra-dev.typi.team:8086/v1/profile/get-avatar?phone=$phoneNumber"
 
     private fun createNetworkSettings(): UltraNetworkSettings {
         return UltraNetworkSettings(

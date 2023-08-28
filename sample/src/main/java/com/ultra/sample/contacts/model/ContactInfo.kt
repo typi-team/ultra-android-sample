@@ -23,4 +23,7 @@ data class ContactInfo(
                 else -> firstName.first().toString()
             }
         }
+
+    val avatarUrl: String
+        get() = "http://ultra-dev.typi.team:8086/v1/profile/get-avatar?phone=$phone"
 }

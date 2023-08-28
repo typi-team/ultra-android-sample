@@ -20,12 +20,16 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.typi.ultra.chat.presentation.detail.model.ChatDetailInputParams
 import com.typi.ultra.navigation.UltraNavigator
+import com.ultra.sample.auth.presentation.createLoginActivityIntent
 import com.ultra.sample.contacts.ui.composable.ContactsRoute
 import com.ultra.sample.core.utils.createIntent
+import com.ultra.sample.core.utils.startAndClose
 import com.ultra.sample.main.presentation.composable.AppBottomBar
+import com.ultra.sample.main.presentation.composable.ChatsScaffold
 import com.ultra.sample.main.presentation.composable.TabScreen
 import com.ultra.sample.main.presentation.model.Tab
 import com.ultra.sample.money.composables.SendMoneyRoute
+import com.ultra.sample.settings.composables.SettingsRoute
 import com.ultra.sample.theme.AppTheme
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
@@ -60,6 +64,7 @@ class MainActivity : ComponentActivity() {
                     .onEach { effect ->
                         when (effect) {
                             is MainEffect.ShowScreen -> navController.navigate(effect.route)
+                            MainEffect.Logout -> createLoginActivityIntent().startAndClose(this@MainActivity)
                         }
                     }
                     .collect()
@@ -74,7 +79,8 @@ class MainActivity : ComponentActivity() {
                 onContactsClicked = viewModel::onContactsClicked,
                 onSendMoneyClicked = viewModel::onSendMoneyClicked,
                 onUserDetailClicked = viewModel::onUserDetailClicked,
-                onVideoPlayerClicked = viewModel::onVideoPlayerClicked
+                onVideoPlayerClicked = viewModel::onVideoPlayerClicked,
+                onLoggedOut = viewModel::onLoggedOut,
             )
         }
     }
@@ -89,6 +95,7 @@ class MainActivity : ComponentActivity() {
         onSendMoneyClicked: () -> Unit,
         onUserDetailClicked: (String) -> Unit,
         onVideoPlayerClicked: (String) -> Unit,
+        onLoggedOut: () -> Unit,
     ) {
         Scaffold(
             bottomBar = {
@@ -114,13 +121,21 @@ class MainActivity : ComponentActivity() {
                     onChangeBottomBarVisibility(true)
                     TabScreen(tab = Tab.Expenses)
                 }
+                composable(route = Tab.Settings.route) {
+                    onChangeBottomBarVisibility(true)
+                    SettingsRoute(
+                        onLoggedOut = onLoggedOut
+                    )
+                }
                 composable(route = Tab.Chats.route) {
                     onChangeBottomBarVisibility(true)
-                    ultraNavigator.ChatsScreen(
-                        onChatClicked = onChatClicked,
-                        onContactsClicked = onContactsClicked,
-                        onUserDetailClicked = onUserDetailClicked
-                    )
+                    ChatsScaffold(onContactsClicked = onContactsClicked) {
+                        ultraNavigator.ChatsScreen(
+                            onChatClicked = onChatClicked,
+                            onContactsClicked = onContactsClicked,
+                            isToolbarVisible = false,
+                        )
+                    }
                 }
                 composable(
                     route = "chat_detail?chat_id={chat_id}&user_id={user_id}",

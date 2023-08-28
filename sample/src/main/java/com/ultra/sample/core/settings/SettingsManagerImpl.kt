@@ -26,6 +26,14 @@ class SettingsManagerImpl(
     override var firstName: String by preferences.propertyDelegate()
     override var lastName: String by preferences.propertyDelegate()
 
+    override fun clear() {
+        sid = null
+        isDarkTheme = false
+        phone = ""
+        firstName = ""
+        lastName = ""
+    }
+
     private inline fun <reified T : Any> SharedPreferences.propertyDelegate(
         defaultValue: T? = null,
     ): ReadWriteProperty<Any?, T> = PrefDelegate(T::class, this, defaultValue)
