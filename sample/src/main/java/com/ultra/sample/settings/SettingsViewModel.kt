@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.ultra.sample.R
 import com.ultra.sample.auth.domain.usecase.LogoutUseCase
 import com.ultra.sample.core.ui.alert.ConfirmAlertDialogState
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -45,7 +44,7 @@ class SettingsViewModel(
 
     fun onLogoutConfirm() {
         onLogoutDismiss()
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             runCatching {
                 logoutUseCase(Unit)
                 _effect.send(SettingsEffect.Logout)
