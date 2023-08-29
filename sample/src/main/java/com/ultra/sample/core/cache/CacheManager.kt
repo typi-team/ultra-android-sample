@@ -6,7 +6,7 @@ interface CacheManager {
 
     suspend fun save(key: String, value: Any?)
 
-    fun listen(key: String): Flow<Any?>
+    suspend fun listen(key: String): Flow<Any?>
 }
 
 const val KEY_CONTACT = "KEY_CONTACT"

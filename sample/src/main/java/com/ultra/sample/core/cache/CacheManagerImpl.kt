@@ -15,7 +15,8 @@ class CacheManagerImpl : CacheManager {
         cache.send(_cache)
     }
 
-    override fun listen(key: String): Flow<Any?> {
+    override suspend fun listen(key: String): Flow<Any?> {
+        save(key, null)
         return cache.receiveAsFlow()
             .mapNotNull { map ->
                 map.entries
