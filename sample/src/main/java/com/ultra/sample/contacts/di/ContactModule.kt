@@ -22,7 +22,7 @@ object ContactModule {
         single { SyncContactsUseCase(get(), get()) }
         single { CreateContactUseCase(get(), get()) }
 
-        viewModel { ContactsViewModel(get(), get(), get()) }
+        viewModel { ContactsViewModel(get(), get(), get(), get()) }
     }
 
     private fun provideContactRemoteApi(retrofit: Retrofit): ContactRemoteApi {

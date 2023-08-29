@@ -77,6 +77,7 @@ class MainActivity : ComponentActivity() {
                 onChangeBottomBarVisibility = viewModel::onBottomBarStateChanged,
                 onChatClicked = viewModel::onChatClicked,
                 onContactsClicked = viewModel::onContactsClicked,
+                onSendContactClicked = viewModel::onSendContactClicked,
                 onSendMoneyClicked = viewModel::onSendMoneyClicked,
                 onUserDetailClicked = viewModel::onUserDetailClicked,
                 onVideoPlayerClicked = viewModel::onVideoPlayerClicked,
@@ -92,6 +93,7 @@ class MainActivity : ComponentActivity() {
         onChangeBottomBarVisibility: (Boolean) -> Unit,
         onChatClicked: (ChatDetailInputParams) -> Unit,
         onContactsClicked: (String) -> Unit,
+        onSendContactClicked: (String) -> Unit,
         onSendMoneyClicked: () -> Unit,
         onUserDetailClicked: (String) -> Unit,
         onVideoPlayerClicked: (String) -> Unit,
@@ -132,7 +134,7 @@ class MainActivity : ComponentActivity() {
                     ChatsScaffold(onContactsClicked = onContactsClicked) {
                         ultraNavigator.ChatsScreen(
                             onChatClicked = onChatClicked,
-                            onContactsClicked = onContactsClicked,
+                            onContactsClicked = {},
                             isToolbarVisible = false,
                         )
                     }
@@ -159,8 +161,8 @@ class MainActivity : ComponentActivity() {
                         chatId = chatId,
                         userId = userId,
                         onBackClicked = navController::navigateUp,
+                        onSendContactClicked = onSendContactClicked,
                         onSendMoneyClicked = onSendMoneyClicked,
-                        onContactsClicked = onContactsClicked,
                         onUserDetailClicked = onUserDetailClicked,
                         onVideoPlayerClicked = onVideoPlayerClicked,
                     )
