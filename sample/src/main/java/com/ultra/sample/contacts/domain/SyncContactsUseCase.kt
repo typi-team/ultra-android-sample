@@ -13,10 +13,11 @@ class SyncContactsUseCase(
     override suspend fun execute(parameters: Unit): List<ContactDetail> {
         val contacts = contactsDataStore.getContacts()
         val users = contactRepository.sync(contacts)
+        val usersPhones = users.map { it.phone }
         return contacts.map { model ->
             ContactDetail(
                 contactInfo = model,
-                isClient = users.contains(model)
+                isClient = usersPhones.contains(model.phone)
             )
         }
     }

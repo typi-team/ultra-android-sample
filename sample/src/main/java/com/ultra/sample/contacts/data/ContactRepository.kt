@@ -1,66 +1,40 @@
 package com.ultra.sample.contacts.data
 
-import com.ultra.sample.contacts.data.model.ContactRequest
-import com.ultra.sample.contacts.data.model.ContactResponse
-import com.ultra.sample.contacts.data.model.CreateRequest
-import com.ultra.sample.contacts.data.model.SyncContactRequest
+import com.typi.ultra.user.model.UltraContact
+import com.ultra.sample.contacts.data.local.UserLocalDataSource
+import com.ultra.sample.contacts.data.remote.ContactRemoteDataSource
 import com.ultra.sample.contacts.model.ContactInfo
-import com.ultra.sample.contacts.model.ContactInfoResult
+import com.ultra.sample.contacts.model.User
 
 interface ContactRepository {
 
-    suspend fun sync(contacts: List<ContactInfo>): List<ContactInfo>
-    suspend fun create(currentContact: ContactInfo, contactWillCreate: ContactInfo): ContactInfoResult
+    suspend fun sync(contacts: List<ContactInfo>): List<User>
+
+    suspend fun create(currentContact: ContactInfo, contactWillCreate: ContactInfo): UltraContact
+
+    suspend fun getUserById(userId: String): User
 }
 
 class ContactRepositoryImpl(
-    private val remoteApi: ContactRemoteApi,
+    private val localDataSource: UserLocalDataSource,
+    private val remoteDataSource: ContactRemoteDataSource
 ) : ContactRepository {
 
-    override suspend fun sync(contacts: List<ContactInfo>): List<ContactInfo> {
-        val request = SyncContactRequest(contacts = contacts.map { it.toSyncRequest() })
-        return remoteApi.sync(request)
-            .let { response ->
-                response.contacts.map { it.toContactInfo() }
-            }
+    override suspend fun sync(contacts: List<ContactInfo>): List<User> {
+        val users = remoteDataSource.sync(contacts)
+        localDataSource.saveUsers(users)
+        return localDataSource.getUsers()
     }
 
-    override suspend fun create(currentContact: ContactInfo, contactWillCreate: ContactInfo): ContactInfoResult {
-        val request = CreateRequest(
-            currentContact = currentContact.toCreateRequest(),
-            contactWillCreate = contactWillCreate.toCreateRequest()
-        )
-        return remoteApi.create(request)
-            .contact
-            .toContactInfoResult()
+    override suspend fun create(currentContact: ContactInfo, contactWillCreate: ContactInfo): UltraContact {
+        return remoteDataSource.create(currentContact, contactWillCreate)
     }
 
-    private fun ContactInfo.toSyncRequest(): ContactRequest =
-        ContactRequest(
-            phone = phone,
-            firstName = firstName,
-            lastName = lastName
-        )
-
-    private fun ContactInfo.toCreateRequest(): CreateRequest.Contact =
-        CreateRequest.Contact(
-            phone = phone,
-            firstName = firstName,
-            lastName = lastName
-        )
-
-    private fun ContactRequest.toContactInfo(): ContactInfo =
-        ContactInfo(
-            phone = phone,
-            firstName = firstName,
-            lastName = lastName.orEmpty()
-        )
-
-    private fun ContactResponse.toContactInfoResult(): ContactInfoResult =
-        ContactInfoResult(
-            userId = userId,
-            phone = phone,
-            firstName = firstName,
-            lastName = lastName.orEmpty()
-        )
+    override suspend fun getUserById(userId: String): User {
+        var user = localDataSource.getUserById(userId)
+        if (user != null) return user
+        user = remoteDataSource.getUserById(userId)
+        localDataSource.saveUser(user)
+        return user
+    }
 }

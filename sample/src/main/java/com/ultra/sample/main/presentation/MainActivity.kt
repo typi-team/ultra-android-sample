@@ -18,14 +18,20 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.typi.ultra.UltraScreenStarter
+import com.typi.ultra.call.model.CallModel
+import com.typi.ultra.call.presentation.ongoing.model.CallInputParams
 import com.typi.ultra.chat.presentation.detail.model.ChatDetailInputParams
 import com.typi.ultra.navigation.UltraNavigator
+import com.ultra.sample.auth.presentation.createLoginActivityIntent
 import com.ultra.sample.contacts.ui.composable.ContactsRoute
 import com.ultra.sample.core.utils.createIntent
+import com.ultra.sample.core.utils.startAndClose
 import com.ultra.sample.main.presentation.composable.AppBottomBar
 import com.ultra.sample.main.presentation.composable.TabScreen
 import com.ultra.sample.main.presentation.model.Tab
 import com.ultra.sample.money.composables.SendMoneyRoute
+import com.ultra.sample.settings.composables.SettingsRoute
 import com.ultra.sample.theme.AppTheme
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
@@ -60,6 +66,13 @@ class MainActivity : ComponentActivity() {
                     .onEach { effect ->
                         when (effect) {
                             is MainEffect.ShowScreen -> navController.navigate(effect.route)
+                            MainEffect.Logout -> createLoginActivityIntent().startAndClose(this@MainActivity)
+                            is MainEffect.StartCallActivity -> UltraScreenStarter.startCallActivity(
+                                context = this@MainActivity,
+                                params = CallInputParams.ConnectToRoom(
+                                    callModel = effect.callModel
+                                )
+                            )
                         }
                     }
                     .collect()
@@ -72,9 +85,12 @@ class MainActivity : ComponentActivity() {
                 onChangeBottomBarVisibility = viewModel::onBottomBarStateChanged,
                 onChatClicked = viewModel::onChatClicked,
                 onContactsClicked = viewModel::onContactsClicked,
+                onSendContactClicked = viewModel::onSendContactClicked,
                 onSendMoneyClicked = viewModel::onSendMoneyClicked,
                 onUserDetailClicked = viewModel::onUserDetailClicked,
-                onVideoPlayerClicked = viewModel::onVideoPlayerClicked
+                onVideoPlayerClicked = viewModel::onVideoPlayerClicked,
+                onLoggedOut = viewModel::onLoggedOut,
+                onCallClicked = viewModel::onCallClicked
             )
         }
     }
@@ -85,10 +101,13 @@ class MainActivity : ComponentActivity() {
         state: MainState,
         onChangeBottomBarVisibility: (Boolean) -> Unit,
         onChatClicked: (ChatDetailInputParams) -> Unit,
-        onContactsClicked: (String) -> Unit,
+        onContactsClicked: () -> Unit,
+        onSendContactClicked: () -> Unit,
         onSendMoneyClicked: () -> Unit,
         onUserDetailClicked: (String) -> Unit,
         onVideoPlayerClicked: (String) -> Unit,
+        onLoggedOut: () -> Unit,
+        onCallClicked: (CallModel) -> Unit,
     ) {
         Scaffold(
             bottomBar = {
@@ -114,13 +133,26 @@ class MainActivity : ComponentActivity() {
                     onChangeBottomBarVisibility(true)
                     TabScreen(tab = Tab.Expenses)
                 }
+                composable(route = Tab.Settings.route) {
+                    onChangeBottomBarVisibility(true)
+                    SettingsRoute(
+                        onLoggedOut = onLoggedOut
+                    )
+                }
                 composable(route = Tab.Chats.route) {
                     onChangeBottomBarVisibility(true)
                     ultraNavigator.ChatsScreen(
                         onChatClicked = onChatClicked,
                         onContactsClicked = onContactsClicked,
-                        onUserDetailClicked = onUserDetailClicked
+                        isToolbarVisible = true,
                     )
+//                    ChatsScaffold(onContactsClicked = onContactsClicked) {
+//                        ultraNavigator.ChatsScreen(
+//                            onChatClicked = onChatClicked,
+//                            onContactsClicked = {},
+//                            isToolbarVisible = false,
+//                        )
+//                    }
                 }
                 composable(
                     route = "chat_detail?chat_id={chat_id}&user_id={user_id}",
@@ -144,20 +176,21 @@ class MainActivity : ComponentActivity() {
                         chatId = chatId,
                         userId = userId,
                         onBackClicked = navController::navigateUp,
+                        onSendContactClicked = onSendContactClicked,
                         onSendMoneyClicked = onSendMoneyClicked,
-                        onContactsClicked = onContactsClicked,
                         onUserDetailClicked = onUserDetailClicked,
                         onVideoPlayerClicked = onVideoPlayerClicked,
+                        onCallClicked = onCallClicked,
                     )
                 }
                 composable(
-                    route = "contacts/{title}",
-                    arguments = listOf(navArgument("title") { type = NavType.StringType })
+                    route = "contacts/{is_create_chat}",
+                    arguments = listOf(navArgument("is_create_chat") { type = NavType.BoolType })
                 ) { backStackEntry ->
                     onChangeBottomBarVisibility(false)
-                    val title = checkNotNull(backStackEntry.arguments?.getString("title")) { "Title required" }
+                    val isCreateChat = backStackEntry.arguments?.getBoolean("is_create_chat") ?: false
                     ContactsRoute(
-                        title = title,
+                        isCreateChat = isCreateChat,
                         onBackClicked = navController::navigateUp,
                         onContactClicked = navController::navigateUp
                     )

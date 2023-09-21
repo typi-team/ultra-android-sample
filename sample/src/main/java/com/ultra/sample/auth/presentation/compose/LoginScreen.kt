@@ -37,14 +37,16 @@ import androidx.compose.ui.unit.dp
 import com.ultra.sample.R
 import com.ultra.sample.auth.presentation.LoginUiState
 import com.ultra.sample.theme.AppTheme
+import java.util.regex.Pattern
 
 internal const val phoneLength = 12
 
 @Composable
 fun LoginScreen(
     viewState: LoginUiState,
-    onLoginClicked: (String, String, String?) -> Unit,
+    onLoginClicked: (String, String, String, String?) -> Unit,
 ) {
+    var nicknameState by remember { mutableStateOf("") }
     var phoneState by remember { mutableStateOf("") }
     var firstnameState by remember { mutableStateOf("") }
     var lastnameState by remember { mutableStateOf("") }
@@ -71,6 +73,27 @@ fun LoginScreen(
             color = AppTheme.colors.text.title,
             style = AppTheme.typography.title,
             textAlign = TextAlign.Center
+        )
+        AuthTextField(
+            value = nicknameState,
+            hint = stringResource(R.string.your_nickname),
+            onValueChange = {
+                if (it.isEmpty() || it.validateNickname()) nicknameState = it
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 24.dp),
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Next
+            )
+        )
+        Text(
+            text = stringResource(R.string.sample_nickname),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 24.dp, end = 24.dp, top = 8.dp),
+            color = AppTheme.colors.text.subtitle,
+            style = AppTheme.typography.body
         )
         AuthTextField(
             value = phoneState,
@@ -149,9 +172,9 @@ fun LoginScreen(
                 backgroundColor = Color(0xFF22C55E),
                 disabledBackgroundColor = Color(0xFF22C55E).copy(alpha = 0.25f)
             ),
-            enabled = phoneState.length >= phoneLength && firstnameState.isNotEmpty(),
+            enabled = nicknameState.isNotEmpty() && phoneState.length >= phoneLength && firstnameState.isNotEmpty(),
             onClick = {
-                onLoginClicked.invoke(phoneState, firstnameState.trim(), lastnameState.trim())
+                onLoginClicked.invoke(nicknameState.trim(), phoneState, firstnameState.trim(), lastnameState.trim())
             }
         ) {
             if (viewState is LoginUiState.Loading) {
@@ -170,13 +193,18 @@ fun LoginScreen(
     }
 }
 
+fun String.validateNickname(): Boolean {
+    if (trim().isEmpty()) return false
+    return Pattern.compile("^[A-Za-z0-9_.]+\$").matcher(this).matches()
+}
+
 @Preview
 @Composable
 fun LoginScreenPreview() {
     AppTheme {
         LoginScreen(
             viewState = LoginUiState.Idle,
-            onLoginClicked = { _, _, _ -> }
+            onLoginClicked = { _, _, _, _ -> }
         )
     }
 }

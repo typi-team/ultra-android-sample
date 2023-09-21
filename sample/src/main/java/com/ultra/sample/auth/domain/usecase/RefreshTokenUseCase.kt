@@ -13,6 +13,7 @@ class RefreshTokenUseCase(
 
     override suspend fun execute(parameters: Unit): String {
         val response = authRepository.login(
+            nickname = settingsManager.nickname,
             phone = settingsManager.phone,
             firstname = settingsManager.firstName,
             lastname = settingsManager.lastName

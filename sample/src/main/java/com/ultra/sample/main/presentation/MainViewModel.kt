@@ -2,19 +2,29 @@ package com.ultra.sample.main.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.typi.ultra.call.model.CallModel
 import com.typi.ultra.chat.presentation.detail.model.ChatDetailInputParams
+import com.typi.ultra.user.model.UltraContact
+import com.ultra.sample.core.cache.CacheManager
+import com.ultra.sample.core.cache.KEY_CONTACT
 import com.ultra.sample.push.PushManager
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.filterIsInstance
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class MainViewModel(
     private val pushManager: PushManager,
+    private val cacheManager: CacheManager
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(MainState())
@@ -22,6 +32,8 @@ class MainViewModel(
 
     private val _effect: Channel<MainEffect> = Channel(Channel.BUFFERED)
     val effect: Flow<MainEffect> = _effect.receiveAsFlow()
+
+    private var cacheJob: Job? = null
 
     init {
         viewModelScope.launch {
@@ -45,8 +57,21 @@ class MainViewModel(
         _effect.trySend(MainEffect.ShowScreen(route))
     }
 
-    fun onContactsClicked(title: String) {
-        _effect.trySend(MainEffect.ShowScreen("contacts/$title"))
+    fun onContactsClicked() {
+        cacheJob?.cancel()
+        cacheJob = null
+
+        cacheJob = viewModelScope.launch {
+            cacheManager.listen(KEY_CONTACT)
+                .filterIsInstance<UltraContact?>()
+                .onEach(::onContactPicked)
+                .collect()
+        }
+        _effect.trySend(MainEffect.ShowScreen("contacts/true"))
+    }
+
+    fun onSendContactClicked() {
+        _effect.trySend(MainEffect.ShowScreen("contacts/false"))
     }
 
     fun onSendMoneyClicked() {
@@ -60,6 +85,26 @@ class MainViewModel(
     fun onVideoPlayerClicked(messageId: String) {
         _effect.trySend(MainEffect.ShowScreen("video_player/$messageId"))
     }
+
+    fun onLoggedOut() {
+        _effect.trySend(MainEffect.Logout)
+    }
+
+    private suspend fun onContactPicked(contact: UltraContact?) {
+        delay(300)
+        cacheJob?.cancel()
+        cacheJob = null
+
+        contact ?: return
+        val chatDetailParams = ChatDetailInputParams.User(
+            userId = contact.userId
+        )
+        onChatClicked(chatDetailParams)
+    }
+
+    fun onCallClicked(callModel: CallModel) {
+        _effect.trySend(MainEffect.StartCallActivity(callModel))
+    }
 }
 
 data class MainState(
@@ -69,4 +114,6 @@ data class MainState(
 sealed class MainEffect {
 
     data class ShowScreen(val route: String) : MainEffect()
+    object Logout : MainEffect()
+    data class StartCallActivity(val callModel: CallModel) : MainEffect()
 }

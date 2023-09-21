@@ -3,6 +3,7 @@ package com.ultra.sample.ultra
 import com.typi.ultra.settings.UltraNetworkSettings
 import com.typi.ultra.settings.UltraPushSettings
 import com.typi.ultra.settings.UltraSettingsDelegate
+import com.ultra.sample.BuildConfig
 import com.ultra.sample.R
 
 class UltraSettingsDelegateImpl : UltraSettingsDelegate {
@@ -13,7 +14,7 @@ class UltraSettingsDelegateImpl : UltraSettingsDelegate {
 
     private fun createNetworkSettings(): UltraNetworkSettings {
         return UltraNetworkSettings(
-            url = "ultra-dev.typi.team",
+            url = BuildConfig.ULTRA_URL,
             port = 443
         )
     }

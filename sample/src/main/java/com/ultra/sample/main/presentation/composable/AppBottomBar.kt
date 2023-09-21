@@ -27,6 +27,7 @@ internal fun AppBottomBar(navController: NavController) {
             Tab.Payments,
             Tab.Expenses,
             Tab.Chats,
+            Tab.Settings,
         )
         items.forEach { screen ->
             BottomNavigationItem(

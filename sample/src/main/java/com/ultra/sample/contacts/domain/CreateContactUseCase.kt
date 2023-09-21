@@ -17,15 +17,9 @@ class CreateContactUseCase(
             firstName = settingsManager.firstName,
             lastName = settingsManager.lastName,
         )
-        val contact = contactRepository.create(
+        return contactRepository.create(
             currentContact = currentContact,
             contactWillCreate = parameters.contactInfo
-        )
-        return UltraContact(
-            userId = contact.userId,
-            phone = contact.phone,
-            firstName = contact.firstName,
-            lastName = contact.lastName
         )
     }
 

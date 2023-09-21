@@ -15,10 +15,12 @@ class LoginUseCase(
 
     override suspend fun execute(parameters: Param) {
         val response = authRepository.login(
+            nickname = parameters.nickname,
             phone = parameters.phone,
             firstname = parameters.firstname,
             lastname = parameters.lastname
         )
+        settingsManager.nickname = response.nickname
         settingsManager.phone = response.phone
         settingsManager.firstName = response.firstName
         settingsManager.lastName = response.lastName.orEmpty()
@@ -27,6 +29,7 @@ class LoginUseCase(
     }
 
     data class Param(
+        val nickname: String,
         val phone: String,
         val firstname: String,
         val lastname: String?,

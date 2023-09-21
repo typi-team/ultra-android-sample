@@ -1,17 +1,26 @@
 <resources>
-    <string name="app_name">Ultra Samoke</string>
+    <string name="app_name">Freedom Bank</string>
     <string name="ultra_something_went_wrong">Что-то пошло не так</string>
     <string name="products">Продукты</string>
     <string name="payments">Платежи</string>
     <string name="expenses">Расходы</string>
     <string name="chats">Чаты</string>
+    <string name="settings">Настройки</string>
     <string name="auth_enter_data">Для регистрации в чат сервисе введите ваши данные</string>
+    <string name="your_nickname">Ваше никнейм</string>
     <string name="your_phone_number">Ваш номер телефона</string>
     <string name="your_firstname">Ваше имя</string>
     <string name="your_lastname">Ваша фамилия</string>
     <string name="sample_phone_number">Например +77761595595</string>
+    <string name="sample_nickname">Например ivan_ivanov</string>
     <string name="sample_firstname">Например Иван</string>
     <string name="sample_lastname">Например Иванов</string>
     <string name="continue_text">Продолжить</string>
     <string name="enter_text">Введите текст…</string>
+    <string name="new_chat">Новый чат</string>
+    <string name="choose_contact">Выберите контакт</string>
+    <string name="yes">Да</string>
+    <string name="cancel">Отмена</string>
+    <string name="logout">Выйти</string>
+    <string name="logout_confirmation">Вы действительно хотите выйти из аккаунта?</string>
 </resources>

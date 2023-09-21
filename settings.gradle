@@ -21,6 +21,7 @@ dependencyResolutionManagement {
                 header(HttpHeaderAuthentication)
             }
         }
+        maven { url 'https://jitpack.io' }
     }
 }
 rootProject.name = "Ultra Sample"

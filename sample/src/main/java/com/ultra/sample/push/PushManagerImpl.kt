@@ -50,8 +50,6 @@ internal class PushManagerImpl(
         val isChatMessage = pushProvider.isChatPush(data)
         if (isChatMessage) {
             pushProvider.showNotification(
-                title = title,
-                description = description,
                 data = data,
                 intent = Intent(context, MainActivity::class.java)
                     .putExtra(PUSH_TYPE, data[PUSH_TYPE])

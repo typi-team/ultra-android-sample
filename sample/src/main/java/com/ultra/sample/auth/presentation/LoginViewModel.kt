@@ -19,6 +19,7 @@ class LoginViewModel(
     val viewState: StateFlow<LoginUiState> = _viewState.asStateFlow()
 
     fun onLoginClicked(
+        nickname: String,
         phone: String,
         firstname: String,
         lastname: String?,
@@ -30,6 +31,7 @@ class LoginViewModel(
 
                 loginUseCase(
                     LoginUseCase.Param(
+                        nickname = nickname,
                         phone = phone,
                         firstname = firstname,
                         lastname = lastname

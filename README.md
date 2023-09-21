@@ -1,8 +1,5 @@
 # Ultra
 
-## О проекте 
-
-Тут будет описание.
 
 ## Как подключить
 
@@ -30,7 +27,7 @@ repositories {
 После добавления приватного репозитория, добавляем зависимость в **gradle файл**:
 
 ```groovy
-implementation 'com.typi.ultra:ultra:1.0.0-beta.5'
+implementation 'com.typi.ultra:ultra:1.0.0-beta.8'
 ```
 
 Пример подключения можете посмотреть в модуле `sample`.

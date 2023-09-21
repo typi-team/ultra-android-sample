@@ -30,8 +30,9 @@ class LoginActivity : ComponentActivity() {
 
                 LoginScreen(
                     viewState = viewState,
-                    onLoginClicked = { phone, firstname, lastname ->
+                    onLoginClicked = { nickname, phone, firstname, lastname ->
                         viewModel.onLoginClicked(
+                            nickname = nickname,
                             phone = phone,
                             firstname = firstname,
                             lastname = lastname,

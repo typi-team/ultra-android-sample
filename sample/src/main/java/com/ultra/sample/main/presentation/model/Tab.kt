@@ -14,4 +14,5 @@ sealed class Tab(
     object Payments : Tab("payments", R.string.payments, R.drawable.ic_tab_payments)
     object Expenses : Tab("expenses", R.string.expenses, R.drawable.ic_tab_expenses)
     object Chats : Tab("chats", R.string.chats, R.drawable.ic_tab_chats)
+    object Settings : Tab("setting", R.string.settings, R.drawable.ic_tab_settings)
 }
