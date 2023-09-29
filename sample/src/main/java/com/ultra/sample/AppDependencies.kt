@@ -1,9 +1,9 @@
 package com.ultra.sample
 
-import com.typi.ultra.auth.api.UltraAuthProvider
-import com.typi.ultra.cache.api.UltraCacheProvider
-import com.typi.ultra.navigation.UltraNavigator
-import com.typi.ultra.push.api.UltraPushProvider
+import com.typi.ultra.integration.auth.UltraAuthProvider
+import com.typi.ultra.integration.cache.UltraCacheProvider
+import com.typi.ultra.integration.navigation.UltraNavigator
+import com.typi.ultra.integration.push.UltraPushProvider
 
 interface AppDependencies {
 

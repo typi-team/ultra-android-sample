@@ -23,6 +23,7 @@ class SettingsManagerImpl(
 
     override var isDarkTheme: Boolean by preferences.propertyDelegate(true)
     override var nickname: String by preferences.propertyDelegate()
+    override var userId: String by preferences.propertyDelegate()
     override var phone: String by preferences.propertyDelegate()
     override var firstName: String by preferences.propertyDelegate()
     override var lastName: String by preferences.propertyDelegate()

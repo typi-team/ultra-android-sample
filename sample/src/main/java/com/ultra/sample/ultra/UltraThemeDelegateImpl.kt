@@ -8,7 +8,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.typi.ultra.uikit.UltraThemeDelegate
+import com.typi.ultra.integration.theme.UltraThemeDelegate
 import com.typi.ultra.uikit.theme.UltraColor
 import com.typi.ultra.uikit.theme.UltraShape
 import com.typi.ultra.uikit.theme.UltraTypography

@@ -3,16 +3,14 @@ package com.ultra.sample.contacts.data.remote.model
 import com.google.gson.annotations.SerializedName
 
 data class UserResponse(
-    @SerializedName("ID")
-    val id: String?,
-    @SerializedName("UserID")
+    @SerializedName("user_id")
     val userId: String,
-    @SerializedName("Nickname")
+    @SerializedName("nickname")
     val nickname: String,
-    @SerializedName("Phone")
+    @SerializedName("phone")
     val phone: String,
-    @SerializedName("Firstname")
+    @SerializedName("firstname")
     val firstName: String,
-    @SerializedName("Lastname")
+    @SerializedName("lastname")
     val lastName: String?,
 )

@@ -1,8 +1,8 @@
 package com.ultra.sample.contacts.ui.model
 
-import com.ultra.sample.contacts.model.ContactDetail
+import com.ultra.sample.contacts.model.Contact
 
 data class GroupContact(
     val initial: Char,
-    val contacts: List<ContactDetail>,
+    val contacts: List<Contact>,
 )

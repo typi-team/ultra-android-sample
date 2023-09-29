@@ -10,7 +10,6 @@ import com.ultra.sample.contacts.data.remote.ContactRemoteDataSource
 import com.ultra.sample.contacts.data.remote.ContactRemoteDataSourceImpl
 import com.ultra.sample.contacts.data.store.ContactsDataStore
 import com.ultra.sample.contacts.data.store.ContactsDataStoreImpl
-import com.ultra.sample.contacts.domain.CreateContactUseCase
 import com.ultra.sample.contacts.domain.SyncContactsUseCase
 import com.ultra.sample.contacts.ui.ContactsViewModel
 import com.ultra.sample.database.SampleDatabase
@@ -31,9 +30,8 @@ object ContactModule {
         single<ContactRepository> { ContactRepositoryImpl(get(), get()) }
 
         single { SyncContactsUseCase(get(), get()) }
-        single { CreateContactUseCase(get(), get()) }
 
-        viewModel { ContactsViewModel(get(), get(), get(), get()) }
+        viewModel { (isCreateChat: Boolean) -> ContactsViewModel(isCreateChat, get(), get()) }
     }
 
     private fun provideUserDao(database: SampleDatabase): UserDao {

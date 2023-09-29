@@ -41,7 +41,7 @@ class LoginViewModel(
                 _viewState.value = LoginUiState.Idle
                 onLoginSuccess()
             } catch (throwable: Throwable) {
-                _viewState.value = LoginUiState.Error(R.string.ultra_something_went_wrong)
+                _viewState.value = LoginUiState.Error(R.string.something_went_wrong)
             }
         }
     }

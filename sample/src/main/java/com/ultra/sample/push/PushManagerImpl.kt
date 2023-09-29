@@ -9,7 +9,7 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.google.firebase.messaging.FirebaseMessaging
-import com.typi.ultra.push.api.UltraPushProvider
+import com.typi.ultra.integration.push.UltraPushProvider
 import com.ultra.sample.R
 import com.ultra.sample.auth.domain.manager.SessionManager
 import com.ultra.sample.main.presentation.MainActivity

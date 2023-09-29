@@ -25,5 +25,5 @@ data class ContactInfo(
         }
 
     val avatarUrl: String
-        get() = "http://ultra-dev.typi.team:8086/v1/profile/get-avatar?phone=$phone"
+        get() = "https://ultra-dev.typi.team/mock/v1/profile/get-avatar?phone=$phone"
 }

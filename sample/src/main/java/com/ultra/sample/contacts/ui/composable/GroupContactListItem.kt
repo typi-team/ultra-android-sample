@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.ultra.sample.contacts.model.ContactDetail
+import com.ultra.sample.contacts.model.Contact
 import com.ultra.sample.contacts.model.ContactInfo
 import com.ultra.sample.contacts.ui.model.GroupContact
 import com.ultra.sample.theme.AppTheme
@@ -19,7 +19,7 @@ import com.ultra.sample.theme.AppTheme
 @Composable
 fun GroupContactListItem(
     item: GroupContact,
-    onContactClicked: (ContactDetail) -> Unit,
+    onContactClicked: (Contact) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -70,21 +70,21 @@ private fun GroupContactListItemPreview() {
             item = GroupContact(
                 initial = 'A',
                 contacts = listOf(
-                    ContactDetail(
+                    Contact.BankClient(
                         contactInfo = ContactInfo(
                             phone = "+7 701 255 7303",
                             firstName = "Аслан",
                             lastName = ""
                         ),
-                        isClient = true
+                        userId = "",
+                        name = "",
                     ),
-                    ContactDetail(
+                    Contact.NotClient(
                         contactInfo = ContactInfo(
                             phone = "+7 701 255 7303",
                             firstName = "Ануар",
                             lastName = "Аманбеков"
                         ),
-                        isClient = false
                     ),
                 )
             ),

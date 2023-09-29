@@ -1,4 +1,4 @@
-package com.ultra.sample.money.composables
+package com.ultra.sample.money.presentation.composables
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -6,8 +6,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.focus.FocusRequester
-import com.ultra.sample.money.SendMoneyEffect
-import com.ultra.sample.money.SendMoneyViewModel
+import com.ultra.sample.money.presentation.SendMoneyEffect
+import com.ultra.sample.money.presentation.SendMoneyViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.compose.koinViewModel

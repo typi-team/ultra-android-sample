@@ -1,6 +1,6 @@
 package com.ultra.sample.ultra
 
-import com.typi.ultra.auth.api.UltraAuthDelegate
+import com.typi.ultra.integration.auth.UltraAuthDelegate
 import com.ultra.sample.auth.domain.usecase.RefreshTokenUseCase
 
 class UltraAuthDelegateImpl(

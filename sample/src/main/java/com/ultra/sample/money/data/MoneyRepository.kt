@@ -1,6 +1,6 @@
 package com.ultra.sample.money.data
 
-import com.typi.ultra.cache.api.UltraCacheProvider
+import com.typi.ultra.integration.cache.UltraCacheProvider
 import com.typi.ultra.transaction.model.Money
 import com.typi.ultra.transaction.model.Transaction
 import com.typi.ultra.transaction.model.TransactionStatus
@@ -26,7 +26,7 @@ class MoneyRepositoryImpl(
     override suspend fun sendMoney(money: Money) {
         withContext(Dispatchers.IO) {
             runCatching {
-                val url = URL("http://ultra-dev.typi.team:8086/v1/transfer")
+                val url = URL("https://ultra-dev.typi.team/mock/v1/transfer")
                 val connection = url.openConnection() as HttpURLConnection
                 connection.requestMethod = "POST"
                 connection.setRequestProperty("Content-Type", "application/json")

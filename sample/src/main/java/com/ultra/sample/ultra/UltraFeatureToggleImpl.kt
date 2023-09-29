@@ -1,6 +1,6 @@
 package com.ultra.sample.ultra
 
-import com.typi.ultra.UltraFeatureToggle
+import com.typi.ultra.integration.toggle.UltraFeatureToggle
 
 class UltraFeatureToggleImpl : UltraFeatureToggle {
 

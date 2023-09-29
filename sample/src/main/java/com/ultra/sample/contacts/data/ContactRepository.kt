@@ -1,6 +1,5 @@
 package com.ultra.sample.contacts.data
 
-import com.typi.ultra.user.model.UltraContact
 import com.ultra.sample.contacts.data.local.UserLocalDataSource
 import com.ultra.sample.contacts.data.remote.ContactRemoteDataSource
 import com.ultra.sample.contacts.model.ContactInfo
@@ -10,14 +9,12 @@ interface ContactRepository {
 
     suspend fun sync(contacts: List<ContactInfo>): List<User>
 
-    suspend fun create(currentContact: ContactInfo, contactWillCreate: ContactInfo): UltraContact
-
-    suspend fun getUserById(userId: String): User
+    suspend fun getUser(id: String): User
 }
 
 class ContactRepositoryImpl(
     private val localDataSource: UserLocalDataSource,
-    private val remoteDataSource: ContactRemoteDataSource
+    private val remoteDataSource: ContactRemoteDataSource,
 ) : ContactRepository {
 
     override suspend fun sync(contacts: List<ContactInfo>): List<User> {
@@ -26,14 +23,10 @@ class ContactRepositoryImpl(
         return localDataSource.getUsers()
     }
 
-    override suspend fun create(currentContact: ContactInfo, contactWillCreate: ContactInfo): UltraContact {
-        return remoteDataSource.create(currentContact, contactWillCreate)
-    }
-
-    override suspend fun getUserById(userId: String): User {
-        var user = localDataSource.getUserById(userId)
+    override suspend fun getUser(id: String): User {
+        var user = localDataSource.getUserById(id)
         if (user != null) return user
-        user = remoteDataSource.getUserById(userId)
+        user = remoteDataSource.getUserById(id)
         localDataSource.saveUser(user)
         return user
     }

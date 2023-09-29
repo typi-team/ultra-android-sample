@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName
 data class LoginResponse(
     @SerializedName("sid")
     val sid: String,
+    @SerializedName("user_id")
+    val userId: String,
     @SerializedName("nickname")
     val nickname: String,
     @SerializedName("phone")

@@ -7,6 +7,6 @@ import org.koin.dsl.module
 object MainModule {
 
     fun create() = module {
-        viewModel { MainViewModel(get(), get()) }
+        viewModel { MainViewModel(get()) }
     }
 }

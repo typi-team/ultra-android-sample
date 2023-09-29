@@ -1,10 +1,10 @@
 package com.ultra.sample.ultra.di
 
-import com.typi.ultra.UltraFeatureToggle
-import com.typi.ultra.auth.api.UltraAuthDelegate
-import com.typi.ultra.settings.UltraSettingsDelegate
-import com.typi.ultra.uikit.UltraThemeDelegate
-import com.typi.ultra.user.UltraUserDelegate
+import com.typi.ultra.integration.auth.UltraAuthDelegate
+import com.typi.ultra.integration.settings.UltraSettingsDelegate
+import com.typi.ultra.integration.theme.UltraThemeDelegate
+import com.typi.ultra.integration.toggle.UltraFeatureToggle
+import com.typi.ultra.integration.user.UltraUserDelegate
 import com.ultra.sample.AppDependencies
 import com.ultra.sample.ultra.UltraAuthDelegateImpl
 import com.ultra.sample.ultra.UltraFeatureToggleImpl
@@ -21,7 +21,7 @@ object UltraModule {
         single { appDependencies.screenStarter }
         single { appDependencies.cacheProvider }
 
-        single<UltraSettingsDelegate> { UltraSettingsDelegateImpl(get()) }
+        single<UltraSettingsDelegate> { UltraSettingsDelegateImpl() }
         single<UltraAuthDelegate> { UltraAuthDelegateImpl(get()) }
         single<UltraThemeDelegate> { UltraThemeDelegateImpl(get()) }
         single<UltraFeatureToggle> { UltraFeatureToggleImpl() }

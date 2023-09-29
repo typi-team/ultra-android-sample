@@ -1,4 +1,4 @@
-package com.ultra.sample.money.composables
+package com.ultra.sample.money.presentation.composables
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -29,7 +29,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.typi.ultra.R
-import com.ultra.sample.money.SendMoneyState
+import com.ultra.sample.money.presentation.SendMoneyState
 import com.ultra.sample.theme.AppTheme
 
 @Composable

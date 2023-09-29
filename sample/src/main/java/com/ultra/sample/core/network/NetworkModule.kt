@@ -21,7 +21,7 @@ object NetworkModule {
 
     private fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://ultra-dev.typi.team:8086/v1/")
+            .baseUrl("https://ultra-dev.typi.team/mock/v1/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(okHttpClient)
             .build()

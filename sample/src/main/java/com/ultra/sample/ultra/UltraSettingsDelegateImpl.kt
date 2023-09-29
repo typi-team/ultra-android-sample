@@ -1,8 +1,8 @@
 package com.ultra.sample.ultra
 
-import com.typi.ultra.settings.UltraNetworkSettings
-import com.typi.ultra.settings.UltraPushSettings
-import com.typi.ultra.settings.UltraSettingsDelegate
+import com.typi.ultra.integration.settings.UltraSettingsDelegate
+import com.typi.ultra.integration.settings.model.UltraNetworkSettings
+import com.typi.ultra.integration.settings.model.UltraPushSettings
 import com.ultra.sample.BuildConfig
 import com.ultra.sample.R
 

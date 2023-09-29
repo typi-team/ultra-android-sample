@@ -1,4 +1,4 @@
-package com.ultra.sample.money
+package com.ultra.sample.money.presentation
 
 import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.ViewModel

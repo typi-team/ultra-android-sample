@@ -1,6 +1,6 @@
 package com.ultra.sample.auth.domain.usecase
 
-import com.typi.ultra.auth.api.UltraAuthProvider
+import com.typi.ultra.integration.auth.UltraAuthProvider
 import com.ultra.sample.auth.data.AuthRepository
 import com.ultra.sample.auth.domain.manager.SessionManager
 import com.ultra.sample.core.base.UseCase
@@ -21,6 +21,7 @@ class LoginUseCase(
             lastname = parameters.lastname
         )
         settingsManager.nickname = response.nickname
+        settingsManager.userId = response.userId
         settingsManager.phone = response.phone
         settingsManager.firstName = response.firstName
         settingsManager.lastName = response.lastName.orEmpty()

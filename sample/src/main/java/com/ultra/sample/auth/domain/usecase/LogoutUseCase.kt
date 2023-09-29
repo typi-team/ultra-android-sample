@@ -1,6 +1,6 @@
 package com.ultra.sample.auth.domain.usecase
 
-import com.typi.ultra.auth.api.UltraAuthProvider
+import com.typi.ultra.integration.auth.UltraAuthProvider
 import com.ultra.sample.auth.domain.manager.SessionManager
 import com.ultra.sample.core.base.UseCase
 import com.ultra.sample.core.settings.SettingsManager

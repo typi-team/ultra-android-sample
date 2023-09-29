@@ -2,6 +2,7 @@ package com.ultra.sample.auth.data.remote
 
 import com.ultra.sample.BuildConfig
 import com.ultra.sample.auth.data.model.LoginResponse
+import java.util.UUID
 
 // TODO: for testing in customer environment
 class AuthTestDataSource : AuthRemoteDataSource {
@@ -12,7 +13,8 @@ class AuthTestDataSource : AuthRemoteDataSource {
             nickname = nickname,
             phone = phone,
             firstName = firstname,
-            lastName = lastname
+            lastName = lastname,
+            userId = UUID.randomUUID().toString(),
         )
     }
 }

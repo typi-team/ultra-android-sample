@@ -11,9 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.ultra.sample.contacts.model.ContactDetail
+import com.ultra.sample.contacts.model.Contact
 import com.ultra.sample.contacts.model.ContactInfo
-import com.ultra.sample.contacts.ui.ContactsState
+import com.ultra.sample.contacts.ui.model.ContactsState
 import com.ultra.sample.contacts.ui.model.GroupContact
 import com.ultra.sample.core.ui.LoadingView
 import com.ultra.sample.theme.AppTheme
@@ -23,7 +23,7 @@ internal fun ContactsScreen(
     state: ContactsState,
     title: String,
     onBackClicked: () -> Unit,
-    onContactClicked: (ContactDetail) -> Unit,
+    onContactClicked: (Contact) -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -49,7 +49,7 @@ internal fun ContactsScreen(
 internal fun ContactsContent(
     modifier: Modifier,
     items: List<GroupContact>,
-    onContactClicked: (ContactDetail) -> Unit,
+    onContactClicked: (Contact) -> Unit,
 ) {
     LazyColumn(
         modifier = modifier
@@ -76,34 +76,33 @@ private fun ContactsScreenPreview() {
                     GroupContact(
                         initial = 'A',
                         contacts = listOf(
-                            ContactDetail(
+                            Contact.BankClient(
                                 contactInfo = ContactInfo(
                                     phone = "+7 701 255 7303",
                                     firstName = "Аслан",
                                     lastName = ""
                                 ),
-                                isClient = true
+                                userId = "",
+                                name = "",
                             ),
-                            ContactDetail(
+                            Contact.NotClient(
                                 contactInfo = ContactInfo(
                                     phone = "+7 701 255 7303",
                                     firstName = "Ануар",
                                     lastName = "Аманбеков"
                                 ),
-                                isClient = false
                             ),
                         )
                     ),
                     GroupContact(
                         initial = 'Б',
                         contacts = listOf(
-                            ContactDetail(
+                            Contact.NotClient(
                                 contactInfo = ContactInfo(
                                     phone = "+7 701 255 7303",
                                     firstName = "Бека",
                                     lastName = "Коллега"
                                 ),
-                                isClient = false
                             ),
                         )
                     ),

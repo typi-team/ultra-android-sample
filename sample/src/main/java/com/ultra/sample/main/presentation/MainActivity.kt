@@ -18,19 +18,20 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.typi.ultra.UltraScreenStarter
 import com.typi.ultra.call.model.CallModel
+import com.typi.ultra.call.presentation.ongoing.CallActivity.Companion.createCallActivityIntent
 import com.typi.ultra.call.presentation.ongoing.model.CallInputParams
-import com.typi.ultra.chat.presentation.detail.model.ChatDetailInputParams
-import com.typi.ultra.navigation.UltraNavigator
+import com.typi.ultra.integration.navigation.UltraNavigator
 import com.ultra.sample.auth.presentation.createLoginActivityIntent
 import com.ultra.sample.contacts.ui.composable.ContactsRoute
 import com.ultra.sample.core.utils.createIntent
 import com.ultra.sample.core.utils.startAndClose
 import com.ultra.sample.main.presentation.composable.AppBottomBar
 import com.ultra.sample.main.presentation.composable.TabScreen
+import com.ultra.sample.main.presentation.model.MainEffect
+import com.ultra.sample.main.presentation.model.MainState
 import com.ultra.sample.main.presentation.model.Tab
-import com.ultra.sample.money.composables.SendMoneyRoute
+import com.ultra.sample.money.presentation.composables.SendMoneyRoute
 import com.ultra.sample.settings.composables.SettingsRoute
 import com.ultra.sample.theme.AppTheme
 import kotlinx.coroutines.flow.collect
@@ -66,13 +67,14 @@ class MainActivity : ComponentActivity() {
                     .onEach { effect ->
                         when (effect) {
                             is MainEffect.ShowScreen -> navController.navigate(effect.route)
+                            is MainEffect.ShowScreenWithPopup -> {
+                                navController.navigateWithPopUp(effect.toRoute, effect.fromRoute)
+                            }
                             MainEffect.Logout -> createLoginActivityIntent().startAndClose(this@MainActivity)
-                            is MainEffect.StartCallActivity -> UltraScreenStarter.startCallActivity(
-                                context = this@MainActivity,
-                                params = CallInputParams.ConnectToRoom(
-                                    callModel = effect.callModel
-                                )
-                            )
+                            is MainEffect.StartCallActivity -> {
+                                val params = CallInputParams.ConnectToRoom(effect.callModel)
+                                startActivity(createCallActivityIntent(params))
+                            }
                         }
                     }
                     .collect()
@@ -90,7 +92,8 @@ class MainActivity : ComponentActivity() {
                 onUserDetailClicked = viewModel::onUserDetailClicked,
                 onVideoPlayerClicked = viewModel::onVideoPlayerClicked,
                 onLoggedOut = viewModel::onLoggedOut,
-                onCallClicked = viewModel::onCallClicked
+                onCallClicked = viewModel::onCallClicked,
+                onChatDetailShowed = viewModel::onChatDetailShowed,
             )
         }
     }
@@ -100,7 +103,7 @@ class MainActivity : ComponentActivity() {
         navController: NavHostController,
         state: MainState,
         onChangeBottomBarVisibility: (Boolean) -> Unit,
-        onChatClicked: (ChatDetailInputParams) -> Unit,
+        onChatClicked: (String) -> Unit,
         onContactsClicked: () -> Unit,
         onSendContactClicked: () -> Unit,
         onSendMoneyClicked: () -> Unit,
@@ -108,6 +111,7 @@ class MainActivity : ComponentActivity() {
         onVideoPlayerClicked: (String) -> Unit,
         onLoggedOut: () -> Unit,
         onCallClicked: (CallModel) -> Unit,
+        onChatDetailShowed: (String, String) -> Unit,
     ) {
         Scaffold(
             bottomBar = {
@@ -155,7 +159,7 @@ class MainActivity : ComponentActivity() {
 //                    }
                 }
                 composable(
-                    route = "chat_detail?chat_id={chat_id}&user_id={user_id}",
+                    route = "chat_detail?chat_id={chat_id}&user_id={user_id}&name={name}",
                     arguments = listOf(
                         navArgument("chat_id") {
                             nullable = true
@@ -166,15 +170,22 @@ class MainActivity : ComponentActivity() {
                             nullable = true
                             type = NavType.StringType
                             defaultValue = null
+                        },
+                        navArgument("name") {
+                            nullable = true
+                            type = NavType.StringType
+                            defaultValue = null
                         }
                     )
                 ) { backStackEntry ->
                     onChangeBottomBarVisibility(false)
                     val chatId = backStackEntry.arguments?.getString("chat_id")
                     val userId = backStackEntry.arguments?.getString("user_id")
+                    val name = backStackEntry.arguments?.getString("name")
                     ultraNavigator.ChatDetailScreen(
                         chatId = chatId,
                         userId = userId,
+                        name = name,
                         onBackClicked = navController::navigateUp,
                         onSendContactClicked = onSendContactClicked,
                         onSendMoneyClicked = onSendMoneyClicked,
@@ -192,7 +203,7 @@ class MainActivity : ComponentActivity() {
                     ContactsRoute(
                         isCreateChat = isCreateChat,
                         onBackClicked = navController::navigateUp,
-                        onContactClicked = navController::navigateUp
+                        onChatDetailShowed = onChatDetailShowed,
                     )
                 }
                 composable(route = "send_money") {
@@ -218,6 +229,17 @@ class MainActivity : ComponentActivity() {
                     ) { "Message id required" }
                     ultraNavigator.VideoPlayerScreen(messageId = messageId)
                 }
+            }
+        }
+    }
+
+    private fun NavHostController.navigateWithPopUp(
+        toRoute: String,
+        fromRoute: String,
+    ) {
+        this.navigate(toRoute) {
+            popUpTo(fromRoute) {
+                inclusive = false
             }
         }
     }

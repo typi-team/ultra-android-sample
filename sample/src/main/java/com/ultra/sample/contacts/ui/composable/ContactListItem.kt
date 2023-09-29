@@ -19,7 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ultra.sample.R
-import com.ultra.sample.contacts.model.ContactDetail
+import com.ultra.sample.contacts.model.Contact
 import com.ultra.sample.contacts.model.ContactInfo
 import com.ultra.sample.core.ui.AvatarImage
 import com.ultra.sample.core.ui.ImagePlaceholder
@@ -27,8 +27,8 @@ import com.ultra.sample.theme.AppTheme
 
 @Composable
 internal fun ContactListItem(
-    item: ContactDetail,
-    onContactClicked: (ContactDetail) -> Unit,
+    item: Contact,
+    onContactClicked: (Contact) -> Unit,
 ) {
     Row(
         modifier = Modifier
@@ -38,7 +38,7 @@ internal fun ContactListItem(
             .padding(vertical = 6.dp, horizontal = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if (item.isClient) {
+        if (item is Contact.BankClient) {
             AvatarImage(
                 modifier = Modifier.size(34.dp),
                 url = item.contactInfo.avatarUrl,
@@ -72,7 +72,7 @@ internal fun ContactListItem(
                 color = AppTheme.colors.text.subtitle,
             )
         }
-        if (item.isClient) {
+        if (item is Contact.BankClient) {
             Image(
                 modifier = Modifier
                     .padding(start = 4.dp, end = 12.dp)
@@ -94,13 +94,14 @@ internal fun ContactListItem(
 private fun ContactListItemPreview() {
     AppTheme {
         ContactListItem(
-            item = ContactDetail(
+            item = Contact.BankClient(
                 contactInfo = ContactInfo(
                     phone = "+7 701 255 7303",
                     firstName = "Аслан",
                     lastName = ""
                 ),
-                isClient = true
+                userId = "",
+                name = "",
             ),
             onContactClicked = {}
         )
