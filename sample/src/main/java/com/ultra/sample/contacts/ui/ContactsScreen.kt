@@ -8,7 +8,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -17,6 +16,7 @@ import com.google.accompanist.permissions.rememberPermissionState
 import com.ultra.sample.R
 import com.ultra.sample.contacts.ui.composable.ContactsUI
 import com.ultra.sample.contacts.ui.model.ContactsEffect
+import com.ultra.sample.navigation.BaseScreen
 import com.ultra.sample.theme.AppTheme
 import com.ultra.sample.ultra.presentation.ChatDetailScreen
 import kotlinx.coroutines.flow.collect
@@ -26,11 +26,11 @@ import org.koin.core.parameter.parametersOf
 
 class ContactsScreen(
     private val isCreateChat: Boolean = true,
-) : Screen {
+) : BaseScreen() {
 
     @OptIn(ExperimentalPermissionsApi::class)
     @Composable
-    override fun Content() {
+    override fun ScreenContent() {
         AppTheme {
             val navigator = LocalNavigator.currentOrThrow
             val context = LocalContext.current

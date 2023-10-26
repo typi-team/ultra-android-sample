@@ -6,18 +6,18 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.focus.FocusRequester
-import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.ultra.sample.money.presentation.composables.SendMoneyContent
+import com.ultra.sample.navigation.BaseScreen
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.compose.koinViewModel
 
-object SendMoneyScreen : Screen {
+object SendMoneyScreen : BaseScreen() {
 
     @Composable
-    override fun Content() {
+    override fun ScreenContent() {
         val navigator = LocalNavigator.currentOrThrow
         val viewModel: SendMoneyViewModel = koinViewModel()
         val focusRequester = remember { FocusRequester() }

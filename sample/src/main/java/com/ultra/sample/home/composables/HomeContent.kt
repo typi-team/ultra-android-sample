@@ -20,7 +20,7 @@ import com.ultra.sample.home.HomeState
 import com.ultra.sample.theme.AppTheme
 
 @Composable
-fun HomeScreen(
+fun HomeContent(
     state: HomeState,
     onLogoutClicked: () -> Unit,
     onLogoutDismiss: () -> Unit,

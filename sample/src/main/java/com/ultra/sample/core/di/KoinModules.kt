@@ -7,6 +7,7 @@ import com.ultra.sample.core.network.NetworkModule
 import com.ultra.sample.database.DatabaseModule
 import com.ultra.sample.home.di.HomeModule
 import com.ultra.sample.money.di.MoneyModule
+import com.ultra.sample.navigation.di.NavigationModule
 import com.ultra.sample.push.di.PushModule
 import com.ultra.sample.splash.di.SplashModule
 import com.ultra.sample.ultra.di.UltraModule
@@ -25,5 +26,6 @@ object KoinModules {
         ContactModule.create(),
         MoneyModule.create(),
         HomeModule.create(),
+        NavigationModule.create(),
     )
 }
