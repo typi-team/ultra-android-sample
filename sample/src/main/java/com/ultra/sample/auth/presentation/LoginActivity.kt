@@ -7,10 +7,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import com.ultra.sample.auth.presentation.compose.LoginScreen
+import com.ultra.sample.auth.presentation.composeable.LoginScreen
 import com.ultra.sample.core.utils.createIntent
 import com.ultra.sample.core.utils.startAndClose
-import com.ultra.sample.main.presentation.createMainActivityIntent
+import com.ultra.sample.main.createMainActivityIntent
 import com.ultra.sample.theme.AppTheme
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

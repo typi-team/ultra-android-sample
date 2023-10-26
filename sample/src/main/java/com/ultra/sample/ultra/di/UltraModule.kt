@@ -6,11 +6,11 @@ import com.typi.ultra.integration.theme.UltraThemeDelegate
 import com.typi.ultra.integration.toggle.UltraFeatureToggle
 import com.typi.ultra.integration.user.UltraUserDelegate
 import com.ultra.sample.AppDependencies
-import com.ultra.sample.ultra.UltraAuthDelegateImpl
-import com.ultra.sample.ultra.UltraFeatureToggleImpl
-import com.ultra.sample.ultra.UltraSettingsDelegateImpl
-import com.ultra.sample.ultra.UltraThemeDelegateImpl
-import com.ultra.sample.ultra.UltraUserDelegateImpl
+import com.ultra.sample.ultra.delegates.UltraAuthDelegateImpl
+import com.ultra.sample.ultra.delegates.UltraFeatureToggleImpl
+import com.ultra.sample.ultra.delegates.UltraSettingsDelegateImpl
+import com.ultra.sample.ultra.delegates.UltraThemeDelegateImpl
+import com.ultra.sample.ultra.delegates.UltraUserDelegateImpl
 import org.koin.dsl.module
 
 object UltraModule {

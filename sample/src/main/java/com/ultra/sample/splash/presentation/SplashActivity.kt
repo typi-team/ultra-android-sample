@@ -14,7 +14,7 @@ import com.ultra.sample.R
 import com.ultra.sample.auth.presentation.createLoginActivityIntent
 import com.ultra.sample.core.utils.launchWhenStarted
 import com.ultra.sample.core.utils.startAndClose
-import com.ultra.sample.main.presentation.createMainActivityIntent
+import com.ultra.sample.main.createMainActivityIntent
 import com.ultra.sample.theme.AppTheme
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

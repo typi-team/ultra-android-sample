@@ -12,7 +12,7 @@ import com.google.firebase.messaging.FirebaseMessaging
 import com.typi.ultra.integration.push.UltraPushProvider
 import com.ultra.sample.R
 import com.ultra.sample.auth.domain.manager.SessionManager
-import com.ultra.sample.main.presentation.MainActivity
+import com.ultra.sample.main.MainActivity
 import java.security.SecureRandom
 import kotlinx.coroutines.tasks.await
 
