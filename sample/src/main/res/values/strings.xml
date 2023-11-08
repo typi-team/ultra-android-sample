@@ -21,4 +21,5 @@
     <string name="logout">Выйти</string>
     <string name="logout_confirmation">Вы действительно хотите выйти из аккаунта?</string>
     <string name="choose_bank_client">Выберите клиента банка</string>
+    <string name="notifications">Уведомления</string>
 </resources>

@@ -14,6 +14,7 @@ import com.typi.ultra.integration.base.DependencyHolder
 import com.typi.ultra.integration.cache.UltraCacheProvider
 import com.typi.ultra.integration.navigation.UltraNavigator
 import com.typi.ultra.integration.push.UltraPushProvider
+import com.typi.ultra.integration.recorder.UltraErrorRecorder
 import com.typi.ultra.integration.settings.UltraSettingsDelegate
 import com.typi.ultra.integration.theme.UltraThemeDelegate
 import com.typi.ultra.integration.toggle.UltraFeatureToggle
@@ -32,6 +33,7 @@ class App : Application() {
     private val themeDelegate: UltraThemeDelegate by inject()
     private val featureToggle: UltraFeatureToggle by inject()
     private val userDelegate: UltraUserDelegate by inject()
+    private val errorRecorder: UltraErrorRecorder by inject()
 
     private val ultraApi: UltraApi by lazy { UltraComponentHolder.get() }
 
@@ -57,6 +59,8 @@ class App : Application() {
                         get() = this@App.featureToggle
                     override val userDelegate: UltraUserDelegate
                         get() = this@App.userDelegate
+                    override val errorRecorder: UltraErrorRecorder
+                        get() = this@App.errorRecorder
                     override val dependencyHolder: BaseDependencyHolder<out BaseFeatureDependencies> = dependencies
                 }
             }.dependencies

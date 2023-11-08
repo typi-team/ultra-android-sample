@@ -5,28 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
 import androidx.lifecycle.lifecycleScope
-import cafe.adriel.voyager.navigator.tab.CurrentTab
-import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
-import cafe.adriel.voyager.navigator.tab.Tab
-import cafe.adriel.voyager.navigator.tab.TabNavigator
+import cafe.adriel.voyager.navigator.Navigator
 import com.ultra.sample.core.utils.createIntent
-import com.ultra.sample.main.composable.tabs.ChatsTab
-import com.ultra.sample.main.composable.tabs.HomeTab
-import com.ultra.sample.navigation.NavigationHandler
+import com.ultra.sample.main.composable.MainScreen
 import com.ultra.sample.push.PushManager
 import com.ultra.sample.theme.AppTheme
 import kotlinx.coroutines.launch
@@ -40,7 +22,6 @@ fun Context.createMainActivityIntent(): Intent =
 class MainActivity : ComponentActivity() {
 
     private val pushManager: PushManager by inject()
-    private val navigationHandler: NavigationHandler by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,56 +29,9 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             AppTheme {
-                val shouldShowBottomBar by navigationHandler.shouldShowBottomBar.collectAsState()
-
-                TabNavigator(HomeTab) {
-                    Scaffold(
-                        bottomBar = {
-                            if (shouldShowBottomBar) {
-                                BottomNavigation(
-                                    backgroundColor = AppTheme.colors.background.general
-                                ) {
-                                    TabNavigationItem(HomeTab)
-                                    TabNavigationItem(ChatsTab)
-                                }
-                            }
-                        }
-                    ) { innerPadding ->
-                        Box(
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .padding(innerPadding)
-                        ) {
-                            CurrentTab()
-                        }
-                    }
-                }
+                Navigator(MainScreen)
             }
         }
-    }
-
-    @Composable
-    private fun RowScope.TabNavigationItem(tab: Tab) {
-        val tabNavigator = LocalTabNavigator.current
-
-        BottomNavigationItem(
-            selected = tabNavigator.current.key == tab.key,
-            selectedContentColor = AppTheme.colors.icon.selected,
-            unselectedContentColor = AppTheme.colors.icon.disabled,
-            onClick = { tabNavigator.current = tab },
-            icon = {
-                Icon(
-                    painter = tab.options.icon!!,
-                    contentDescription = tab.options.title
-                )
-            },
-            label = {
-                Text(
-                    text = tab.options.title,
-                    style = AppTheme.typography.bottomItem
-                )
-            },
-        )
     }
 
     private fun setupPush() {

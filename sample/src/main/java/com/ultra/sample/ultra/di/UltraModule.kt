@@ -1,12 +1,14 @@
 package com.ultra.sample.ultra.di
 
 import com.typi.ultra.integration.auth.UltraAuthDelegate
+import com.typi.ultra.integration.recorder.UltraErrorRecorder
 import com.typi.ultra.integration.settings.UltraSettingsDelegate
 import com.typi.ultra.integration.theme.UltraThemeDelegate
 import com.typi.ultra.integration.toggle.UltraFeatureToggle
 import com.typi.ultra.integration.user.UltraUserDelegate
 import com.ultra.sample.AppDependencies
 import com.ultra.sample.ultra.delegates.UltraAuthDelegateImpl
+import com.ultra.sample.ultra.delegates.UltraErrorRecorderImpl
 import com.ultra.sample.ultra.delegates.UltraFeatureToggleImpl
 import com.ultra.sample.ultra.delegates.UltraSettingsDelegateImpl
 import com.ultra.sample.ultra.delegates.UltraThemeDelegateImpl
@@ -26,5 +28,6 @@ object UltraModule {
         single<UltraThemeDelegate> { UltraThemeDelegateImpl(get()) }
         single<UltraFeatureToggle> { UltraFeatureToggleImpl() }
         single<UltraUserDelegate> { UltraUserDelegateImpl(get(), get()) }
+        single<UltraErrorRecorder> { UltraErrorRecorderImpl() }
     }
 }
