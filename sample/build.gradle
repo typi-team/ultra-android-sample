@@ -61,6 +61,18 @@ android {
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17.toString()
+        if (project.findProperty("composeReports") == "true") {
+            freeCompilerArgs += [
+                    "-P",
+                    "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" +
+                            project.buildDir.absolutePath + "/compose_metrics"
+            ]
+            freeCompilerArgs += [
+                    "-P",
+                    "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" +
+                            project.buildDir.absolutePath + "/compose_metrics"
+            ]
+        }
     }
     buildFeatures {
         buildConfig true
@@ -77,28 +89,28 @@ android {
 }
 
 dependencies {
-    implementation 'com.typi.ultra:ultra:1.0.0-beta.18'
+    implementation 'com.typi.ultra:ultra:1.0.0-beta.19'
 
     //AndroidX
-    implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
-    implementation 'androidx.lifecycle:lifecycle-process:2.6.1'
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
+    implementation 'androidx.lifecycle:lifecycle-process:2.6.2'
 
     // Google
-    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'com.google.android.material:material:1.10.0'
 
     // Compose
-    implementation "androidx.compose.ui:ui:1.5.0"
-    implementation "androidx.compose.ui:ui-tooling-preview:1.5.0"
-    implementation 'androidx.compose.material:material:1.5.0'
-    implementation "androidx.compose.material3:material3:1.1.1"
-    implementation 'androidx.activity:activity-compose:1.7.2'
+    implementation "androidx.compose.ui:ui:1.5.4"
+    implementation "androidx.compose.ui:ui-tooling-preview:1.5.4"
+    implementation 'androidx.compose.material:material:1.5.4'
+    implementation "androidx.compose.material3:material3:1.1.2"
+    implementation 'androidx.activity:activity-compose:1.8.0'
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.29.1-alpha"
     implementation "com.google.accompanist:accompanist-permissions:0.29.1-alpha"
     implementation "com.google.accompanist:accompanist-drawablepainter:0.30.0"
     implementation 'com.google.accompanist:accompanist-pager-indicators:0.27.1'
-    debugImplementation "androidx.compose.ui:ui-tooling:1.5.0"
-    debugImplementation "androidx.compose.ui:ui-test-manifest:1.5.0"
+    debugImplementation "androidx.compose.ui:ui-tooling:1.5.4"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:1.5.4"
 
     // Voyager
     def voyagerVersion = "1.0.0-rc08"
@@ -106,6 +118,7 @@ dependencies {
     implementation "cafe.adriel.voyager:voyager-bottom-sheet-navigator:$voyagerVersion"
     implementation "cafe.adriel.voyager:voyager-tab-navigator:$voyagerVersion"
     implementation "cafe.adriel.voyager:voyager-androidx:$voyagerVersion"
+    implementation "cafe.adriel.voyager:voyager-transitions:$voyagerVersion"
 
     // Network
     implementation "com.squareup.retrofit2:retrofit:2.9.0"

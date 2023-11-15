@@ -13,7 +13,6 @@
     <string name="sample_firstname">Например Иван</string>
     <string name="sample_lastname">Например Иванов</string>
     <string name="continue_text">Продолжить</string>
-    <string name="enter_text">Введите текст…</string>
     <string name="new_chat">Новый чат</string>
     <string name="choose_contact">Выберите контакт</string>
     <string name="yes">Да</string>

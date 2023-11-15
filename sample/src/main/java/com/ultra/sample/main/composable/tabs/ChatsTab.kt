@@ -9,6 +9,7 @@ import androidx.compose.ui.res.vectorResource
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
+import cafe.adriel.voyager.transitions.SlideTransition
 import com.ultra.sample.R
 import com.ultra.sample.ultra.presentation.ChatsScreen
 
@@ -30,6 +31,9 @@ object ChatsTab : Tab {
 
     @Composable
     override fun Content() {
-        Navigator(ChatsScreen)
+        Navigator(
+            screen = ChatsScreen,
+            content = { SlideTransition(it) }
+        )
     }
 }

@@ -14,7 +14,8 @@ class UltraUserDelegateImpl(
 
     override suspend fun getAvatarUrl(identifier: String): String? {
         return runCatching {
-            "https://ultra-dev.typi.team/mock/v1/profile/get-avatar?id=$identifier"
+            val user = contactRepository.getUser(identifier)
+            "https://ultra-dev.typi.team/mock/v1/profile/get-avatar?phone=${user.phone}"
         }.getOrElse { null }
     }
 
