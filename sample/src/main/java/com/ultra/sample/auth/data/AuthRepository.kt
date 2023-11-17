@@ -1,7 +1,8 @@
 package com.ultra.sample.auth.data
 
+import com.ultra.sample.auth.data.model.LoginRequest
 import com.ultra.sample.auth.data.model.LoginResponse
-import com.ultra.sample.auth.data.remote.AuthRemoteDataSource
+import com.ultra.sample.auth.data.remote.AuthRemoteApi
 
 interface AuthRepository {
 
@@ -14,15 +15,17 @@ interface AuthRepository {
 }
 
 class AuthRepositoryImpl(
-    private val remoteDataSource: AuthRemoteDataSource,
+    private val remoteApi: AuthRemoteApi,
 ) : AuthRepository {
 
     override suspend fun login(nickname: String, phone: String, firstname: String, lastname: String?): LoginResponse {
-        return remoteDataSource.login(
-            nickname = nickname,
-            phone = phone,
-            firstname = firstname,
-            lastname = lastname
+        return remoteApi.login(
+            request = LoginRequest(
+                nickname = nickname,
+                phone = phone,
+                firstName = firstname,
+                lastName = lastname
+            )
         )
     }
 }

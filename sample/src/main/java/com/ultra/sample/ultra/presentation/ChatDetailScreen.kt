@@ -36,7 +36,8 @@ class ChatDetailScreen(
         val onSendContactClicked: () -> Unit = remember { { navigator.push(ContactsScreen(isCreateChat = false)) } }
         val onSendMoneyClicked: () -> Unit = remember { { navigator.push(SendMoneyScreen) } }
         val onUserDetailClicked: (String) -> Unit = remember { { navigator.push(UserDetailScreen(phoneNumber = it)) } }
-        val onVideoPlayerClicked: (String) -> Unit = remember { { navigator.push(VideoPlayerScreen(messageId = it)) } }
+        val onMediaBrowserClicked: (String) -> Unit =
+            remember { { navigator.push(MediaBrowserScreen(messageId = it)) } }
         val onCallClicked: (CallModel) -> Unit = remember {
             {
                 with(activity) {
@@ -54,7 +55,7 @@ class ChatDetailScreen(
             onSendContactClicked = onSendContactClicked,
             onSendMoneyClicked = onSendMoneyClicked,
             onUserDetailClicked = onUserDetailClicked,
-            onVideoPlayerClicked = onVideoPlayerClicked,
+            onMediaBrowserClicked = onMediaBrowserClicked,
             onCallClicked = onCallClicked,
         )
     }
