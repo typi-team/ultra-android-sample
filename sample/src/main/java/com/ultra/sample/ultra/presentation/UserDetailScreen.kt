@@ -1,6 +1,9 @@
 package com.ultra.sample.ultra.presentation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.typi.ultra.integration.navigation.UltraNavigator
@@ -16,9 +19,12 @@ class UserDetailScreen(
         val navigator = LocalNavigator.currentOrThrow
         val ultraNavigator: UltraNavigator = koinInject()
 
+        val phoneNumberValue by remember { mutableStateOf(phoneNumber) }
+        val onBackClicked: () -> Unit = remember { { navigator.pop() } }
+
         ultraNavigator.UserDetailScreen(
-            phoneNumber = phoneNumber,
-            onBackClicked = navigator::pop,
+            phoneNumber = phoneNumberValue,
+            onBackClicked = onBackClicked,
         )
     }
 }

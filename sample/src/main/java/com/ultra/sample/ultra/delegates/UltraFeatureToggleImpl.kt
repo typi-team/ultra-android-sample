@@ -6,4 +6,5 @@ class UltraFeatureToggleImpl : UltraFeatureToggle {
 
     override val isMoneyTransferEnabled: Boolean = true
     override val isCallsEnabled: Boolean = false
+    override val isMediaBrowserPager: Boolean = false
 }
