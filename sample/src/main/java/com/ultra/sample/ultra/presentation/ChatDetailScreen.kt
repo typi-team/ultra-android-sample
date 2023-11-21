@@ -2,13 +2,9 @@ package com.ultra.sample.ultra.presentation
 
 import android.app.Activity
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.typi.ultra.call.model.CallModel
 import com.typi.ultra.call.presentation.ongoing.CallActivity.Companion.createCallActivityIntent
 import com.typi.ultra.call.presentation.ongoing.model.CallInputParams
 import com.typi.ultra.integration.navigation.UltraNavigator
@@ -29,34 +25,29 @@ class ChatDetailScreen(
         val navigator = LocalNavigator.currentOrThrow
         val ultraNavigator: UltraNavigator = koinInject()
 
-        val chatIdValue by remember { mutableStateOf(chatId) }
-        val userIdValue by remember { mutableStateOf(userId) }
-        val userNameValue by remember { mutableStateOf(userName) }
-        val onBackClicked: () -> Unit = remember { { navigator.pop() } }
-        val onSendContactClicked: () -> Unit = remember { { navigator.push(ContactsScreen(isCreateChat = false)) } }
-        val onSendMoneyClicked: () -> Unit = remember { { navigator.push(SendMoneyScreen) } }
-        val onUserDetailClicked: (String) -> Unit = remember { { navigator.push(UserDetailScreen(phoneNumber = it)) } }
-        val onMediaBrowserClicked: (String) -> Unit =
-            remember { { navigator.push(MediaBrowserScreen(messageId = it)) } }
-        val onCallClicked: (CallModel) -> Unit = remember {
-            {
+        ultraNavigator.ChatDetailScreen(
+            chatId = chatId,
+            userId = userId,
+            name = userName,
+            onBackClicked = navigator::pop,
+            onSendContactClicked = {
+                navigator.push(ContactsScreen(isCreateChat = false))
+            },
+            onSendMoneyClicked = {
+                navigator.push(SendMoneyScreen)
+            },
+            onUserDetailClicked = { phoneNumber ->
+                navigator.push(UserDetailScreen(phoneNumber = phoneNumber))
+            },
+            onMediaBrowserClicked = { messageId ->
+                navigator.push(MediaBrowserScreen(messageId = messageId))
+            },
+            onCallClicked = { callModel ->
                 with(activity) {
-                    val params = CallInputParams.ConnectToRoom(it)
+                    val params = CallInputParams.ConnectToRoom(callModel)
                     startActivity(createCallActivityIntent(params))
                 }
             }
-        }
-
-        ultraNavigator.ChatDetailScreen(
-            chatId = chatIdValue,
-            userId = userIdValue,
-            name = userNameValue,
-            onBackClicked = onBackClicked,
-            onSendContactClicked = onSendContactClicked,
-            onSendMoneyClicked = onSendMoneyClicked,
-            onUserDetailClicked = onUserDetailClicked,
-            onMediaBrowserClicked = onMediaBrowserClicked,
-            onCallClicked = onCallClicked,
         )
     }
 }
