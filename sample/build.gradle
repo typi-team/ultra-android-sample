@@ -70,7 +70,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.typi.ultra:ultra:1.0.0-beta.23'
+    implementation 'com.typi.ultra:ultra:1.0.0-beta.24'
 
     //AndroidX
     implementation 'androidx.core:core-ktx:1.12.0'

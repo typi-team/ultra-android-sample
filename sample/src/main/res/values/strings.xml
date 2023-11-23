@@ -21,4 +21,7 @@
     <string name="logout_confirmation">Вы действительно хотите выйти из аккаунта?</string>
     <string name="choose_bank_client">Выберите клиента банка</string>
     <string name="notifications">Уведомления</string>
+    <string name="chats_empty_title">Нет сообщений</string>
+    <string name="chats_empty_subtitle">Начните общаться с вашими контактами прямо сейчас</string>
+    <string name="start">Начать</string>
 </resources>
