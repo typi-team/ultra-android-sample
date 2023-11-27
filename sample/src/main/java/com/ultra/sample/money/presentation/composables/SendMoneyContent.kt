@@ -28,7 +28,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.typi.ultra.R
+import com.ultra.sample.R
 import com.ultra.sample.money.presentation.SendMoneyState
 import com.ultra.sample.theme.AppTheme
 
@@ -63,7 +63,7 @@ fun SendMoneyContent(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Icon(
-                painter = painterResource(R.drawable.ultra_ic_card),
+                painter = painterResource(R.drawable.ic_card),
                 contentDescription = null,
                 modifier = Modifier.padding(start = 4.dp),
                 tint = AppTheme.colors.primary
@@ -92,7 +92,7 @@ fun SendMoneyContent(
                 style = AppTheme.typography.body
             )
             Icon(
-                painter = painterResource(R.drawable.ultra_ic_arrow_right),
+                painter = painterResource(R.drawable.ic_arrow_right),
                 contentDescription = null,
                 tint = AppTheme.colors.primary
             )
@@ -151,7 +151,7 @@ fun SendMoneyContent(
                 CircularProgressIndicator(color = AppTheme.colors.text.button)
             } else {
                 Text(
-                    text = stringResource(R.string.ultra_continue_text),
+                    text = stringResource(R.string.continue_text),
                     color = AppTheme.colors.text.button,
                     style = AppTheme.typography.title
                 )

@@ -11,4 +11,6 @@ data class LoginRequest(
     val firstName: String,
     @SerializedName("lastname")
     val lastName: String?,
+    @SerializedName("device_id")
+    val deviceId: String,
 )

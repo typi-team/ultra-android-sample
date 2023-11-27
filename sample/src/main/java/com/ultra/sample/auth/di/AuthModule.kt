@@ -20,8 +20,8 @@ object AuthModule {
 
         single { provideAuthRemoteApi(get()) }
 
-        single { LoginUseCase(get(), get(), get(), get()) }
-        single { RefreshTokenUseCase(get(), get(), get()) }
+        single { LoginUseCase(get(), get(), get(), get(), get()) }
+        single { RefreshTokenUseCase(get(), get(), get(), get()) }
 
         viewModel { LoginViewModel(get()) }
     }

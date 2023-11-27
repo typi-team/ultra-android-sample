@@ -5,8 +5,10 @@ import com.ultra.sample.auth.data.AuthRepository
 import com.ultra.sample.auth.domain.manager.SessionManager
 import com.ultra.sample.core.base.UseCase
 import com.ultra.sample.core.settings.SettingsManager
+import com.ultra.sample.device.manager.DeviceManager
 
 class LoginUseCase(
+    private val deviceManager: DeviceManager,
     private val sessionManager: SessionManager,
     private val settingsManager: SettingsManager,
     private val authProvider: UltraAuthProvider,
@@ -18,7 +20,8 @@ class LoginUseCase(
             nickname = parameters.nickname,
             phone = parameters.phone,
             firstname = parameters.firstname,
-            lastname = parameters.lastname
+            lastname = parameters.lastname,
+            deviceId = deviceManager.getDeviceId(),
         )
         settingsManager.nickname = response.nickname
         settingsManager.userId = response.userId

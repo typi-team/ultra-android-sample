@@ -4,7 +4,7 @@ import com.ultra.sample.core.settings.SettingsManager
 import okhttp3.Interceptor
 import okhttp3.Response
 
-class AvatarInterceptor(
+class AuthInterceptor(
     private val settingsManager: SettingsManager
 ) : Interceptor {
 

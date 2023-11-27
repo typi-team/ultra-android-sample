@@ -15,8 +15,8 @@ object NetworkModule {
     fun create() = module {
         single { provideRetrofit(get(), get()) }
         single { provideGson() }
-        single { provideOkkHttpClient() }
-        single { AvatarInterceptor(get()) }
+        single { provideOkHttpClient(get()) }
+        single { AuthInterceptor(get()) }
     }
 
     private fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
@@ -29,12 +29,13 @@ object NetworkModule {
 
     private fun provideGson(): Gson = GsonBuilder().create()
 
-    private fun provideOkkHttpClient(): OkHttpClient =
+    private fun provideOkHttpClient(authInterceptor: AuthInterceptor): OkHttpClient =
         OkHttpClient.Builder()
             .apply {
                 if (BuildConfig.DEBUG) {
                     addInterceptor(HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY })
                 }
+                addInterceptor(authInterceptor)
             }
             .readTimeout(TIME_OUT, TimeUnit.SECONDS)
             .writeTimeout(TIME_OUT, TimeUnit.SECONDS)

@@ -11,6 +11,7 @@ interface AuthRepository {
         phone: String,
         firstname: String,
         lastname: String?,
+        deviceId: String,
     ): LoginResponse
 }
 
@@ -18,13 +19,20 @@ class AuthRepositoryImpl(
     private val remoteApi: AuthRemoteApi,
 ) : AuthRepository {
 
-    override suspend fun login(nickname: String, phone: String, firstname: String, lastname: String?): LoginResponse {
+    override suspend fun login(
+        nickname: String,
+        phone: String,
+        firstname: String,
+        lastname: String?,
+        deviceId: String,
+    ): LoginResponse {
         return remoteApi.login(
             request = LoginRequest(
                 nickname = nickname,
                 phone = phone,
                 firstName = firstname,
-                lastName = lastname
+                lastName = lastname,
+                deviceId = deviceId,
             )
         )
     }

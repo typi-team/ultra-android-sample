@@ -2,15 +2,15 @@ package com.ultra.sample.ultra.delegates
 
 import com.typi.ultra.integration.user.UltraUserDelegate
 import com.ultra.sample.contacts.data.ContactRepository
-import com.ultra.sample.core.network.AvatarInterceptor
+import com.ultra.sample.core.network.AuthInterceptor
 import okhttp3.Interceptor
 
 class UltraUserDelegateImpl(
-    interceptor: AvatarInterceptor,
+    authInterceptor: AuthInterceptor,
     private val contactRepository: ContactRepository,
 ) : UltraUserDelegate {
 
-    override val avatarInterceptor: Interceptor = interceptor
+    override val avatarInterceptor: Interceptor = authInterceptor
 
     override suspend fun getAvatarUrl(identifier: String): String? {
         return runCatching {

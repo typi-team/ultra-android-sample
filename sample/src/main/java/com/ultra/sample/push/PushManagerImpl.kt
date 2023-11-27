@@ -12,18 +12,28 @@ import com.google.firebase.messaging.FirebaseMessaging
 import com.typi.ultra.integration.push.UltraPushProvider
 import com.ultra.sample.R
 import com.ultra.sample.auth.domain.manager.SessionManager
+import com.ultra.sample.device.domain.UpdateDeviceUseCase
 import com.ultra.sample.main.MainActivity
 import java.security.SecureRandom
+import kotlin.coroutines.CoroutineContext
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import timber.log.Timber
 
 internal class PushManagerImpl(
     private val context: Context,
     private val pushProvider: UltraPushProvider,
     private val sessionManager: SessionManager,
-) : PushManager {
+    private val updateDeviceUseCase: UpdateDeviceUseCase,
+) : PushManager, CoroutineScope {
 
     private val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
     private val random = SecureRandom()
+
+    override val coroutineContext: CoroutineContext = Dispatchers.IO + SupervisorJob()
 
     override fun createNotificationChannel() {
         pushProvider.createNotificationChannel()
@@ -33,6 +43,16 @@ internal class PushManagerImpl(
         if (!sessionManager.isAuthorized.value) return
 
         pushProvider.onNewToken(token)
+        launch {
+            try {
+                val params = UpdateDeviceUseCase.Param(
+                    pushToken = token
+                )
+                updateDeviceUseCase(params)
+            } catch (throwable: Throwable) {
+                Timber.e(throwable, "Couldn't update device")
+            }
+        }
     }
 
     override suspend fun updateToken() {

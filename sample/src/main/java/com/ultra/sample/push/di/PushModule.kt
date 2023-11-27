@@ -7,6 +7,6 @@ import org.koin.dsl.module
 object PushModule {
 
     fun create() = module {
-        single<PushManager> { PushManagerImpl(get(), get(), get()) }
+        single<PushManager> { PushManagerImpl(get(), get(), get(), get()) }
     }
 }

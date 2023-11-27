@@ -5,6 +5,7 @@ import com.ultra.sample.auth.di.AuthModule
 import com.ultra.sample.contacts.di.ContactModule
 import com.ultra.sample.core.network.NetworkModule
 import com.ultra.sample.database.DatabaseModule
+import com.ultra.sample.device.di.DeviceModule
 import com.ultra.sample.home.di.HomeModule
 import com.ultra.sample.money.di.MoneyModule
 import com.ultra.sample.navigation.di.NavigationModule
@@ -21,6 +22,7 @@ object KoinModules {
         NetworkModule.create(),
         SplashModule.create(),
         AuthModule.create(),
+        DeviceModule.create(),
         PushModule.create(),
         UltraModule.create(appDependencies),
         ContactModule.create(),
