@@ -7,7 +7,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.typi.ultra.R
+import com.ultra.sample.R
 import com.ultra.sample.theme.AppTheme
 
 @Composable
@@ -28,7 +28,7 @@ fun ContactsTopBar(
                 onClick = { onBackClicked() }
             ) {
                 Icon(
-                    painter = painterResource(R.drawable.ultra_ic_close_accent),
+                    painter = painterResource(R.drawable.ic_close_accent),
                     contentDescription = null,
                     tint = AppTheme.colors.icon.selected
                 )
