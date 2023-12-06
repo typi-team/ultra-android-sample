@@ -24,4 +24,5 @@
     <string name="chats_empty_title">Нет сообщений</string>
     <string name="chats_empty_subtitle">Начните общаться с вашими контактами прямо сейчас</string>
     <string name="start">Начать</string>
+    <string name="empty_messages">Нет сообщений</string>
 </resources>

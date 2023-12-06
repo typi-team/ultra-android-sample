@@ -42,7 +42,7 @@ object ChatsScreen : BaseScreen(shouldShowBottomBar = true) {
                 navigator.push(ContactsScreen())
             },
             isToolbarVisible = true,
-            emptyState = {
+            emptyContent = {
                 EmptyState(
                     navigator = navigator
                 )

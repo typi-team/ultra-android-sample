@@ -1,13 +1,18 @@
 package com.ultra.sample.ultra.presentation
 
 import android.app.Activity
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.typi.ultra.call.presentation.ongoing.CallActivity.Companion.createCallActivityIntent
 import com.typi.ultra.call.presentation.ongoing.model.CallInputParams
 import com.typi.ultra.integration.navigation.UltraNavigator
+import com.ultra.sample.R
 import com.ultra.sample.contacts.ui.ContactsScreen
 import com.ultra.sample.money.presentation.SendMoneyScreen
 import com.ultra.sample.navigation.BaseScreen
@@ -29,6 +34,12 @@ class ChatDetailScreen(
             chatId = chatId,
             userId = userId,
             name = userName,
+            emptyContent = {
+                Text(
+                    text = stringResource(R.string.empty_messages),
+                    modifier = Modifier.align(Alignment.Center),
+                )
+            },
             onBackClicked = navigator::pop,
             onSendContactClicked = {
                 navigator.push(ContactsScreen(isCreateChat = false))
