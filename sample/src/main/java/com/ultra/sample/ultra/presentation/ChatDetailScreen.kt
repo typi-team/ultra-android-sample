@@ -34,12 +34,12 @@ class ChatDetailScreen(
             chatId = chatId,
             userId = userId,
             name = userName,
-//            emptyContent = {
-//                Text(
-//                    text = stringResource(R.string.empty_messages),
-//                    modifier = Modifier.align(Alignment.Center),
-//                )
-//            },
+            emptyContent = {
+                Text(
+                    text = stringResource(R.string.empty_messages),
+                    modifier = Modifier.align(Alignment.Center),
+                )
+            },
             onBackClicked = navigator::pop,
             onSendContactClicked = {
                 navigator.push(ContactsScreen(isCreateChat = false))

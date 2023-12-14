@@ -27,7 +27,7 @@ repositories {
 После добавления приватного репозитория, добавляем зависимость в **gradle файл**:
 
 ```groovy
-implementation 'com.typi.ultra:ultra:1.0.0-rc04'
+implementation 'com.typi.ultra:ultra:1.0.0-rc06'
 ```
 
 Пример подключения можете посмотреть в модуле `sample`.

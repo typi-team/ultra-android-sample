@@ -9,6 +9,8 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.google.firebase.messaging.FirebaseMessaging
+import com.typi.ultra.integration.push.UltraPush
+import com.typi.ultra.integration.push.UltraPushNotification
 import com.typi.ultra.integration.push.UltraPushProvider
 import com.ultra.sample.R
 import com.ultra.sample.auth.domain.manager.SessionManager
@@ -67,22 +69,36 @@ internal class PushManagerImpl(
         description: String?,
         data: Map<String, String>,
     ) {
-        val isChatMessage = pushProvider.isChatPush(data)
-        if (isChatMessage) {
-            pushProvider.showNotification(
-                data = data,
-                intent = Intent(context, MainActivity::class.java)
-                    .putExtra(PUSH_TYPE, data[PUSH_TYPE])
-                    .putExtra(USER_ID, data[USER_ID].orEmpty())
+        val ultraPush = pushProvider.parseUltraPush(data)
+        if (ultraPush.isSdkPush) {
+            showUltraNotification(ultraPush)
+        } else {
+            showNotification(
+                title = title.orEmpty(),
+                description = description.orEmpty(),
+                intent = Intent(context, MainActivity::class.java),
             )
-            return
         }
+    }
 
-        showNotification(
-            title = title.orEmpty(),
-            description = description.orEmpty(),
-            intent = Intent(context, MainActivity::class.java),
-        )
+    private fun showUltraNotification(ultraPush: UltraPush) {
+        when (ultraPush) {
+            is UltraPush.Message -> {
+                val pushNotification = UltraPushNotification.Message(
+                    ultraPush = ultraPush,
+                    intent = Intent(context, MainActivity::class.java)
+                        .putExtra("CHAT_ID", ultraPush.chatId),
+                )
+                pushProvider.showNotification(pushNotification)
+            }
+            is UltraPush.IncomingCall -> {
+                val pushNotification = UltraPushNotification.IncomingCall(
+                    ultraPush = ultraPush
+                )
+                pushProvider.showNotification(pushNotification)
+            }
+            else -> Unit
+        }
     }
 
     private fun showNotification(title: String, description: String, intent: Intent) {
@@ -131,8 +147,5 @@ internal class PushManagerImpl(
 
         private const val CHANNEL_ID = "sample_channel"
         private const val GROUP = "sample_group"
-
-        private const val PUSH_TYPE = "push_type"
-        private const val USER_ID = "sender_id"
     }
 }
