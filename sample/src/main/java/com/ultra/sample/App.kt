@@ -2,6 +2,7 @@ package com.ultra.sample
 
 import android.app.Application
 import android.content.Context
+import android.content.res.Configuration
 import androidx.lifecycle.ProcessLifecycleOwner
 import com.typi.ultra.integration.UltraApi
 import com.typi.ultra.integration.UltraComponentHolder
@@ -22,10 +23,14 @@ import com.typi.ultra.integration.toggle.UltraFeatureToggle
 import com.typi.ultra.integration.user.UltraUserDelegate
 import com.ultra.sample.core.di.KoinManager
 import com.ultra.sample.push.PushManager
+import com.zeugmasolutions.localehelper.LocaleHelper
+import com.zeugmasolutions.localehelper.LocaleHelperApplicationDelegate
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
 class App : Application() {
+
+    private val localeAppDelegate = LocaleHelperApplicationDelegate()
 
     private val pushManager: PushManager by inject()
 
@@ -93,6 +98,18 @@ class App : Application() {
         themeDelegate.setDarkMode(false)
         pushManager.createNotificationChannel()
     }
+
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(localeAppDelegate.attachBaseContext(base))
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        localeAppDelegate.onConfigurationChanged(this)
+    }
+
+    override fun getApplicationContext(): Context =
+        LocaleHelper.onAttach(super.getApplicationContext())
 
     override fun onTerminate() {
         ProcessLifecycleOwner.get().lifecycle.removeObserver(ultraApi.lifecycleObserver)

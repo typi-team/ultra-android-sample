@@ -1,7 +1,9 @@
 package com.ultra.sample.device.data.remote.model
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 data class DeviceInfoRequest(
     @SerializedName("device_id")
     val deviceId: String,

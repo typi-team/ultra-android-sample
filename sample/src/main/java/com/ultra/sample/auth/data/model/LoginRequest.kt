@@ -1,7 +1,9 @@
 package com.ultra.sample.auth.data.model
 
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 
+@Keep
 data class LoginRequest(
     @SerializedName("nickname")
     val nickname: String,

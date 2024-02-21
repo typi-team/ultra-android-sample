@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="chat_common_yes">Yes</string>
+    <string name="chat_common_cancel">Cancel</string>
+    <string name="chat_common_ok">OK</string>
+    <string name="chat_common_close">Close</string>
+    <string name="chat_common_copied_to_clipboard">Text copied to clipboard</string>
+
+    <string name="chat_error_default">Something went wrong, try again later</string>
+    <string name="chat_error_app_not_found">The required application was not found</string>
+    <string name="chat_error_record_audio_message">Failed to record audio message</string>
+    <string name="chat_error_user_not_found">User is not found</string>
+    <string name="chat_error_chat_not_found">Chat not found</string>
+    <string name="chat_error_location_not_found">Location not found</string>
+    <string name="chat_error_gps_disabled">GPS is disabled. Please enable</string>
+    <string name="chat_error_location_permissions">Access to geolocation is blocked</string>
+
+    <string name="chat_chats_title">Chat list</string>
+    <string name="chat_chats_last_message_audio">🎵 audio</string>
+    <string name="chat_chats_last_message_voice">🎙 voice message</string>
+    <string name="chat_chats_last_message_image">📷 photo</string>
+    <string name="chat_chats_last_message_video">📹 video</string>
+    <string name="chat_chats_last_message_file">File</string>
+    <string name="chat_chats_last_message_money">💸 transfer</string>
+    <string name="chat_chats_last_message_contact">Contact</string>
+    <string name="chat_chats_last_message_location">Location</string>
+    <string name="chat_chats_delete_chat_title">Delete chat</string>
+    <string name="chat_chats_delete_chat_description">Are you sure you want to delete the chat?</string>
+
+    <string name="chat_updates_typing">typing…</string>
+    <string name="chat_updates_online_status">online</string>
+
+    <string name="chat_connection_connecting">Connecting…</string>
+    <string name="chat_connection_waiting">Waiting for connection…</string>
+
+    <string name="chat_attachment_add">Add attachment</string>
+    <string name="chat_attachment_image">Photo</string>
+    <string name="chat_attachment_video">Video</string>
+    <string name="chat_attachment_gallery">Select from gallery</string>
+    <string name="chat_attachment_contact">Contact</string>
+    <string name="chat_attachment_location">Location</string>
+    <string name="chat_attachment_document">Document</string>
+
+    <string name="chat_complaint_enter_comment">You can provide additional information in the comments</string>
+    <string name="chat_complaint_comment">Comment</string>
+    <string name="chat_complaint_title">Complain</string>
+    <string name="chat_complaint_abuse">Abuse</string>
+    <string name="chat_complaint_spam">Spam</string>
+    <string name="chat_complaint_personal_data">Personal data</string>
+    <string name="chat_complaint_fraud">Fraud</string>
+    <string name="chat_complaint_service_imposition">Imposition of services</string>
+    <string name="chat_complaint_other">Other</string>
+    <string name="chat_complaint_accepted">Your complaint will be checked by moderators. Thank you!</string>
+
+    <string name="chat_chat_detail_with_assistant">Chat with an assistant</string>
+    <string name="chat_chat_detail_block">Block</string>
+    <string name="chat_chat_detail_unblock">Unblock</string>
+    <string name="chat_chat_detail_money">Money</string>
+    <string name="chat_chat_detail_transfer">Transfer</string>
+    <string name="chat_chat_detail_enter_text">Enter text…</string>
+    <string name="chat_chat_detail_delete_messages_action">Delete</string>
+    <string name="chat_chat_detail_delete_messages_title">Delete message</string>
+    <string name="chat_chat_detail_delete_messages_confirmation">Are you sure you want to delete messages?</string>
+    <string name="chat_chat_detail_delete_messages_for_everyone">Delete for everyone</string>
+
+    <string name="chat_user_detail_about_contact">About contact</string>
+    <string name="chat_user_detail_change">Change</string>
+    <string name="chat_user_detail_profile">Profile</string>
+    <string name="chat_user_detail_phone">Phone</string>
+    <string name="chat_user_detail_documents">Document</string>
+    <string name="chat_user_detail_media">Media</string>
+    <string name="chat_user_detail_write_message">Write a message</string>
+    <string name="chat_user_detail_profile_photo">Profile photo</string>
+    <string name="chat_user_detail_camera">Camera</string>
+    <string name="chat_user_detail_gallery">Gallery</string>
+
+    <string name="chat_notification_channel_general">Chats</string>
+    <string name="chat_notification_channel_incoming_calls">Incoming calls</string>
+    <string name="chat_notification_channel_ongoing_calls">Calls</string>
+
+    <string name="chat_call_incoming">Incoming call</string>
+    <string name="chat_call_video_incoming">Incoming video call</string>
+    <string name="chat_call_ongoing">Current call</string>
+    <string name="chat_call_answer">Answer</string>
+    <string name="chat_call_decline">Decline</string>
+    <string name="chat_call_status_ended">Call ended</string>
+    <string name="chat_call_status_rejected">Rejected</string>
+    <string name="chat_call_status_connecting">Connecting…</string>
+    <string name="chat_call_status_reconnecting">Reconnecting…</string>
+
+    <string name="chat_date_yesterday">Yesterday</string>
+    <string name="chat_date_now">just now</string>
+    <string name="chat_date_long_time_ago">long time ago</string>
+    <string name="ultra_date_minutes_ago_one">%d minute ago</string>
+    <string name="ultra_date_minutes_ago_few">%d minutes ago</string>
+    <string name="ultra_date_minutes_ago_many">%d minutes ago</string>
+    <string name="ultra_date_minutes_ago_other">%d minutes ago</string>
+    <string name="ultra_date_hours_ago_one">%d hour ago</string>
+    <string name="ultra_date_hours_ago_few">%d hours ago</string>
+    <string name="ultra_date_hours_ago_many">%d hours ago</string>
+    <string name="ultra_date_hours_ago_other">%d hours ago</string>
+    <string name="ultra_date_days_ago_one">%d day ago</string>
+    <string name="ultra_date_days_ago_few">%d days ago</string>
+    <string name="ultra_date_days_ago_many">%d days ago</string>
+    <string name="ultra_date_days_ago_other">%d days ago</string>
+    <string name="ultra_date_months_ago_one">%d month ago</string>
+    <string name="ultra_date_months_ago_few">%d months ago</string>
+    <string name="ultra_date_months_ago_many">%d months ago</string>
+    <string name="ultra_date_months_ago_other">%d months ago</string>
+</resources>

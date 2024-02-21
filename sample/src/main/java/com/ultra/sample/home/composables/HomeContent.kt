@@ -8,6 +8,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,6 +23,7 @@ import com.ultra.sample.theme.AppTheme
 @Composable
 fun HomeContent(
     state: HomeState,
+    onLanguageClicked: () -> Unit,
     onLogoutClicked: () -> Unit,
     onLogoutDismiss: () -> Unit,
     onLogoutConfirm: () -> Unit,
@@ -56,6 +58,9 @@ fun HomeContent(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
         ) {
+            TextButton(onClick = onLanguageClicked) {
+                Text(text = state.language.code)
+            }
             Text(
                 text = state.fullName,
                 color = AppTheme.colors.text.title

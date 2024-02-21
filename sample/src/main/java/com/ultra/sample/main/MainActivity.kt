@@ -3,10 +3,10 @@ package com.ultra.sample.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.lifecycle.lifecycleScope
 import cafe.adriel.voyager.navigator.Navigator
+import com.ultra.sample.core.ui.LocaleAwareComponentActivity
 import com.ultra.sample.core.utils.createIntent
 import com.ultra.sample.main.composable.MainScreen
 import com.ultra.sample.push.PushManager
@@ -19,7 +19,7 @@ fun Context.createMainActivityIntent(): Intent =
     createIntent<MainActivity>()
         .setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
 
-class MainActivity : ComponentActivity() {
+class MainActivity : LocaleAwareComponentActivity() {
 
     private val pushManager: PushManager by inject()
 

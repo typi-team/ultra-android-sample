@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="chat_common_yes">Да</string>
+    <string name="chat_common_cancel">Отмена</string>
+    <string name="chat_common_ok">OK</string>
+    <string name="chat_common_close">Закрыть</string>
+    <string name="chat_common_copied_to_clipboard">Текст скопирован в буфер обмена</string>
+
+    <string name="chat_error_default">Что-то пошло не так, попробуйте позже</string>
+    <string name="chat_error_app_not_found">Не найдено нужное приложение</string>
+    <string name="chat_error_record_audio_message">Не удалось записать аудио сообщение</string>
+    <string name="chat_error_user_not_found">Пользователь не найден</string>
+    <string name="chat_error_chat_not_found">Чат не найден</string>
+    <string name="chat_error_location_not_found">Геопозиция не найдена</string>
+    <string name="chat_error_gps_disabled">GPS отключен. Пожалуйста включите</string>
+    <string name="chat_error_location_permissions">Доступ к геолокации заблокирован</string>
+
+    <string name="chat_chats_title">Список чатов</string>
+    <string name="chat_chats_last_message_audio">🎵 аудио</string>
+    <string name="chat_chats_last_message_voice">🎙 голосовое сообщение</string>
+    <string name="chat_chats_last_message_image">📷 фото</string>
+    <string name="chat_chats_last_message_video">📹 видео</string>
+    <string name="chat_chats_last_message_file">Файл</string>
+    <string name="chat_chats_last_message_money">💸 перевод</string>
+    <string name="chat_chats_last_message_contact">Контакт</string>
+    <string name="chat_chats_last_message_location">Локация</string>
+    <string name="chat_chats_delete_chat_title">Удалить чат</string>
+    <string name="chat_chats_delete_chat_description">Вы действительно хотите удалить чат?</string>
+
+    <string name="chat_updates_typing">печатает…</string>
+    <string name="chat_updates_online_status">онлайн</string>
+
+    <string name="chat_connection_connecting">Соединение…</string>
+    <string name="chat_connection_waiting">Ожидание соединения…</string>
+
+    <string name="chat_attachment_add">Добавить вложение</string>
+    <string name="chat_attachment_image">Фото</string>
+    <string name="chat_attachment_video">Видео</string>
+    <string name="chat_attachment_gallery">Выбрать из галереи</string>
+    <string name="chat_attachment_contact">Контакт</string>
+    <string name="chat_attachment_location">Местоположение</string>
+    <string name="chat_attachment_document">Документ</string>
+
+    <string name="chat_complaint_enter_comment">Вы можете указать дополнительную информацию в комментариях</string>
+    <string name="chat_complaint_comment">Комментарий</string>
+    <string name="chat_complaint_title">Пожаловаться</string>
+    <string name="chat_complaint_abuse">Оскорбление</string>
+    <string name="chat_complaint_spam">Спам</string>
+    <string name="chat_complaint_personal_data">Личные данные</string>
+    <string name="chat_complaint_fraud">Мошенничество</string>
+    <string name="chat_complaint_service_imposition">Навязывание услуг</string>
+    <string name="chat_complaint_other">Другое</string>
+    <string name="chat_complaint_accepted">Вашу жалобу проверят модераторы. Спасибо!</string>
+
+    <string name="chat_chat_detail_with_assistant">Чат с ассистентом</string>
+    <string name="chat_chat_detail_block">Заблокировать</string>
+    <string name="chat_chat_detail_unblock">Разблокировать</string>
+    <string name="chat_chat_detail_money">Деньги</string>
+    <string name="chat_chat_detail_transfer">Перевод</string>
+    <string name="chat_chat_detail_enter_text">Введите текст…</string>
+    <string name="chat_chat_detail_delete_messages_action">Удалить</string>
+    <string name="chat_chat_detail_delete_messages_title">Удалить сообщения</string>
+    <string name="chat_chat_detail_delete_messages_confirmation">Вы действительно хотите удалить сообщения?</string>
+    <string name="chat_chat_detail_delete_messages_for_everyone">Удалить для всех</string>
+
+    <string name="chat_user_detail_about_contact">О контакте</string>
+    <string name="chat_user_detail_change">Изменить</string>
+    <string name="chat_user_detail_profile">Профиль</string>
+    <string name="chat_user_detail_phone">Телефон</string>
+    <string name="chat_user_detail_documents">Документы</string>
+    <string name="chat_user_detail_media">Медиа</string>
+    <string name="chat_user_detail_write_message">Написать сообщение</string>
+    <string name="chat_user_detail_profile_photo">Фото профиля</string>
+    <string name="chat_user_detail_camera">Камера</string>
+    <string name="chat_user_detail_gallery">Галерея</string>
+
+    <string name="chat_notification_channel_general">Чаты</string>
+    <string name="chat_notification_channel_incoming_calls">Входящие звонки</string>
+    <string name="chat_notification_channel_ongoing_calls">Звонки</string>
+
+    <string name="chat_call_incoming">Входящий звонок</string>
+    <string name="chat_call_video_incoming">Входящий видеозвонок</string>
+    <string name="chat_call_ongoing">Текущий звонок</string>
+    <string name="chat_call_answer">Ответить</string>
+    <string name="chat_call_decline">Отклонить</string>
+    <string name="chat_call_status_ended">Звонок завершен</string>
+    <string name="chat_call_status_rejected">Отклонено</string>
+    <string name="chat_call_status_connecting">Соединение…</string>
+    <string name="chat_call_status_reconnecting">Повторное соединение…</string>
+
+    <string name="chat_date_yesterday">Вчера</string>
+    <string name="chat_date_now">только что</string>
+    <string name="chat_date_long_time_ago">очень давно</string>
+    <string name="ultra_date_minutes_ago_one">%d минуту назад</string>
+    <string name="ultra_date_minutes_ago_few">%d минуты назад</string>
+    <string name="ultra_date_minutes_ago_many">%d минут назад</string>
+    <string name="ultra_date_minutes_ago_other">%d минут назад</string>
+    <string name="ultra_date_hours_ago_one">%d час назад</string>
+    <string name="ultra_date_hours_ago_few">%d часа назад</string>
+    <string name="ultra_date_hours_ago_many">%d часов назад</string>
+    <string name="ultra_date_hours_ago_other">%d часов назад</string>
+    <string name="ultra_date_days_ago_one">%d день назад</string>
+    <string name="ultra_date_days_ago_few">%d дня назад</string>
+    <string name="ultra_date_days_ago_many">%d дней назад</string>
+    <string name="ultra_date_days_ago_other">%d дней назад</string>
+    <string name="ultra_date_months_ago_one">%d месяц назад</string>
+    <string name="ultra_date_months_ago_few">%d месяца назад</string>
+    <string name="ultra_date_months_ago_many">%d месяцев назад</string>
+    <string name="ultra_date_months_ago_other">%d месяцев назад</string>
+</resources>

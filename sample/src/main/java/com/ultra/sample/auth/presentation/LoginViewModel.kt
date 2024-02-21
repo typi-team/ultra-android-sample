@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class LoginViewModel(
     private val loginUseCase: LoginUseCase,
@@ -42,6 +43,7 @@ class LoginViewModel(
                 onLoginSuccess()
             } catch (throwable: Throwable) {
                 _viewState.value = LoginUiState.Error(R.string.something_went_wrong)
+                Timber.e(throwable, "Couldn't login")
             }
         }
     }
