@@ -5,6 +5,7 @@
     <string name="chat_common_ok">OK</string>
     <string name="chat_common_close">Закрыть</string>
     <string name="chat_common_copied_to_clipboard">Текст скопирован в буфер обмена</string>
+    <string name="chat_common_agree">Согласен</string>
 
     <string name="chat_error_default">Что-то пошло не так, попробуйте позже</string>
     <string name="chat_error_app_not_found">Не найдено нужное приложение</string>
@@ -62,6 +63,8 @@
     <string name="chat_chat_detail_delete_messages_title">Удалить сообщения</string>
     <string name="chat_chat_detail_delete_messages_confirmation">Вы действительно хотите удалить сообщения?</string>
     <string name="chat_chat_detail_delete_messages_for_everyone">Удалить для всех</string>
+    <string name="chat_chat_detail_disclaimer_title">Вам написал Клиент компании</string>
+    <string name="chat_chat_detail_disclaimer_description">Отправляя сообщение другому клиенту вы раскроете свои имя и фамилию</string>
 
     <string name="chat_user_detail_about_contact">О контакте</string>
     <string name="chat_user_detail_change">Изменить</string>
@@ -91,20 +94,4 @@
     <string name="chat_date_yesterday">Вчера</string>
     <string name="chat_date_now">только что</string>
     <string name="chat_date_long_time_ago">очень давно</string>
-    <string name="ultra_date_minutes_ago_one">%d минуту назад</string>
-    <string name="ultra_date_minutes_ago_few">%d минуты назад</string>
-    <string name="ultra_date_minutes_ago_many">%d минут назад</string>
-    <string name="ultra_date_minutes_ago_other">%d минут назад</string>
-    <string name="ultra_date_hours_ago_one">%d час назад</string>
-    <string name="ultra_date_hours_ago_few">%d часа назад</string>
-    <string name="ultra_date_hours_ago_many">%d часов назад</string>
-    <string name="ultra_date_hours_ago_other">%d часов назад</string>
-    <string name="ultra_date_days_ago_one">%d день назад</string>
-    <string name="ultra_date_days_ago_few">%d дня назад</string>
-    <string name="ultra_date_days_ago_many">%d дней назад</string>
-    <string name="ultra_date_days_ago_other">%d дней назад</string>
-    <string name="ultra_date_months_ago_one">%d месяц назад</string>
-    <string name="ultra_date_months_ago_few">%d месяца назад</string>
-    <string name="ultra_date_months_ago_many">%d месяцев назад</string>
-    <string name="ultra_date_months_ago_other">%d месяцев назад</string>
 </resources>

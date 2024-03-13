@@ -27,6 +27,7 @@ class UltraLocaliseDelegateImpl : UltraLocaliseDelegate {
                 ok = R.string.chat_common_ok,
                 close = R.string.chat_common_close,
                 copiedToClipboard = R.string.chat_common_copied_to_clipboard,
+                agree = R.string.chat_common_agree,
             ),
             error = Error(
                 default = R.string.chat_error_default,
@@ -86,6 +87,7 @@ class UltraLocaliseDelegateImpl : UltraLocaliseDelegate {
                 deleteMessageAction = R.string.chat_chat_detail_delete_messages_action,
                 deleteMessagesConfirmation = R.string.chat_chat_detail_delete_messages_confirmation,
                 deleteMessagesForEveryone = R.string.chat_chat_detail_delete_messages_for_everyone,
+                disclaimerDescription = R.string.chat_chat_detail_disclaimer_description,
             ),
             notificationChannel = NotificationChannel(
                 general = R.string.chat_notification_channel_general,

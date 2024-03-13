@@ -29,7 +29,7 @@ object UltraModule {
         single<UltraAuthDelegate> { UltraAuthDelegateImpl(get()) }
         single<UltraThemeDelegate> { UltraThemeDelegateImpl(get()) }
         single<UltraFeatureToggle> { UltraFeatureToggleImpl() }
-        single<UltraUserDelegate> { UltraUserDelegateImpl(get(), get()) }
+        single<UltraUserDelegate> { UltraUserDelegateImpl(get(), get(), get()) }
         single<UltraErrorRecorder> { UltraErrorRecorderImpl() }
         single<UltraLocaliseDelegate> { UltraLocaliseDelegateImpl() }
     }

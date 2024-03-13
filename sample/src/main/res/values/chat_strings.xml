@@ -5,6 +5,7 @@
     <string name="chat_common_ok">OK</string>
     <string name="chat_common_close">Close</string>
     <string name="chat_common_copied_to_clipboard">Text copied to clipboard</string>
+    <string name="chat_common_agree">Agree</string>
 
     <string name="chat_error_default">Something went wrong, try again later</string>
     <string name="chat_error_app_not_found">The required application was not found</string>
@@ -62,6 +63,8 @@
     <string name="chat_chat_detail_delete_messages_title">Delete message</string>
     <string name="chat_chat_detail_delete_messages_confirmation">Are you sure you want to delete messages?</string>
     <string name="chat_chat_detail_delete_messages_for_everyone">Delete for everyone</string>
+    <string name="chat_chat_detail_disclaimer_title">A client of the company wrote to you</string>
+    <string name="chat_chat_detail_disclaimer_description">By sending a message to another client, you will disclose your first and last name</string>
 
     <string name="chat_user_detail_about_contact">About contact</string>
     <string name="chat_user_detail_change">Change</string>
@@ -91,20 +94,4 @@
     <string name="chat_date_yesterday">Yesterday</string>
     <string name="chat_date_now">just now</string>
     <string name="chat_date_long_time_ago">long time ago</string>
-    <string name="ultra_date_minutes_ago_one">%d minute ago</string>
-    <string name="ultra_date_minutes_ago_few">%d minutes ago</string>
-    <string name="ultra_date_minutes_ago_many">%d minutes ago</string>
-    <string name="ultra_date_minutes_ago_other">%d minutes ago</string>
-    <string name="ultra_date_hours_ago_one">%d hour ago</string>
-    <string name="ultra_date_hours_ago_few">%d hours ago</string>
-    <string name="ultra_date_hours_ago_many">%d hours ago</string>
-    <string name="ultra_date_hours_ago_other">%d hours ago</string>
-    <string name="ultra_date_days_ago_one">%d day ago</string>
-    <string name="ultra_date_days_ago_few">%d days ago</string>
-    <string name="ultra_date_days_ago_many">%d days ago</string>
-    <string name="ultra_date_days_ago_other">%d days ago</string>
-    <string name="ultra_date_months_ago_one">%d month ago</string>
-    <string name="ultra_date_months_ago_few">%d months ago</string>
-    <string name="ultra_date_months_ago_many">%d months ago</string>
-    <string name="ultra_date_months_ago_other">%d months ago</string>
 </resources>
