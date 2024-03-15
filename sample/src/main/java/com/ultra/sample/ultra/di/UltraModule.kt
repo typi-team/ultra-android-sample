@@ -24,6 +24,7 @@ object UltraModule {
         single { appDependencies.pushProvider }
         single { appDependencies.screenStarter }
         single { appDependencies.cacheProvider }
+        single { appDependencies.messageProvider }
 
         single<UltraSettingsDelegate> { UltraSettingsDelegateImpl(get()) }
         single<UltraAuthDelegate> { UltraAuthDelegateImpl(get()) }

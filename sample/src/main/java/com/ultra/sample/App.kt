@@ -14,6 +14,7 @@ import com.typi.ultra.integration.base.BaseFeatureDependencies
 import com.typi.ultra.integration.base.DependencyHolder
 import com.typi.ultra.integration.cache.UltraCacheProvider
 import com.typi.ultra.integration.localise.UltraLocaliseDelegate
+import com.typi.ultra.integration.message.UltraMessageProvider
 import com.typi.ultra.integration.navigation.UltraNavigator
 import com.typi.ultra.integration.push.UltraPushProvider
 import com.typi.ultra.integration.recorder.UltraErrorRecorder
@@ -86,6 +87,8 @@ class App : Application() {
                     get() = ultraApi.screenStarter
                 override val cacheProvider: UltraCacheProvider
                     get() = ultraApi.cacheProvider
+                override val messageProvider: UltraMessageProvider
+                    get() = ultraApi.messageProvider
             }
         )
 
