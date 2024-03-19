@@ -39,7 +39,7 @@ class ChatDetailScreen(
             onSendContactClicked = {
                 navigator.push(ContactsScreen(isCreateChat = false))
             },
-            onSendMoneyClicked = {
+            onSendMoneyClicked = { _ ->
                 navigator.push(SendMoneyScreen)
             },
             onUserDetailClicked = { phoneNumber ->

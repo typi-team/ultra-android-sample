@@ -1,7 +1,9 @@
 package com.ultra.sample.home
 
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.typi.ultra.integration.logs.UltraFileProvider
 import com.ultra.sample.R
 import com.ultra.sample.auth.domain.usecase.LogoutUseCase
 import com.ultra.sample.core.settings.SettingsManager
@@ -16,6 +18,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
+    private val fileProvider: UltraFileProvider,
     private val settingsManager: SettingsManager,
     private val logoutUseCase: LogoutUseCase,
 ) : ViewModel() {
@@ -78,6 +81,11 @@ class HomeViewModel(
         }
     }
 
+    fun onSendLogFileClicked() {
+        val uri = fileProvider.getLogFileUri()
+        _effect.trySend(HomeEffect.SendLogFile(uri))
+    }
+
     private fun setState(reducer: HomeState.() -> HomeState) {
         val newState = state.value.reducer()
         _state.value = newState
@@ -108,8 +116,9 @@ data class HomeState(
 )
 
 sealed class Language(
-    val code: String
+    val code: String,
 ) {
+
     data object English : Language(code = "EN")
 
     data object Russian : Language(code = "RU")
@@ -117,8 +126,10 @@ sealed class Language(
 
 sealed class HomeEffect {
     data class ChangeLanguage(
-        val locale: Locale
+        val locale: Locale,
     ) : HomeEffect()
 
     data object Logout : HomeEffect()
+
+    data class SendLogFile(val uri: Uri) : HomeEffect()
 }

@@ -7,6 +7,7 @@ import androidx.lifecycle.ProcessLifecycleOwner
 import com.typi.ultra.integration.UltraApi
 import com.typi.ultra.integration.UltraComponentHolder
 import com.typi.ultra.integration.UltraDependencies
+import com.typi.ultra.integration.UltraInitializer
 import com.typi.ultra.integration.auth.UltraAuthDelegate
 import com.typi.ultra.integration.auth.UltraAuthProvider
 import com.typi.ultra.integration.base.BaseDependencyHolder
@@ -14,6 +15,7 @@ import com.typi.ultra.integration.base.BaseFeatureDependencies
 import com.typi.ultra.integration.base.DependencyHolder
 import com.typi.ultra.integration.cache.UltraCacheProvider
 import com.typi.ultra.integration.localise.UltraLocaliseDelegate
+import com.typi.ultra.integration.logs.UltraFileProvider
 import com.typi.ultra.integration.message.UltraMessageProvider
 import com.typi.ultra.integration.navigation.UltraNavigator
 import com.typi.ultra.integration.push.UltraPushProvider
@@ -84,16 +86,21 @@ class App : Application() {
                 override val pushProvider: UltraPushProvider
                     get() = ultraApi.pushProvider
                 override val screenStarter: UltraNavigator
-                    get() = ultraApi.screenStarter
+                    get() = ultraApi.navigator
                 override val cacheProvider: UltraCacheProvider
                     get() = ultraApi.cacheProvider
                 override val messageProvider: UltraMessageProvider
                     get() = ultraApi.messageProvider
+                override val initializer: UltraInitializer
+                    get() = ultraApi.initializer
+                override val fileProvider: UltraFileProvider
+                    get() = ultraApi.fileProvider
             }
         )
 
         ProcessLifecycleOwner.get().lifecycle.addObserver(ultraApi.lifecycleObserver)
 
+        ultraApi.initializer.init()
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }

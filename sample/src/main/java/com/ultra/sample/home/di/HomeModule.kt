@@ -10,6 +10,6 @@ object HomeModule {
     fun create() = module {
         single { LogoutUseCase(get(), get(), get()) }
 
-        viewModel { HomeViewModel(get(), get()) }
+        viewModel { HomeViewModel(get(), get(), get()) }
     }
 }

@@ -10,4 +10,5 @@ class UltraFeatureToggleImpl : UltraFeatureToggle {
     override val isComplaintEnabled: Boolean = true
     override val isLocationEnabled: Boolean = false
     override val isUserBlockingEnabled: Boolean = true
+    override val isLogsEnabled: Boolean = true
 }

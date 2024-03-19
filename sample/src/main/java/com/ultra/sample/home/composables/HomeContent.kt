@@ -2,8 +2,11 @@ package com.ultra.sample.home.composables
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
@@ -15,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.ultra.sample.R
 import com.ultra.sample.core.ui.alert.ConfirmAlertDialog
 import com.ultra.sample.home.HomeState
@@ -27,6 +31,7 @@ fun HomeContent(
     onLogoutClicked: () -> Unit,
     onLogoutDismiss: () -> Unit,
     onLogoutConfirm: () -> Unit,
+    onSendLogFileClicked: () -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -69,6 +74,10 @@ fun HomeContent(
                 text = state.phoneNumber,
                 color = AppTheme.colors.text.subtitle
             )
+            Spacer(modifier = Modifier.height(16.dp))
+            Button(onClick = onSendLogFileClicked) {
+                Text(text = stringResource(id = R.string.send_log_file))
+            }
         }
     }
 

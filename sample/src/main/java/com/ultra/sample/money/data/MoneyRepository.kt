@@ -46,7 +46,10 @@ class MoneyRepositoryImpl(
                     os.writeBytes(jsonParam.toString())
                 }
 
-                if (connection.responseCode < 200 || connection.responseCode >= 300) return@withContext null
+                if (connection.responseCode < 200 || connection.responseCode >= 300) {
+                    Timber.d("responseCode: ${connection.responseCode}")
+                    throw IllegalStateException("Network error with response code: ${connection.responseCode}")
+                }
                 val json = BufferedReader(InputStreamReader(connection.inputStream)).use { br ->
                     val sb = StringBuilder()
                     var line: String?
@@ -55,7 +58,7 @@ class MoneyRepositoryImpl(
                     }
                     sb.toString()
                 }
-                Timber.tag("MONEY-MOCK").d("RESPONSE: $json")
+                Timber.d("RESPONSE: $json")
                 val jsonResponse = JSONObject(json)
                 val transactionId = jsonResponse.getString("transaction_id")
                 val status = when (jsonResponse.getString("status")) {

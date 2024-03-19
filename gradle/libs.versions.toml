@@ -36,7 +36,7 @@ playServicesLocationVersion = "21.0.1"
 playServicesMapsVersion = "18.2.0"
 
 # Typi
-ultraVersion = "1.0.0-rc16"
+ultraVersion = "1.0.0-rc17"
 
 # Network
 grpcVersion = "1.55.1"

@@ -1,5 +1,6 @@
 package com.ultra.sample.home
 
+import android.content.Intent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -32,6 +33,16 @@ object HomeScreen : BaseScreen(shouldShowBottomBar = true) {
                             activity.createLoginActivityIntent()
                                 .startAndClose(activity)
                         }
+                        is HomeEffect.SendLogFile -> {
+                            val sendIntent: Intent = Intent().apply {
+                                action = Intent.ACTION_SEND
+                                putExtra(Intent.EXTRA_STREAM, effect.uri)
+                                type = "*/*"
+                            }
+                            sendIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                            val shareIntent = Intent.createChooser(sendIntent, null)
+                            activity.startActivity(shareIntent, null)
+                        }
                     }
                 }
                 .collect()
@@ -43,7 +54,8 @@ object HomeScreen : BaseScreen(shouldShowBottomBar = true) {
             onLanguageClicked = viewModel::onLanguageClicked,
             onLogoutClicked = viewModel::onLogoutClicked,
             onLogoutDismiss = viewModel::onLogoutDismiss,
-            onLogoutConfirm = viewModel::onLogoutConfirm
+            onLogoutConfirm = viewModel::onLogoutConfirm,
+            onSendLogFileClicked = viewModel::onSendLogFileClicked,
         )
     }
 
