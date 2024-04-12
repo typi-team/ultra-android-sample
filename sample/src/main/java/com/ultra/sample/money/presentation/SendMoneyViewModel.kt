@@ -3,7 +3,6 @@ package com.ultra.sample.money.presentation
 import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.typi.ultra.transaction.model.Money
 import com.ultra.sample.money.data.MoneyRepository
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
@@ -37,9 +36,8 @@ class SendMoneyViewModel(
         viewModelScope.launch {
             runCatching {
                 setState { copy(isLoading = true) }
-                val amount = state.value.inputAmount.toLong()
-                val money = Money(units = amount)
-                moneyRepository.sendMoney(money)
+                val amount = state.value.inputAmount.toFloat()
+                moneyRepository.sendMoney(amount)
                 _effect.send(SendMoneyEffect.CloseScreen)
             }
         }

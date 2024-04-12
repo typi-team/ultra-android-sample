@@ -8,7 +8,7 @@ import org.koin.dsl.module
 object HomeModule {
 
     fun create() = module {
-        single { LogoutUseCase(get(), get(), get()) }
+        single { LogoutUseCase(get(), get()) }
 
         viewModel { HomeViewModel(get(), get(), get()) }
     }

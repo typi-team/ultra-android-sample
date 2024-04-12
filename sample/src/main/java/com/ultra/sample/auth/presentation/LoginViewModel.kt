@@ -1,10 +1,9 @@
 package com.ultra.sample.auth.presentation
 
-import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ultra.sample.R
 import com.ultra.sample.auth.domain.usecase.LoginUseCase
+import com.ultra.sample.core.settings.SettingsManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,11 +12,45 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class LoginViewModel(
+    private val settingsManager: SettingsManager,
     private val loginUseCase: LoginUseCase,
 ) : ViewModel() {
 
-    private val _viewState = MutableStateFlow<LoginUiState>(LoginUiState.Idle)
+    private val _viewState = MutableStateFlow<LoginUiState>(LoginUiState.UnAuth())
     val viewState: StateFlow<LoginUiState> = _viewState.asStateFlow()
+
+    init {
+        _viewState.value = if (settingsManager.isAuthorized) {
+            LoginUiState.Auth()
+        } else {
+            LoginUiState.UnAuth()
+        }
+    }
+
+    fun onAuthClicked(
+        onAuthSuccess: () -> Unit,
+    ) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                _viewState.value = LoginUiState.Auth(isLoading = true)
+
+                loginUseCase(
+                    LoginUseCase.Param(
+                        nickname = settingsManager.nickname,
+                        phone = settingsManager.phone,
+                        firstname = settingsManager.firstName,
+                        lastname = settingsManager.lastName,
+                    )
+                )
+
+                onAuthSuccess()
+            } catch (throwable: Throwable) {
+                Timber.e(throwable, "Couldn't login")
+            } finally {
+                _viewState.value = LoginUiState.Auth(isLoading = false)
+            }
+        }
+    }
 
     fun onLoginClicked(
         nickname: String,
@@ -28,7 +61,7 @@ class LoginViewModel(
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                _viewState.value = LoginUiState.Loading
+                _viewState.value = LoginUiState.UnAuth(isLoading = true)
 
                 loginUseCase(
                     LoginUseCase.Param(
@@ -39,18 +72,23 @@ class LoginViewModel(
                     )
                 )
 
-                _viewState.value = LoginUiState.Idle
                 onLoginSuccess()
             } catch (throwable: Throwable) {
-                _viewState.value = LoginUiState.Error(R.string.something_went_wrong)
                 Timber.e(throwable, "Couldn't login")
+            } finally {
+                _viewState.value = LoginUiState.UnAuth(isLoading = false)
             }
         }
     }
 }
 
 sealed class LoginUiState {
-    object Idle : LoginUiState()
-    object Loading : LoginUiState()
-    data class Error(@StringRes val messageResId: Int) : LoginUiState()
+
+    data class Auth(
+        val isLoading: Boolean = false,
+    ) : LoginUiState()
+
+    data class UnAuth(
+        val isLoading: Boolean = false,
+    ) : LoginUiState()
 }

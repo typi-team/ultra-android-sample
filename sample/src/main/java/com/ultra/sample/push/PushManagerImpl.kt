@@ -13,7 +13,7 @@ import com.typi.ultra.integration.push.UltraPush
 import com.typi.ultra.integration.push.UltraPushNotification
 import com.typi.ultra.integration.push.UltraPushProvider
 import com.ultra.sample.R
-import com.ultra.sample.auth.domain.manager.SessionManager
+import com.ultra.sample.core.settings.SettingsManager
 import com.ultra.sample.device.domain.UpdateDeviceUseCase
 import com.ultra.sample.main.MainActivity
 import java.security.SecureRandom
@@ -28,7 +28,7 @@ import timber.log.Timber
 internal class PushManagerImpl(
     private val context: Context,
     private val pushProvider: UltraPushProvider,
-    private val sessionManager: SessionManager,
+    private val settingsManager: SettingsManager,
     private val updateDeviceUseCase: UpdateDeviceUseCase,
 ) : PushManager, CoroutineScope {
 
@@ -42,7 +42,7 @@ internal class PushManagerImpl(
     }
 
     override fun onNewToken(token: String) {
-        if (!sessionManager.isAuthorized.value) return
+        if (!settingsManager.isAuthorized) return
 
         pushProvider.onNewToken(token)
         launch {

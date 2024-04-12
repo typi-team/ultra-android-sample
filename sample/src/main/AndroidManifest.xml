@@ -16,7 +16,7 @@
         tools:ignore="DataExtractionRules"
         tools:targetApi="33">
         <activity
-            android:name=".splash.presentation.SplashActivity"
+            android:name=".auth.presentation.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
@@ -46,10 +46,6 @@
                     android:scheme="https" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".auth.presentation.LoginActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
 
         <service
             android:name=".push.MessagingService"

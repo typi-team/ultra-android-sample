@@ -30,7 +30,14 @@ class LoginActivity : ComponentActivity() {
 
                 LoginScreen(
                     viewState = viewState,
-                    onLoginClicked = { nickname, phone, firstname, lastname ->
+                    onAuthButtonClicked = {
+                        viewModel.onAuthClicked(
+                            onAuthSuccess = {
+                                createMainActivityIntent().startAndClose(this)
+                            }
+                        )
+                    },
+                    onLoginButtonClicked = { nickname, phone, firstname, lastname ->
                         viewModel.onLoginClicked(
                             nickname = nickname,
                             phone = phone,

@@ -2,6 +2,7 @@ package com.ultra.sample.auth.presentation.composeable
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -44,7 +45,66 @@ internal const val phoneLength = 12
 @Composable
 fun LoginScreen(
     viewState: LoginUiState,
-    onLoginClicked: (String, String, String, String?) -> Unit,
+    onAuthButtonClicked: () -> Unit,
+    onLoginButtonClicked: (String, String, String, String?) -> Unit,
+) {
+    when (viewState) {
+        is LoginUiState.Auth -> AuthContent(
+            viewState = viewState,
+            onAuthButtonClicked = onAuthButtonClicked
+        )
+        is LoginUiState.UnAuth -> UnAuthContent(
+            viewState = viewState,
+            onLoginButtonClicked = onLoginButtonClicked
+        )
+    }
+}
+
+@Composable
+private fun AuthContent(
+    viewState: LoginUiState.Auth,
+    onAuthButtonClicked: () -> Unit,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = AppTheme.colors.background.general)
+            .verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Button(
+            modifier = Modifier
+                .padding(start = 24.dp, end = 24.dp, top = 32.dp, bottom = 16.dp)
+                .fillMaxWidth()
+                .height(56.dp)
+                .clip(RoundedCornerShape(16.dp)),
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color(0xFF22C55E),
+                disabledBackgroundColor = Color(0xFF22C55E).copy(alpha = 0.25f)
+            ),
+            onClick = onAuthButtonClicked,
+        ) {
+            if (viewState.isLoading) {
+                CircularProgressIndicator(
+                    modifier = Modifier.size(24.dp),
+                    color = Color.White
+                )
+            } else {
+                Text(
+                    text = stringResource(R.string.auth),
+                    color = Color.White,
+                    style = AppTheme.typography.title
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun UnAuthContent(
+    viewState: LoginUiState.UnAuth,
+    onLoginButtonClicked: (String, String, String, String?) -> Unit,
 ) {
     var nicknameState by remember { mutableStateOf("") }
     var phoneState by remember { mutableStateOf("") }
@@ -174,10 +234,15 @@ fun LoginScreen(
             ),
             enabled = nicknameState.isNotEmpty() && phoneState.length >= phoneLength && firstnameState.isNotEmpty(),
             onClick = {
-                onLoginClicked.invoke(nicknameState.trim(), phoneState, firstnameState.trim(), lastnameState.trim())
+                onLoginButtonClicked.invoke(
+                    nicknameState.trim(),
+                    phoneState,
+                    firstnameState.trim(),
+                    lastnameState.trim()
+                )
             }
         ) {
-            if (viewState is LoginUiState.Loading) {
+            if (viewState.isLoading) {
                 CircularProgressIndicator(
                     modifier = Modifier.size(24.dp),
                     color = Color.White
@@ -202,9 +267,9 @@ fun String.validateNickname(): Boolean {
 @Composable
 fun LoginScreenPreview() {
     AppTheme {
-        LoginScreen(
-            viewState = LoginUiState.Idle,
-            onLoginClicked = { _, _, _, _ -> }
+        UnAuthContent(
+            viewState = LoginUiState.UnAuth(),
+            onLoginButtonClicked = { _, _, _, _ -> }
         )
     }
 }

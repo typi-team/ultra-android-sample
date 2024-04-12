@@ -3,7 +3,6 @@ package com.ultra.sample
 import android.app.Application
 import android.content.Context
 import android.content.res.Configuration
-import androidx.lifecycle.ProcessLifecycleOwner
 import com.typi.ultra.integration.UltraApi
 import com.typi.ultra.integration.UltraComponentHolder
 import com.typi.ultra.integration.UltraDependencies
@@ -98,8 +97,6 @@ class App : Application() {
             }
         )
 
-        ProcessLifecycleOwner.get().lifecycle.addObserver(ultraApi.lifecycleObserver)
-
         ultraApi.initializer.init()
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
@@ -120,9 +117,4 @@ class App : Application() {
 
     override fun getApplicationContext(): Context =
         LocaleHelper.onAttach(super.getApplicationContext())
-
-    override fun onTerminate() {
-        ProcessLifecycleOwner.get().lifecycle.removeObserver(ultraApi.lifecycleObserver)
-        super.onTerminate()
-    }
 }

@@ -10,7 +10,6 @@ import com.ultra.sample.home.di.HomeModule
 import com.ultra.sample.money.di.MoneyModule
 import com.ultra.sample.navigation.di.NavigationModule
 import com.ultra.sample.push.di.PushModule
-import com.ultra.sample.splash.di.SplashModule
 import com.ultra.sample.ultra.di.UltraModule
 import org.koin.core.module.Module
 
@@ -20,7 +19,6 @@ object KoinModules {
         ApplicationModule.create(),
         DatabaseModule.create(),
         NetworkModule.create(),
-        SplashModule.create(),
         AuthModule.create(),
         DeviceModule.create(),
         PushModule.create(),
