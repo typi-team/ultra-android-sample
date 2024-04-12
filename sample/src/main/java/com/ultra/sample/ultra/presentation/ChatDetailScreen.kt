@@ -10,6 +10,7 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import com.typi.ultra.integration.navigation.UltraNavigator
 import com.ultra.sample.R
 import com.ultra.sample.contacts.ui.ContactsScreen
+import com.ultra.sample.money.presentation.MoneyInfoScreen
 import com.ultra.sample.money.presentation.SendMoneyScreen
 import com.ultra.sample.navigation.BaseScreen
 import org.koin.compose.koinInject
@@ -48,6 +49,9 @@ class ChatDetailScreen(
             onMediaBrowserClicked = { messageId ->
                 navigator.push(MediaBrowserScreen(messageId = messageId))
             },
+            onMoneyMessageClicked = { transactionId ->
+                navigator.push(MoneyInfoScreen(transactionId = transactionId))
+            }
         )
     }
 }

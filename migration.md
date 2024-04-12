@@ -1,3 +1,8 @@
+# -> 1.0.2
+
+- Добавлен новый callback `onMoneyMessageClicked` в `UltraNavigator.ChatDetailScreen` которая срабатывает при нажатий на
+  сообщение о переводе денег. В параметрах передается `transactionId`.
+
 # -> 1.0.1
 
 - Удален `UltraLifecycleObserver`.
