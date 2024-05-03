@@ -1,3 +1,8 @@
+# -> 1.0.4
+
+- Добавлен новый метод `getEncryptionKey`  в `UltraSettingsDelegate` куда передается ключ для шифрования БД.
+- Увеличен minSdk до 23
+
 # -> 1.0.2
 
 - Добавлен новый callback `onMoneyMessageClicked` в `UltraNavigator.ChatDetailScreen` которая срабатывает при нажатий на

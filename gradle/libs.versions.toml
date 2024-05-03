@@ -2,7 +2,7 @@
 
 # SDK
 compileSdkVersion = "33"
-minSdkVersion = "21"
+minSdkVersion = "23"
 targetSdkVersion = "33"
 
 # Plugins
@@ -36,7 +36,7 @@ playServicesLocationVersion = "21.0.1"
 playServicesMapsVersion = "18.2.0"
 
 # Typi
-ultraVersion = "1.0.3"
+ultraVersion = "1.0.4"
 
 # Network
 grpcVersion = "1.55.1"
