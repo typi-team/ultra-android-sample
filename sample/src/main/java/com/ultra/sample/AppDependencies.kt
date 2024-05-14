@@ -7,6 +7,7 @@ import com.typi.ultra.integration.logs.UltraFileProvider
 import com.typi.ultra.integration.message.UltraMessageProvider
 import com.typi.ultra.integration.navigation.UltraNavigator
 import com.typi.ultra.integration.push.UltraPushProvider
+import com.typi.ultra.integration.user.UltraUserProvider
 
 interface AppDependencies {
 
@@ -17,4 +18,5 @@ interface AppDependencies {
     val messageProvider: UltraMessageProvider
     val initializer: UltraInitializer
     val fileProvider: UltraFileProvider
+    val userProvider: UltraUserProvider
 }

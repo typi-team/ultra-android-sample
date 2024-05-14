@@ -1,3 +1,13 @@
+# -> 1.0.5
+
+- Добавлен новый делегат `UltraSupportDelegate` с одним методом для получения следующей информации:
+    - `isAssistantEnabled: Boolean` - флаг для отображение чата с Ассистентом
+    - `supportChats: List<SupportChatInfo>` - информация о чатах с поддержкой
+    - `personalManagers: List<PersonalManagerInfo>` - информация о персональных менеджерах
+- Переименован класс `UserInfo` на `UltraUserInfo` и поле `avatar` на `avatarUrl`
+- Добавлен новый провайдер `UltraUserProvider`. Нужно вызывать если изменилось отображаемое имя или ссылка на аватарку
+  у пользователя
+
 # -> 1.0.4
 
 - Добавлен новый метод `getEncryptionKey`  в `UltraSettingsDelegate` куда передается ключ для шифрования БД.

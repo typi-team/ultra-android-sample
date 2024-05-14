@@ -20,9 +20,11 @@ import com.typi.ultra.integration.navigation.UltraNavigator
 import com.typi.ultra.integration.push.UltraPushProvider
 import com.typi.ultra.integration.recorder.UltraErrorRecorder
 import com.typi.ultra.integration.settings.UltraSettingsDelegate
+import com.typi.ultra.integration.support.UltraSupportDelegate
 import com.typi.ultra.integration.theme.UltraThemeDelegate
 import com.typi.ultra.integration.toggle.UltraFeatureToggle
 import com.typi.ultra.integration.user.UltraUserDelegate
+import com.typi.ultra.integration.user.UltraUserProvider
 import com.ultra.sample.core.di.KoinManager
 import com.ultra.sample.push.PushManager
 import com.zeugmasolutions.localehelper.LocaleHelper
@@ -41,6 +43,7 @@ class App : Application() {
     private val themeDelegate: UltraThemeDelegate by inject()
     private val featureToggle: UltraFeatureToggle by inject()
     private val userDelegate: UltraUserDelegate by inject()
+    private val supportDelegate: UltraSupportDelegate by inject()
     private val errorRecorder: UltraErrorRecorder by inject()
     private val localiseDelegate: UltraLocaliseDelegate by inject()
 
@@ -68,6 +71,8 @@ class App : Application() {
                         get() = this@App.featureToggle
                     override val userDelegate: UltraUserDelegate
                         get() = this@App.userDelegate
+                    override val supportDelegate: UltraSupportDelegate
+                        get() = this@App.supportDelegate
                     override val errorRecorder: UltraErrorRecorder
                         get() = this@App.errorRecorder
                     override val localiseDelegate: UltraLocaliseDelegate
@@ -94,6 +99,8 @@ class App : Application() {
                     get() = ultraApi.initializer
                 override val fileProvider: UltraFileProvider
                     get() = ultraApi.fileProvider
+                override val userProvider: UltraUserProvider
+                    get() = ultraApi.userProvider
             }
         )
 

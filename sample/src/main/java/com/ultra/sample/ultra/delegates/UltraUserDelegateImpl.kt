@@ -2,7 +2,7 @@ package com.ultra.sample.ultra.delegates
 
 import android.content.Context
 import com.typi.ultra.integration.user.UltraUserDelegate
-import com.typi.ultra.integration.user.UserInfo
+import com.typi.ultra.integration.user.UltraUserInfo
 import com.ultra.sample.R
 import com.ultra.sample.contacts.data.ContactRepository
 import com.ultra.sample.core.network.AuthInterceptor
@@ -16,12 +16,12 @@ class UltraUserDelegateImpl(
 
     override val avatarInterceptor: Interceptor = authInterceptor
 
-    override suspend fun getUserInfo(identifier: String): UserInfo? {
+    override suspend fun getUserInfo(identifier: String): UltraUserInfo? {
         return runCatching {
             val user = contactRepository.getUser(identifier)
-            UserInfo(
+            UltraUserInfo(
                 name = user.fullName,
-                avatar = "https://ultra-dev.typi.team/mock/v1/profile/get-avatar?phone=${user.phone}"
+                avatarUrl = "https://ultra-dev.typi.team/mock/v1/profile/get-avatar?phone=${user.phone}"
             )
         }.getOrElse { null }
     }

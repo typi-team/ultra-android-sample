@@ -13,8 +13,8 @@ android {
         applicationId = "com.ultra.sample"
         minSdk = libs.versions.minSdkVersion.get().toInt()
         targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.0.5"
 
         multiDexEnabled = true
 
