@@ -15,6 +15,7 @@ import com.typi.ultra.integration.base.DependencyHolder
 import com.typi.ultra.integration.cache.UltraCacheProvider
 import com.typi.ultra.integration.localise.UltraLocaliseDelegate
 import com.typi.ultra.integration.logs.UltraFileProvider
+import com.typi.ultra.integration.message.UltraMessageDelegate
 import com.typi.ultra.integration.message.UltraMessageProvider
 import com.typi.ultra.integration.navigation.UltraNavigator
 import com.typi.ultra.integration.push.UltraPushProvider
@@ -42,6 +43,7 @@ class App : Application() {
     private val authDelegate: UltraAuthDelegate by inject()
     private val themeDelegate: UltraThemeDelegate by inject()
     private val featureToggle: UltraFeatureToggle by inject()
+    private val messageDelegate: UltraMessageDelegate by inject()
     private val userDelegate: UltraUserDelegate by inject()
     private val supportDelegate: UltraSupportDelegate by inject()
     private val errorRecorder: UltraErrorRecorder by inject()
@@ -69,6 +71,8 @@ class App : Application() {
                         get() = this@App.themeDelegate
                     override val featureToggle: UltraFeatureToggle
                         get() = this@App.featureToggle
+                    override val messageDelegate: UltraMessageDelegate
+                        get() = this@App.messageDelegate
                     override val userDelegate: UltraUserDelegate
                         get() = this@App.userDelegate
                     override val supportDelegate: UltraSupportDelegate

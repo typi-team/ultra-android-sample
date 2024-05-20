@@ -21,9 +21,11 @@ import cafe.adriel.voyager.navigator.tab.CurrentTab
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabNavigator
+import com.typi.ultra.integration.chat.UltraChatsScreenMode
 import com.typi.ultra.integration.message.UltraMessageProvider
 import com.ultra.sample.main.composable.tabs.ChatsTab
 import com.ultra.sample.main.composable.tabs.HomeTab
+import com.ultra.sample.main.composable.tabs.SupportChatsTab
 import com.ultra.sample.navigation.NavigationHandler
 import com.ultra.sample.theme.AppTheme
 import org.koin.compose.koinInject
@@ -36,7 +38,12 @@ object MainScreen : Screen {
         val messageProvider: UltraMessageProvider = koinInject()
 
         val shouldShowBottomBar by navigationHandler.shouldShowBottomBar.collectAsState()
-        val unreadCount by messageProvider.unreadMessagesCountFlow.collectAsState(0)
+        val unreadCount by messageProvider
+            .getUnreadMessagesCountAsFlow(UltraChatsScreenMode.P2P)
+            .collectAsState(0)
+        val supportUnreadCount by messageProvider
+            .getUnreadMessagesCountAsFlow(UltraChatsScreenMode.Support)
+            .collectAsState(0)
 
         TabNavigator(HomeTab) {
             Scaffold(
@@ -47,6 +54,7 @@ object MainScreen : Screen {
                         ) {
                             TabNavigationItem(HomeTab)
                             TabNavigationItem(ChatsTab, unreadCount)
+                            TabNavigationItem(SupportChatsTab, supportUnreadCount)
                         }
                     }
                 }
@@ -63,7 +71,7 @@ object MainScreen : Screen {
     }
 
     @Composable
-    private fun RowScope.TabNavigationItem(tab: Tab, unreadCount: Int = 0) {
+    private fun RowScope.TabNavigationItem(tab: Tab, unreadCount: Long = 0) {
         val tabNavigator = LocalTabNavigator.current
 
         BottomNavigationItem(
@@ -82,7 +90,7 @@ object MainScreen : Screen {
     }
 
     @Composable
-    private fun TabIcon(tab: Tab, unreadCount: Int) {
+    private fun TabIcon(tab: Tab, unreadCount: Long) {
         BadgedBox(
             badge = {
                 if (unreadCount > 0) {

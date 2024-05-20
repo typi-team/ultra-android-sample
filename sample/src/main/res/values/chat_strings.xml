@@ -25,6 +25,7 @@
     <string name="chat_chats_last_message_money">💸 transfer</string>
     <string name="chat_chats_last_message_contact">Contact</string>
     <string name="chat_chats_last_message_location">Location</string>
+    <string name="chat_chats_no_messages">No messages</string>
     <string name="chat_chats_delete_chat_title">Delete chat</string>
     <string name="chat_chats_delete_chat_description">Are you sure you want to delete the chat?</string>
 
@@ -54,6 +55,7 @@
     <string name="chat_complaint_accepted">Your complaint will be checked by moderators. Thank you!</string>
 
     <string name="chat_chat_detail_with_assistant">Chat with an assistant</string>
+    <string name="chat_chat_detail_with_support">Chat with support</string>
     <string name="chat_chat_detail_block">Block</string>
     <string name="chat_chat_detail_unblock">Unblock</string>
     <string name="chat_chat_detail_money">Money</string>

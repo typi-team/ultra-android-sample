@@ -11,10 +11,10 @@ android {
 
     defaultConfig {
         applicationId = "com.ultra.sample"
-        minSdk = libs.versions.minSdkVersion.get().toInt()
+        minSdk = 23
         targetSdk = 34
         versionCode = 2
-        versionName = "1.0.5"
+        versionName = "1.1.0"
 
         multiDexEnabled = true
 

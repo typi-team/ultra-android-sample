@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import com.typi.ultra.integration.chat.UltraChatsScreenMode
 import com.typi.ultra.integration.navigation.UltraNavigator
 import com.ultra.sample.R
 import com.ultra.sample.contacts.ui.ContactsScreen
@@ -35,24 +36,23 @@ object ChatsScreen : BaseScreen(shouldShowBottomBar = true) {
         val ultraNavigator: UltraNavigator = koinInject()
 
         ultraNavigator.ChatsScreen(
+            mode = UltraChatsScreenMode.P2P,
+            isToolbarVisible = true,
             onChatClicked = { chatId ->
                 navigator.push(ChatDetailScreen(chatId = chatId))
             },
             onContactsClicked = {
                 navigator.push(ContactsScreen())
             },
-            isToolbarVisible = true,
             emptyContent = {
-                EmptyState(
-                    navigator = navigator
-                )
-            }
+                EmptyState(navigator = navigator)
+            },
         )
     }
 
     @Composable
     private fun EmptyState(
-        navigator: Navigator
+        navigator: Navigator,
     ) {
         Column(
             modifier = Modifier

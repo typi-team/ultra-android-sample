@@ -25,6 +25,7 @@
     <string name="chat_chats_last_message_money">💸 перевод</string>
     <string name="chat_chats_last_message_contact">Контакт</string>
     <string name="chat_chats_last_message_location">Локация</string>
+    <string name="chat_chats_no_messages">Нет сообщений</string>
     <string name="chat_chats_delete_chat_title">Удалить чат</string>
     <string name="chat_chats_delete_chat_description">Вы действительно хотите удалить чат?</string>
 
@@ -54,6 +55,7 @@
     <string name="chat_complaint_accepted">Вашу жалобу проверят модераторы. Спасибо!</string>
 
     <string name="chat_chat_detail_with_assistant">Чат с ассистентом</string>
+    <string name="chat_chat_detail_with_support">Чат с поддержкой</string>
     <string name="chat_chat_detail_block">Заблокировать</string>
     <string name="chat_chat_detail_unblock">Разблокировать</string>
     <string name="chat_chat_detail_money">Деньги</string>

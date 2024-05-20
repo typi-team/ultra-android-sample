@@ -2,6 +2,7 @@ package com.ultra.sample.ultra.di
 
 import com.typi.ultra.integration.auth.UltraAuthDelegate
 import com.typi.ultra.integration.localise.UltraLocaliseDelegate
+import com.typi.ultra.integration.message.UltraMessageDelegate
 import com.typi.ultra.integration.recorder.UltraErrorRecorder
 import com.typi.ultra.integration.settings.UltraSettingsDelegate
 import com.typi.ultra.integration.support.UltraSupportDelegate
@@ -13,6 +14,7 @@ import com.ultra.sample.ultra.delegates.UltraAuthDelegateImpl
 import com.ultra.sample.ultra.delegates.UltraErrorRecorderImpl
 import com.ultra.sample.ultra.delegates.UltraFeatureToggleImpl
 import com.ultra.sample.ultra.delegates.UltraLocaliseDelegateImpl
+import com.ultra.sample.ultra.delegates.UltraMessageDelegateImpl
 import com.ultra.sample.ultra.delegates.UltraSettingsDelegateImpl
 import com.ultra.sample.ultra.delegates.UltraSupportDelegateImpl
 import com.ultra.sample.ultra.delegates.UltraThemeDelegateImpl
@@ -34,6 +36,7 @@ object UltraModule {
         single<UltraAuthDelegate> { UltraAuthDelegateImpl(get()) }
         single<UltraThemeDelegate> { UltraThemeDelegateImpl(get()) }
         single<UltraFeatureToggle> { UltraFeatureToggleImpl() }
+        single<UltraMessageDelegate> { UltraMessageDelegateImpl() }
         single<UltraUserDelegate> { UltraUserDelegateImpl(get(), get(), get()) }
         single<UltraSupportDelegate> { UltraSupportDelegateImpl() }
         single<UltraErrorRecorder> { UltraErrorRecorderImpl() }

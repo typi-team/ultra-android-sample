@@ -44,6 +44,7 @@ class UltraLocaliseDelegateImpl : UltraLocaliseDelegate {
                 lastMoneyMessage = R.string.chat_chats_last_message_money,
                 lastContactMessage = R.string.chat_chats_last_message_contact,
                 lastLocationMessage = R.string.chat_chats_last_message_location,
+                noMessages = R.string.chat_chats_no_messages,
                 deleteChatTitle = R.string.chat_chats_delete_chat_title,
                 deleteChatDescription = R.string.chat_chats_delete_chat_description,
             ),
@@ -78,6 +79,7 @@ class UltraLocaliseDelegateImpl : UltraLocaliseDelegate {
             ),
             chatDetail = ChatDetail(
                 withAssistant = R.string.chat_chat_detail_with_assistant,
+                withSupport = R.string.chat_chat_detail_with_support,
                 block = R.string.chat_chat_detail_block,
                 unblock = R.string.chat_chat_detail_unblock,
                 money = R.string.chat_chat_detail_money,

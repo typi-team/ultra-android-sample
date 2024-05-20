@@ -3,6 +3,7 @@
     <string name="app_name">Freedom Bank</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="chats">Chats</string>
+    <string name="support">Support</string>
     <string name="home">Home</string>
     <string name="auth_enter_data">To register for the chat service, enter your details</string>
     <string name="your_nickname">Your nickname</string>

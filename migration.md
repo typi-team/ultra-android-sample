@@ -1,3 +1,10 @@
+# -> 1.1.0
+
+- Добавлен новый делегат `UltraMessageDelegate` для получение meta данных для сообщений.
+- Новые ключи локализации для `Chats` и `ChatDetail`
+- Изменена структура `UltraSupportChats`. Убрали `isAssistantEnabled`, и добавили `AssistantInfo`.
+- Добавлен новый `UltraChatsScreenMode` параметр в `UltraNavigator.ChatsScreen`.
+
 # -> 1.0.5
 
 - Добавлен новый делегат `UltraSupportDelegate` с одним методом для получения следующей информации:
