@@ -22,6 +22,7 @@ import com.typi.ultra.integration.push.UltraPushProvider
 import com.typi.ultra.integration.recorder.UltraErrorRecorder
 import com.typi.ultra.integration.settings.UltraSettingsDelegate
 import com.typi.ultra.integration.support.UltraSupportDelegate
+import com.typi.ultra.integration.support.UltraSupportProvider
 import com.typi.ultra.integration.theme.UltraThemeDelegate
 import com.typi.ultra.integration.toggle.UltraFeatureToggle
 import com.typi.ultra.integration.user.UltraUserDelegate
@@ -105,6 +106,8 @@ class App : Application() {
                     get() = ultraApi.fileProvider
                 override val userProvider: UltraUserProvider
                     get() = ultraApi.userProvider
+                override val supportProvider: UltraSupportProvider
+                    get() = ultraApi.supportProvider
             }
         )
 

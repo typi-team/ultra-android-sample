@@ -14,6 +14,13 @@ class SettingsManagerImpl(
     private val preferences: SharedPreferences =
         context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
 
+    private var _applicationId: String by preferences.propertyDelegate()
+    override var applicationId: String?
+        get() = _applicationId.takeIf { it.isNotEmpty() }
+        set(value) {
+            _applicationId = value.orEmpty()
+        }
+
     private var _sid: String by preferences.propertyDelegate()
     override var sid: String?
         get() = _sid.takeIf { it.isNotEmpty() }
@@ -34,6 +41,7 @@ class SettingsManagerImpl(
         phone = ""
         firstName = ""
         lastName = ""
+        applicationId = ""
     }
 
     private inline fun <reified T : Any> SharedPreferences.propertyDelegate(

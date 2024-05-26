@@ -5,6 +5,7 @@ interface SettingsManager {
     val isAuthorized: Boolean
         get() = !sid.isNullOrEmpty()
 
+    var applicationId: String?
     var sid: String?
     var isDarkTheme: Boolean
     var nickname: String

@@ -7,9 +7,12 @@ import com.typi.ultra.integration.settings.model.UltraNetworkSettings
 import com.typi.ultra.integration.settings.model.UltraPushSettings
 import com.ultra.sample.BuildConfig
 import com.ultra.sample.R
+import com.ultra.sample.core.settings.SettingsManager
+import java.util.UUID
 
 class UltraSettingsDelegateImpl(
     private val context: Context,
+    private val settingsManager: SettingsManager,
 ) : UltraSettingsDelegate {
 
     override val networkSettings: UltraNetworkSettings = createNetworkSettings()
@@ -20,7 +23,7 @@ class UltraSettingsDelegateImpl(
         if (BuildConfig.DEBUG) {
             null
         } else {
-            DATABASE_KEY
+            settingsManager.applicationId ?: generateApplicationId()
         }
 
     private fun createNetworkSettings(): UltraNetworkSettings {
@@ -39,8 +42,9 @@ class UltraSettingsDelegateImpl(
         )
     }
 
-    companion object {
-
-        private const val DATABASE_KEY = "12345"
+    private fun generateApplicationId(): String {
+        val id = UUID.randomUUID().toString()
+        settingsManager.applicationId = id
+        return id
     }
 }

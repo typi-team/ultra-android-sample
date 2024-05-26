@@ -32,7 +32,7 @@ object UltraModule {
         single { appDependencies.initializer }
         single { appDependencies.fileProvider }
 
-        single<UltraSettingsDelegate> { UltraSettingsDelegateImpl(get()) }
+        single<UltraSettingsDelegate> { UltraSettingsDelegateImpl(get(), get()) }
         single<UltraAuthDelegate> { UltraAuthDelegateImpl(get()) }
         single<UltraThemeDelegate> { UltraThemeDelegateImpl(get()) }
         single<UltraFeatureToggle> { UltraFeatureToggleImpl() }
