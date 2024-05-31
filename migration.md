@@ -1,3 +1,7 @@
+# -> 1.1.4
+
+- Изменения по uikit(colors, typography)
+
 # -> 1.1.2
 
 - Добавлен новый делегат `UltraSupportProvider` для обновления информации о support чатах.
