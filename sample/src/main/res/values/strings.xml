@@ -26,7 +26,6 @@
     <string name="chats_empty_title">No messages</string>
     <string name="chats_empty_subtitle">Start communicating with your contacts now</string>
     <string name="start">Start</string>
-    <string name="empty_messages">No messages</string>
     <string name="send_log_file">Send log file</string>
     <string name="auth">Auth</string>
 </resources>

@@ -1,3 +1,8 @@
+# -> 1.1.5
+
+- Добавлено новое правило в proguard `-keep class com.typi.ultra.proto.** { *; }`
+- Изменен ключ `noMessages` в `UltraLocalise.Chat`
+
 # -> 1.1.4
 
 - Изменения по uikit(colors, typography)

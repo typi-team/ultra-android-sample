@@ -28,6 +28,10 @@
     <string name="chat_chats_no_messages">No messages</string>
     <string name="chat_chats_delete_chat_title">Delete chat</string>
     <string name="chat_chats_delete_chat_description">Are you sure you want to delete the chat?</string>
+    <string name="chat_chats_no_messages_p2p">No messages</string>
+    <string name="chat_chats_no_messages_personal_manager">Say hello to your personal manager👋</string>
+    <string name="chat_chats_no_messages_support">No messages</string>
+    <string name="chat_chats_no_messages_assistant">No messages</string>
 
     <string name="chat_updates_typing">typing…</string>
     <string name="chat_updates_online_status">online</string>

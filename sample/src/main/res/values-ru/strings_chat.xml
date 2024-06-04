@@ -28,6 +28,10 @@
     <string name="chat_chats_no_messages">Нет сообщений</string>
     <string name="chat_chats_delete_chat_title">Удалить чат</string>
     <string name="chat_chats_delete_chat_description">Вы действительно хотите удалить чат?</string>
+    <string name="chat_chats_no_messages_p2p">Нет сообщений</string>
+    <string name="chat_chats_no_messages_personal_manager">Поздоровайтесь с вашим личным менеджером👋</string>
+    <string name="chat_chats_no_messages_support">Нет сообщений</string>
+    <string name="chat_chats_no_messages_assistant">Нет сообщений</string>
 
     <string name="chat_updates_typing">печатает…</string>
     <string name="chat_updates_online_status">онлайн</string>

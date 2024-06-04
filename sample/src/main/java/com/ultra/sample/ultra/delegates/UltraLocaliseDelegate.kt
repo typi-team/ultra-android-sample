@@ -13,6 +13,7 @@ import com.typi.ultra.integration.localise.model.Common
 import com.typi.ultra.integration.localise.model.Complaint
 import com.typi.ultra.integration.localise.model.Connection
 import com.typi.ultra.integration.localise.model.Error
+import com.typi.ultra.integration.localise.model.NoMessages
 import com.typi.ultra.integration.localise.model.NotificationChannel
 import com.typi.ultra.integration.localise.model.Updates
 import com.ultra.sample.R
@@ -44,9 +45,14 @@ class UltraLocaliseDelegateImpl : UltraLocaliseDelegate {
                 lastMoneyMessage = R.string.chat_chats_last_message_money,
                 lastContactMessage = R.string.chat_chats_last_message_contact,
                 lastLocationMessage = R.string.chat_chats_last_message_location,
-                noMessages = R.string.chat_chats_no_messages,
                 deleteChatTitle = R.string.chat_chats_delete_chat_title,
                 deleteChatDescription = R.string.chat_chats_delete_chat_description,
+                noMessages = NoMessages(
+                    p2p = R.string.chat_chats_no_messages_p2p,
+                    personalManager = R.string.chat_chats_no_messages_personal_manager,
+                    support = R.string.chat_chats_no_messages_support,
+                    assistant = R.string.chat_chats_no_messages_assistant,
+                ),
             ),
             updates = Updates(
                 typing = R.string.chat_updates_typing,
