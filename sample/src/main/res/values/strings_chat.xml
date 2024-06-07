@@ -97,7 +97,30 @@
     <string name="chat_call_status_connecting">Connecting…</string>
     <string name="chat_call_status_reconnecting">Reconnecting…</string>
 
-    <string name="chat_date_yesterday">Yesterday</string>
+    <string name="chat_date_yesterday">yesterday</string>
     <string name="chat_date_now">just now</string>
     <string name="chat_date_long_time_ago">long time ago</string>
+    <string name="chat_date_monday">monday</string>
+    <string name="chat_date_tuesday">tuesday</string>
+    <string name="chat_date_wednesday">wednesday</string>
+    <string name="chat_date_thursday">thursday</string>
+    <string name="chat_date_friday">friday</string>
+    <string name="chat_date_saturday">saturday</string>
+    <string name="chat_date_sunday">sunday</string>
+    <string name="chat_date_minutes_ago_one">%d minute ago</string>
+    <string name="chat_date_minutes_ago_few">%d minutes ago</string>
+    <string name="chat_date_minutes_ago_many">%d minutes ago</string>
+    <string name="chat_date_minutes_ago_other">%d minutes ago</string>
+    <string name="chat_date_hours_ago_one">%d hour ago</string>
+    <string name="chat_date_hours_ago_few">%d hours ago</string>
+    <string name="chat_date_hours_ago_many">%d hours ago</string>
+    <string name="chat_date_hours_ago_other">%d hours ago</string>
+    <string name="chat_date_days_ago_one">%d day ago</string>
+    <string name="chat_date_days_ago_few">%d days ago</string>
+    <string name="chat_date_days_ago_many">%d days ago</string>
+    <string name="chat_date_days_ago_other">%d days ago</string>
+    <string name="chat_date_months_ago_one">%d month ago</string>
+    <string name="chat_date_months_ago_few">%d months ago</string>
+    <string name="chat_date_months_ago_many">%d months ago</string>
+    <string name="chat_date_months_ago_other">%d months ago</string>
 </resources>

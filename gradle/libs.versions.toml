@@ -1,10 +1,5 @@
 [versions]
 
-# SDK
-compileSdkVersion = "33"
-minSdkVersion = "23"
-targetSdkVersion = "33"
-
 # Plugins
 androidGradleVersion = "8.1.1"
 googleServicesVersion = "4.3.15"
@@ -14,11 +9,13 @@ androidxCoreVersion = "1.12.0"
 androidxLifecycleVersion = "2.6.2"
 androidxMediaVersion = "1.2.0"
 androidxDatastoreVersion = "1.0.0"
+androidxSecurityCryptoVersion = "1.0.0"
 
 # Kotlin
 kotlinVersion = "1.9.10"
 kotlinCompilerExtensionVersion = "1.5.3"
 kotlinxCollectionsVersion = "0.3.6"
+kotlinxSerializationVersion = "1.6.3"
 
 # Compose
 composeVersion = "1.5.4"
@@ -36,7 +33,7 @@ playServicesLocationVersion = "21.0.1"
 playServicesMapsVersion = "18.2.0"
 
 # Typi
-ultraVersion = "1.1.5"
+ultraVersion = "1.1.6"
 
 # Network
 grpcVersion = "1.55.1"
@@ -45,6 +42,7 @@ okhttpVersion = "5.0.0-alpha.2"
 
 # DB
 roomVersion = "2.6.0"
+sqlcipherVersion = "4.5.3"
 
 # DI
 daggerVersion = "2.47"
@@ -57,12 +55,16 @@ voyagerVersion = "1.0.0-rc08"
 # Image
 coilVersion = "2.4.0"
 
+# ImageCompressor
+imageCompressorVersion = "3.0.1"
+
 # Livekit
 livekitVersion = "1.2.1"
 
 # Other
 localeHelperVersion = "1.5.1"
 timberVersion = "5.0.1"
+jodaTimeVersion = "2.12.7"
 
 [libraries]
 
@@ -77,9 +79,11 @@ androidx-media3-exoplayer-dash = { module = "androidx.media3:media3-exoplayer-da
 androidx-media3-ui = { module = "androidx.media3:media3-ui", version.ref = "androidxMediaVersion" }
 androidx-datastore = { module = "androidx.datastore:datastore", version.ref = "androidxDatastoreVersion" }
 androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "androidxDatastoreVersion" }
+androidx-security-crypto = { module = "androidx.security:security-crypto", version.ref = "androidxSecurityCryptoVersion" }
 
 # Kotlin
 kotlin-immutableCollections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinxCollectionsVersion" }
+kotlin-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationVersion" }
 
 # Compose
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "composeVersion" }
@@ -115,6 +119,7 @@ okhttp-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", vers
 room = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomVersion" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
+sqlcipher = { module = "net.zetetic:android-database-sqlcipher", version.ref = "sqlcipherVersion" }
 
 # DI
 dagger = { module = "com.google.dagger:dagger", version.ref = "daggerVersion" }
@@ -133,12 +138,16 @@ voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", vers
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilVersion" }
 coil-video = { module = "io.coil-kt:coil-video", version.ref = "coilVersion" }
 
+# ImageCompressor
+image-compressor = { module = "id.zelory:compressor", version.ref = "imageCompressorVersion" }
+
 # Livekit
 livekit = { module = "io.livekit:livekit-android", version.ref = "livekitVersion" }
 
 # Other
 other-localeHelper = { module = "com.zeugmasolutions.localehelper:locale-helper-android", version.ref = "localeHelperVersion" }
 other-timber = { module = "com.jakewharton.timber:timber", version.ref = "timberVersion" }
+other-joda = { module = "joda-time:joda-time", version.ref = "jodaTimeVersion" }
 
 [plugins]
 
@@ -147,4 +156,5 @@ android-library = { id = "com.android.library", version.ref = "androidGradleVers
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlinVersion" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlinVersion" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinVersion" }
 google-services = { id = "com.google.gms.google-services", version.ref = "googleServicesVersion" }

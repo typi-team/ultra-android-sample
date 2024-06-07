@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="chat_minutes_ago" translatable="false">
+        <item quantity="one">@string/chat_date_minutes_ago_one</item>
+        <item quantity="few">@string/chat_date_minutes_ago_few</item>
+        <item quantity="many">@string/chat_date_minutes_ago_many</item>
+        <item quantity="other">@string/chat_date_minutes_ago_other</item>
+    </plurals>
+    <plurals name="chat_hours_ago" translatable="false">
+        <item quantity="one">@string/chat_date_hours_ago_one</item>
+        <item quantity="few">@string/chat_date_hours_ago_few</item>
+        <item quantity="many">@string/chat_date_hours_ago_many</item>
+        <item quantity="other">@string/chat_date_hours_ago_other</item>
+    </plurals>
+    <plurals name="chat_days_ago" translatable="false">
+        <item quantity="one">@string/chat_date_days_ago_one</item>
+        <item quantity="few">@string/chat_date_days_ago_few</item>
+        <item quantity="many">@string/chat_date_days_ago_many</item>
+        <item quantity="other">@string/chat_date_days_ago_other</item>
+    </plurals>
+    <plurals name="chat_months_ago" translatable="false">
+        <item quantity="one">@string/chat_date_months_ago_one</item>
+        <item quantity="few">@string/chat_date_months_ago_few</item>
+        <item quantity="many">@string/chat_date_months_ago_many</item>
+        <item quantity="other">@string/chat_date_months_ago_other</item>
+    </plurals>
+</resources>

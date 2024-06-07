@@ -1,6 +1,18 @@
+# -> 1.1.6
+
+- Добавлены новые поля в `UltraLocalise.Date`
+- Добавлены новые правила в proguard для Joda Time:
+
+```text
+-dontwarn org.joda.convert.**
+-dontwarn org.joda.time.**
+-keep class org.joda.time.** { *; }
+-keep interface org.joda.time.** { *; }
+```
+
 # -> 1.1.5
 
-- Добавлено новое правило в proguard `-keep class com.typi.ultra.proto.** { *; }`
+- Добавлено новое правило в proguard для proto файлов `-keep class com.typi.ultra.proto.** { *; }`
 - Изменен ключ `noMessages` в `UltraLocalise.Chat`
 
 # -> 1.1.4

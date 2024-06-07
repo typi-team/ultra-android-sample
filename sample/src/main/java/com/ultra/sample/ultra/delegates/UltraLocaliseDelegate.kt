@@ -2,7 +2,6 @@ package com.ultra.sample.ultra.delegates
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
-import com.typi.ultra.integration.localise.DefaultUltraLocalise
 import com.typi.ultra.integration.localise.UltraLocalise
 import com.typi.ultra.integration.localise.UltraLocaliseDelegate
 import com.typi.ultra.integration.localise.model.Attachment
@@ -12,6 +11,7 @@ import com.typi.ultra.integration.localise.model.Chats
 import com.typi.ultra.integration.localise.model.Common
 import com.typi.ultra.integration.localise.model.Complaint
 import com.typi.ultra.integration.localise.model.Connection
+import com.typi.ultra.integration.localise.model.Date
 import com.typi.ultra.integration.localise.model.Error
 import com.typi.ultra.integration.localise.model.NoMessages
 import com.typi.ultra.integration.localise.model.NotificationChannel
@@ -21,7 +21,7 @@ import com.ultra.sample.R
 class UltraLocaliseDelegateImpl : UltraLocaliseDelegate {
 
     private val _localise = mutableStateOf(
-        DefaultUltraLocalise(
+        UltraLocalise(
             common = Common(
                 yes = R.string.chat_common_yes,
                 cancel = R.string.chat_common_cancel,
@@ -113,6 +113,22 @@ class UltraLocaliseDelegateImpl : UltraLocaliseDelegate {
                 statusConnecting = R.string.chat_call_status_connecting,
                 statusReconnecting = R.string.chat_call_status_reconnecting,
             ),
+            date = Date(
+                yesterday = R.string.chat_date_yesterday,
+                now = R.string.chat_date_now,
+                longTimeAgo = R.string.chat_date_long_time_ago,
+                monday = R.string.chat_date_monday,
+                tuesday = R.string.chat_date_tuesday,
+                wednesday = R.string.chat_date_wednesday,
+                thursday = R.string.chat_date_thursday,
+                friday = R.string.chat_date_friday,
+                saturday = R.string.chat_date_saturday,
+                sunday = R.string.chat_date_sunday,
+                minutes = R.plurals.chat_minutes_ago,
+                hours = R.plurals.chat_hours_ago,
+                days = R.plurals.chat_days_ago,
+                months = R.plurals.chat_months_ago,
+            )
         )
     )
     override val localise: State<UltraLocalise> = _localise
