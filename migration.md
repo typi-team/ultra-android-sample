@@ -1,3 +1,7 @@
+# -> 1.1.8
+
+- Добавлен аргумент `UltraUserType` для метода `UltraUserDelegate.getUserInfo`
+
 # -> 1.1.6
 
 - Добавлены новые поля в `UltraLocalise.Date`
