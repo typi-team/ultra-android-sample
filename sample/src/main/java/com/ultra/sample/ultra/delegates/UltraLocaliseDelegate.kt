@@ -53,6 +53,7 @@ class UltraLocaliseDelegateImpl : UltraLocaliseDelegate {
                     support = R.string.chat_chats_no_messages_support,
                     assistant = R.string.chat_chats_no_messages_assistant,
                 ),
+                you = R.string.chat_chats_you,
             ),
             updates = Updates(
                 typing = R.string.chat_updates_typing,

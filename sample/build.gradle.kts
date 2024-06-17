@@ -13,8 +13,8 @@ android {
         applicationId = "com.ultra.sample"
         minSdk = 23
         targetSdk = 34
-        versionCode = 9
-        versionName = "1.1.9"
+        versionCode = 1
+        versionName = "1.1.10"
 
         multiDexEnabled = true
 

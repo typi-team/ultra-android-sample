@@ -1,3 +1,7 @@
+# -> 1.1.10
+
+- Добавлено новое поля в `UltraLocalise.Chats.you`
+
 # -> 1.1.8
 
 - Добавлен аргумент `UltraUserType` для метода `UltraUserDelegate.getUserInfo`
