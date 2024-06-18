@@ -6,6 +6,7 @@
     <string name="chat_common_close">Закрыть</string>
     <string name="chat_common_copied_to_clipboard">Текст скопирован в буфер обмена</string>
     <string name="chat_common_agree">Согласен</string>
+    <string name="chat_common_you">Вы</string>
 
     <string name="chat_error_default">Что-то пошло не так, попробуйте позже</string>
     <string name="chat_error_app_not_found">Не найдено нужное приложение</string>
@@ -32,7 +33,6 @@
     <string name="chat_chats_no_messages_personal_manager">Поздоровайтесь с вашим личным менеджером👋</string>
     <string name="chat_chats_no_messages_support">Нет сообщений</string>
     <string name="chat_chats_no_messages_assistant">Нет сообщений</string>
-    <string name="chat_chats_you">(Вы)</string>
 
     <string name="chat_updates_typing">печатает…</string>
     <string name="chat_updates_online_status">онлайн</string>

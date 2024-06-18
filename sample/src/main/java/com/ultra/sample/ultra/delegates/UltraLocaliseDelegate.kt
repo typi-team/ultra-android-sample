@@ -29,6 +29,7 @@ class UltraLocaliseDelegateImpl : UltraLocaliseDelegate {
                 close = R.string.chat_common_close,
                 copiedToClipboard = R.string.chat_common_copied_to_clipboard,
                 agree = R.string.chat_common_agree,
+                you = R.string.chat_common_you,
             ),
             error = Error(
                 default = R.string.chat_error_default,
@@ -53,7 +54,6 @@ class UltraLocaliseDelegateImpl : UltraLocaliseDelegate {
                     support = R.string.chat_chats_no_messages_support,
                     assistant = R.string.chat_chats_no_messages_assistant,
                 ),
-                you = R.string.chat_chats_you,
             ),
             updates = Updates(
                 typing = R.string.chat_updates_typing,

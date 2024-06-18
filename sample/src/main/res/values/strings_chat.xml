@@ -6,6 +6,7 @@
     <string name="chat_common_close">Close</string>
     <string name="chat_common_copied_to_clipboard">Text copied to clipboard</string>
     <string name="chat_common_agree">Agree</string>
+    <string name="chat_common_you">You</string>
 
     <string name="chat_error_default">Something went wrong, try again later</string>
     <string name="chat_error_app_not_found">The required application was not found</string>
@@ -32,7 +33,6 @@
     <string name="chat_chats_no_messages_personal_manager">Say hello to your personal manager👋</string>
     <string name="chat_chats_no_messages_support">No messages</string>
     <string name="chat_chats_no_messages_assistant">No messages</string>
-    <string name="chat_chats_you">(You)</string>
 
     <string name="chat_updates_typing">typing…</string>
     <string name="chat_updates_online_status">online</string>

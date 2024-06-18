@@ -1,3 +1,7 @@
+# -> 1.1.11
+
+- Перенесено поле `you` в `UltraLocalise.Common.you`
+
 # -> 1.1.10
 
 - Добавлено новое поля в `UltraLocalise.Chats.you`
