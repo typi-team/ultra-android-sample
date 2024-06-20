@@ -66,7 +66,7 @@ class MoneyRepositoryImpl(
                     "in_progress" -> TransactionStatus.IN_PROGRESS
                     "completed" -> TransactionStatus.COMPLETED
                     "rejected" -> TransactionStatus.REJECTED
-                    else -> TransactionStatus.MONEY_STATUS_UNKNOWN
+                    else -> TransactionStatus.UNKNOWN
                 }
                 val transaction = UltraTransaction(
                     id = transactionId,

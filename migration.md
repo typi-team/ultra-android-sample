@@ -1,3 +1,8 @@
+# -> 1.2.0
+
+- Удалено поле `unrecognized` с `UltraIcons.Bubble.MoneyStatus`
+- Удалено поле `MONEY_STATUS_UNKNOWN` с `TransactionStatus`
+
 # -> 1.1.11
 
 - Перенесено поле `you` в `UltraLocalise.Common.you`
