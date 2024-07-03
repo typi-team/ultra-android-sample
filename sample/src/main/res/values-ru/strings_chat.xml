@@ -11,6 +11,7 @@
     <string name="chat_error_default">Что-то пошло не так, попробуйте позже</string>
     <string name="chat_error_app_not_found">Не найдено нужное приложение</string>
     <string name="chat_error_record_audio_message">Не удалось записать аудио сообщение</string>
+    <string name="chat_error_disclaimer_not_accepted">Не удалось принять соглашение</string>
     <string name="chat_error_user_not_found">Пользователь не найден</string>
     <string name="chat_error_chat_not_found">Чат не найден</string>
     <string name="chat_error_location_not_found">Геопозиция не найдена</string>

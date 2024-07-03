@@ -1,3 +1,7 @@
+# -> 1.2.5
+
+- Добавлено новое поля в `UltraLocalise.Error.disclaimerNotAccepted`
+
 # -> 1.2.0
 
 - Удалено поле `unrecognized` с `UltraIcons.Bubble.MoneyStatus`

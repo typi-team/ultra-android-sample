@@ -35,6 +35,7 @@ class UltraLocaliseDelegateImpl : UltraLocaliseDelegate {
                 default = R.string.chat_error_default,
                 appNotFound = R.string.chat_error_app_not_found,
                 recordAudioMessage = R.string.chat_error_record_audio_message,
+                disclaimerNotAccepted = R.string.chat_error_disclaimer_not_accepted,
             ),
             chats = Chats(
                 title = R.string.chat_chats_title,

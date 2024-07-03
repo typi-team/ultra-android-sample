@@ -11,6 +11,7 @@
     <string name="chat_error_default">Something went wrong, try again later</string>
     <string name="chat_error_app_not_found">The required application was not found</string>
     <string name="chat_error_record_audio_message">Failed to record audio message</string>
+    <string name="chat_error_disclaimer_not_accepted">Could not accept agreement</string>
     <string name="chat_error_user_not_found">User is not found</string>
     <string name="chat_error_chat_not_found">Chat not found</string>
     <string name="chat_error_location_not_found">Location not found</string>
