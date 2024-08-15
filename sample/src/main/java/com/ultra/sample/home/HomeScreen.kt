@@ -6,11 +6,14 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import com.ultra.sample.auth.presentation.createLoginActivityIntent
 import com.ultra.sample.core.ui.LocaleAwareComponentActivity
 import com.ultra.sample.core.utils.startAndClose
 import com.ultra.sample.home.composables.HomeContent
 import com.ultra.sample.navigation.BaseScreen
+import com.ultra.sample.reception.ReceptionScreen
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
 import org.koin.androidx.compose.koinViewModel
@@ -20,6 +23,7 @@ object HomeScreen : BaseScreen(shouldShowBottomBar = true) {
     @Composable
     override fun ScreenContent() {
         val activity = LocalContext.current as LocaleAwareComponentActivity
+        val navigator = LocalNavigator.currentOrThrow
         val viewModel: HomeViewModel = koinViewModel()
 
         LaunchedEffect(Unit) {
@@ -28,6 +32,9 @@ object HomeScreen : BaseScreen(shouldShowBottomBar = true) {
                     when (effect) {
                         is HomeEffect.ChangeLanguage -> {
                             activity.updateLocale(effect.locale)
+                        }
+                        HomeEffect.NavigateToReception -> {
+                            navigator.push(ReceptionScreen)
                         }
                         HomeEffect.Logout -> {
                             activity.createLoginActivityIntent()
@@ -52,6 +59,7 @@ object HomeScreen : BaseScreen(shouldShowBottomBar = true) {
         HomeContent(
             state = state,
             onLanguageClicked = viewModel::onLanguageClicked,
+            onChangeReceptionClicked = viewModel::onChangeReceptionClicked,
             onLogoutClicked = viewModel::onLogoutClicked,
             onLogoutDismiss = viewModel::onLogoutDismiss,
             onLogoutConfirm = viewModel::onLogoutConfirm,

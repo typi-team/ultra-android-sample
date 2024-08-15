@@ -37,12 +37,13 @@ class LoginActivity : ComponentActivity() {
                             }
                         )
                     },
-                    onLoginButtonClicked = { nickname, phone, firstname, lastname ->
+                    onLoginButtonClicked = { nickname, phone, firstname, lastname, receptionNumber ->
                         viewModel.onLoginClicked(
                             nickname = nickname,
                             phone = phone,
                             firstname = firstname,
                             lastname = lastname,
+                            receptionNumber = receptionNumber,
                             onLoginSuccess = {
                                 createMainActivityIntent().startAndClose(this)
                             }

@@ -13,6 +13,10 @@ data class LoginRequest(
     val firstName: String,
     @SerializedName("lastname")
     val lastName: String?,
+    @SerializedName("reception")
+    val reception: Int?,
+    @SerializedName("reception_service")
+    val receptionService: Int?,
     @SerializedName("device_id")
     val deviceId: String,
 )

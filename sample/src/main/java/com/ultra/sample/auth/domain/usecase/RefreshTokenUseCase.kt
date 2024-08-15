@@ -17,6 +17,7 @@ class RefreshTokenUseCase(
             phone = settingsManager.phone,
             firstname = settingsManager.firstName,
             lastname = settingsManager.lastName,
+            receptionNumber = settingsManager.receptionNumber,
             deviceId = deviceManager.getDeviceId(),
         )
         settingsManager.sid = response.sid

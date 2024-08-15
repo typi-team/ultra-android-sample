@@ -52,6 +52,10 @@ class HomeViewModel(
         }
     }
 
+    fun onChangeReceptionClicked() {
+        _effect.trySend(HomeEffect.NavigateToReception)
+    }
+
     fun onLogoutClicked() {
         setState {
             copy(
@@ -95,6 +99,7 @@ class HomeViewModel(
         return HomeState(
             fullName = settingsManager.firstName + " " + settingsManager.lastName,
             phoneNumber = settingsManager.phone,
+            reception = "Reception: ${settingsManager.receptionNumber}",
             language = when (Locale.getDefault().language) {
                 RUSSIAN -> Language.Russian
                 else -> Language.English
@@ -111,6 +116,7 @@ class HomeViewModel(
 data class HomeState(
     val fullName: String,
     val phoneNumber: String,
+    val reception: String,
     val language: Language,
     val logoutDialogState: ConfirmAlertDialogState? = null,
 )
@@ -128,6 +134,8 @@ sealed class HomeEffect {
     data class ChangeLanguage(
         val locale: Locale,
     ) : HomeEffect()
+
+    data object NavigateToReception : HomeEffect()
 
     data object Logout : HomeEffect()
 

@@ -36,7 +36,7 @@ object UltraModule {
         single<UltraAuthDelegate> { UltraAuthDelegateImpl(get()) }
         single<UltraThemeDelegate> { UltraThemeDelegateImpl(get()) }
         single<UltraFeatureToggle> { UltraFeatureToggleImpl() }
-        single<UltraMessageDelegate> { UltraMessageDelegateImpl() }
+        single<UltraMessageDelegate> { UltraMessageDelegateImpl(get()) }
         single<UltraUserDelegate> { UltraUserDelegateImpl(get(), get(), get()) }
         single<UltraSupportDelegate> { UltraSupportDelegateImpl() }
         single<UltraErrorRecorder> { UltraErrorRecorderImpl() }

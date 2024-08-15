@@ -34,6 +34,7 @@ class SettingsManagerImpl(
     override var phone: String by preferences.propertyDelegate()
     override var firstName: String by preferences.propertyDelegate()
     override var lastName: String by preferences.propertyDelegate()
+    override var receptionNumber: String by preferences.propertyDelegate()
 
     override fun clear() {
         sid = null
@@ -41,6 +42,7 @@ class SettingsManagerImpl(
         phone = ""
         firstName = ""
         lastName = ""
+        receptionNumber = ""
         applicationId = ""
     }
 

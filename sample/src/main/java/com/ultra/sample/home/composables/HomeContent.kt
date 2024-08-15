@@ -13,6 +13,8 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,6 +30,7 @@ import com.ultra.sample.theme.AppTheme
 fun HomeContent(
     state: HomeState,
     onLanguageClicked: () -> Unit,
+    onChangeReceptionClicked: () -> Unit,
     onLogoutClicked: () -> Unit,
     onLogoutDismiss: () -> Unit,
     onLogoutConfirm: () -> Unit,
@@ -44,6 +47,13 @@ fun HomeContent(
                     )
                 },
                 actions = {
+                    IconButton(onClick = onChangeReceptionClicked) {
+                        Icon(
+                            imageVector = Icons.Default.AccountCircle,
+                            contentDescription = null,
+                            tint = AppTheme.colors.button.enabled
+                        )
+                    }
                     IconButton(onClick = onLogoutClicked) {
                         Icon(
                             painter = painterResource(R.drawable.ic_logout),
@@ -72,6 +82,10 @@ fun HomeContent(
             )
             Text(
                 text = state.phoneNumber,
+                color = AppTheme.colors.text.subtitle
+            )
+            Text(
+                text = state.reception,
                 color = AppTheme.colors.text.subtitle
             )
             Spacer(modifier = Modifier.height(16.dp))

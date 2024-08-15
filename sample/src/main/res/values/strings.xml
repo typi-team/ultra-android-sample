@@ -6,14 +6,16 @@
     <string name="support">Support</string>
     <string name="home">Home</string>
     <string name="auth_enter_data">To register for the chat service, enter your details</string>
-    <string name="your_nickname">Your nickname</string>
-    <string name="your_phone_number">Your phone number</string>
-    <string name="your_firstname">Your firstname</string>
+    <string name="your_nickname">Your nickname*</string>
+    <string name="your_phone_number">Your phone number*</string>
+    <string name="your_firstname">Your firstname*</string>
     <string name="your_lastname">Your lastname</string>
+    <string name="reception_number">Reception number</string>
     <string name="sample_phone_number">For example +77761595595</string>
     <string name="sample_nickname">For example ivan_ivanov</string>
     <string name="sample_firstname">For example Ivan</string>
     <string name="sample_lastname">For example Ivanov</string>
+    <string name="sample_reception">For example 50</string>
     <string name="continue_text">Continue</string>
     <string name="new_chat">New chat</string>
     <string name="choose_contact">Choose contact</string>
@@ -28,4 +30,8 @@
     <string name="start">Start</string>
     <string name="send_log_file">Send log file</string>
     <string name="auth">Auth</string>
+    <string name="ok">OK</string>
+    <string name="change_reception">Change reception</string>
+    <string name="enter_reception_number">Enter reception number</string>
+    <string name="or_select_from_the_list">or select from the list</string>
 </resources>

@@ -35,6 +35,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.text.isDigitsOnly
 import com.ultra.sample.R
 import com.ultra.sample.auth.presentation.LoginUiState
 import com.ultra.sample.theme.AppTheme
@@ -46,7 +47,7 @@ internal const val phoneLength = 12
 fun LoginScreen(
     viewState: LoginUiState,
     onAuthButtonClicked: () -> Unit,
-    onLoginButtonClicked: (String, String, String, String?) -> Unit,
+    onLoginButtonClicked: (String, String, String, String, String) -> Unit,
 ) {
     when (viewState) {
         is LoginUiState.Auth -> AuthContent(
@@ -104,12 +105,13 @@ private fun AuthContent(
 @Composable
 private fun UnAuthContent(
     viewState: LoginUiState.UnAuth,
-    onLoginButtonClicked: (String, String, String, String?) -> Unit,
+    onLoginButtonClicked: (String, String, String, String, String) -> Unit,
 ) {
     var nicknameState by remember { mutableStateOf("") }
     var phoneState by remember { mutableStateOf("") }
     var firstnameState by remember { mutableStateOf("") }
     var lastnameState by remember { mutableStateOf("") }
+    var receptionState by remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier
@@ -182,7 +184,7 @@ private fun UnAuthContent(
             value = firstnameState,
             hint = stringResource(R.string.your_firstname),
             onValueChange = {
-                if (it.isEmpty() || it.trim().isNotEmpty()) firstnameState = it
+                if (it.isEmpty() || it.isNotBlank()) firstnameState = it
             },
             modifier = Modifier
                 .fillMaxWidth()
@@ -204,18 +206,40 @@ private fun UnAuthContent(
             value = lastnameState,
             hint = stringResource(R.string.your_lastname),
             onValueChange = {
-                if (it.isEmpty() || it.trim().isNotEmpty()) lastnameState = it
+                if (it.isEmpty() || it.isNotBlank()) lastnameState = it
             },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 24.dp),
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.Words,
-                imeAction = ImeAction.Done
+                imeAction = ImeAction.Next
             )
         )
         Text(
             text = stringResource(R.string.sample_lastname),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 24.dp, end = 24.dp, top = 8.dp),
+            color = AppTheme.colors.text.subtitle,
+            style = AppTheme.typography.body
+        )
+        AuthTextField(
+            value = receptionState,
+            hint = stringResource(R.string.reception_number),
+            onValueChange = {
+                if (it.isEmpty() || it.isDigitsOnly()) receptionState = it
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 24.dp),
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Done
+            )
+        )
+        Text(
+            text = stringResource(R.string.sample_reception),
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(start = 24.dp, end = 24.dp, top = 8.dp),
@@ -238,7 +262,8 @@ private fun UnAuthContent(
                     nicknameState.trim(),
                     phoneState,
                     firstnameState.trim(),
-                    lastnameState.trim()
+                    lastnameState.trim(),
+                    receptionState,
                 )
             }
         ) {
@@ -269,7 +294,7 @@ fun LoginScreenPreview() {
     AppTheme {
         UnAuthContent(
             viewState = LoginUiState.UnAuth(),
-            onLoginButtonClicked = { _, _, _, _ -> }
+            onLoginButtonClicked = { _, _, _, _, _ -> }
         )
     }
 }

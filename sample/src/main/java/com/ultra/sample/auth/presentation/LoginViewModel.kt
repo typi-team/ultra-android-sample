@@ -40,6 +40,7 @@ class LoginViewModel(
                         phone = settingsManager.phone,
                         firstname = settingsManager.firstName,
                         lastname = settingsManager.lastName,
+                        receptionNumber = settingsManager.receptionNumber,
                     )
                 )
 
@@ -56,7 +57,8 @@ class LoginViewModel(
         nickname: String,
         phone: String,
         firstname: String,
-        lastname: String?,
+        lastname: String,
+        receptionNumber: String,
         onLoginSuccess: () -> Unit,
     ) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -68,7 +70,8 @@ class LoginViewModel(
                         nickname = nickname,
                         phone = phone,
                         firstname = firstname,
-                        lastname = lastname
+                        lastname = lastname.ifEmpty { null },
+                        receptionNumber = receptionNumber.ifEmpty { null },
                     )
                 )
 

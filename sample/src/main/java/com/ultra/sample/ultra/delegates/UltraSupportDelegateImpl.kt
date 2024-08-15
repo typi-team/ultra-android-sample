@@ -15,7 +15,12 @@ class UltraSupportDelegateImpl : UltraSupportDelegate {
                     reception = 50,
                     name = "FF Global",
                     avatarUrl = "https://i.ibb.co.com/7JWCLz9/Icon-app.png",
-                )
+                ),
+                SupportChatInfo(
+                    reception = 36,
+                    name = "FF Казахстан",
+                    avatarUrl = "https://i.ibb.co.com/7JWCLz9/Icon-app.png",
+                ),
             ),
             personalManagers = listOf(
                 PersonalManagerInfo(

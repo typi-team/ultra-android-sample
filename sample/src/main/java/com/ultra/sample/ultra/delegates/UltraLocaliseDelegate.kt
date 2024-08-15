@@ -13,6 +13,8 @@ import com.typi.ultra.integration.localise.model.Complaint
 import com.typi.ultra.integration.localise.model.Connection
 import com.typi.ultra.integration.localise.model.Date
 import com.typi.ultra.integration.localise.model.Error
+import com.typi.ultra.integration.localise.model.LastMessage
+import com.typi.ultra.integration.localise.model.LastMessageCall
 import com.typi.ultra.integration.localise.model.NoMessages
 import com.typi.ultra.integration.localise.model.NotificationChannel
 import com.typi.ultra.integration.localise.model.Updates
@@ -39,16 +41,24 @@ class UltraLocaliseDelegateImpl : UltraLocaliseDelegate {
             ),
             chats = Chats(
                 title = R.string.chat_chats_title,
-                lastAudioMessage = R.string.chat_chats_last_message_audio,
-                lastVoiceMessage = R.string.chat_chats_last_message_voice,
-                lastImageMessage = R.string.chat_chats_last_message_image,
-                lastVideoMessage = R.string.chat_chats_last_message_video,
-                lastFileMessage = R.string.chat_chats_last_message_file,
-                lastMoneyMessage = R.string.chat_chats_last_message_money,
-                lastContactMessage = R.string.chat_chats_last_message_contact,
-                lastLocationMessage = R.string.chat_chats_last_message_location,
                 deleteChatTitle = R.string.chat_chats_delete_chat_title,
                 deleteChatDescription = R.string.chat_chats_delete_chat_description,
+                lastMessage = LastMessage(
+                    audio = R.string.chat_chats_last_message_audio,
+                    voice = R.string.chat_chats_last_message_voice,
+                    image = R.string.chat_chats_last_message_image,
+                    video = R.string.chat_chats_last_message_video,
+                    file = R.string.chat_chats_last_message_file,
+                    money = R.string.chat_chats_last_message_money,
+                    contact = R.string.chat_chats_last_message_contact,
+                    location = R.string.chat_chats_last_message_location,
+                    call = LastMessageCall(
+                        incoming = R.string.chat_chats_last_message_call_incoming,
+                        outgoing = R.string.chat_chats_last_message_call_outgoing,
+                        cancelled = R.string.chat_chats_last_message_call_cancelled,
+                        missed = R.string.chat_chats_last_message_call_missed,
+                    ),
+                ),
                 noMessages = NoMessages(
                     p2p = R.string.chat_chats_no_messages_p2p,
                     personalManager = R.string.chat_chats_no_messages_personal_manager,
@@ -92,6 +102,11 @@ class UltraLocaliseDelegateImpl : UltraLocaliseDelegate {
                 unblock = R.string.chat_chat_detail_unblock,
                 money = R.string.chat_chat_detail_money,
                 transfer = R.string.chat_chat_detail_transfer,
+                incomingCall = R.string.chat_chat_detail_incoming_call,
+                outgoingCall = R.string.chat_chat_detail_outgoing_call,
+                cancelledCall = R.string.chat_chat_detail_cancelled_call,
+                missedCall = R.string.chat_chat_detail_missed_call,
+                noAnswer = R.string.chat_chat_detail_no_answer,
                 enterText = R.string.chat_chat_detail_enter_text,
                 deleteMessagesTitle = R.string.chat_chat_detail_delete_messages_title,
                 deleteMessageAction = R.string.chat_chat_detail_delete_messages_action,

@@ -13,6 +13,7 @@ interface SettingsManager {
     var phone: String
     var firstName: String
     var lastName: String
+    var receptionNumber: String
 
     fun clear()
 }

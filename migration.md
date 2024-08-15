@@ -1,3 +1,9 @@
+# -> 1.2.6
+
+- Перенесены и добавлены некоторые поля в `UltraLocalise.Chats.LastMessage`
+- Добавлены поля `incomingCall`, `outgoingCall`, `cancelledCall`, `missedCall`, `noAnswer` в `UltraLocalise.ChatDetail`
+- Добавлены поля `incomingCall`, `outgoingCall`, `missedCall` в `UltraIcons.Bubble`
+
 # -> 1.2.5
 
 - Добавлено новое поля в `UltraLocalise.Error.disclaimerNotAccepted`

@@ -11,6 +11,7 @@ interface AuthRepository {
         phone: String,
         firstname: String,
         lastname: String?,
+        receptionNumber: String?,
         deviceId: String,
     ): LoginResponse
 }
@@ -24,6 +25,7 @@ class AuthRepositoryImpl(
         phone: String,
         firstname: String,
         lastname: String?,
+        receptionNumber: String?,
         deviceId: String,
     ): LoginResponse {
         return remoteApi.login(
@@ -32,6 +34,8 @@ class AuthRepositoryImpl(
                 phone = phone,
                 firstName = firstname,
                 lastName = lastname,
+                reception = receptionNumber?.toIntOrNull(),
+                receptionService = receptionNumber?.toIntOrNull(),
                 deviceId = deviceId,
             )
         )

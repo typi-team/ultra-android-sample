@@ -19,6 +19,7 @@ class LoginUseCase(
             phone = parameters.phone,
             firstname = parameters.firstname,
             lastname = parameters.lastname,
+            receptionNumber = parameters.receptionNumber,
             deviceId = deviceManager.getDeviceId(),
         )
         settingsManager.nickname = response.nickname
@@ -26,6 +27,7 @@ class LoginUseCase(
         settingsManager.phone = response.phone
         settingsManager.firstName = response.firstName
         settingsManager.lastName = response.lastName.orEmpty()
+        settingsManager.receptionNumber = parameters.receptionNumber.orEmpty()
         settingsManager.sid = response.sid
         authProvider.login(sid = response.sid)
     }
@@ -35,5 +37,6 @@ class LoginUseCase(
         val phone: String,
         val firstname: String,
         val lastname: String?,
+        val receptionNumber: String?,
     )
 }

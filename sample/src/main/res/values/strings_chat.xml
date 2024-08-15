@@ -27,6 +27,10 @@
     <string name="chat_chats_last_message_money">💸 transfer</string>
     <string name="chat_chats_last_message_contact">Contact</string>
     <string name="chat_chats_last_message_location">Location</string>
+    <string name="chat_chats_last_message_call_incoming">Incoming call</string>
+    <string name="chat_chats_last_message_call_outgoing">Outgoing call</string>
+    <string name="chat_chats_last_message_call_cancelled">Cancelled call</string>
+    <string name="chat_chats_last_message_call_missed">Missed call</string>
     <string name="chat_chats_no_messages">No messages</string>
     <string name="chat_chats_delete_chat_title">Delete chat</string>
     <string name="chat_chats_delete_chat_description">Are you sure you want to delete the chat?</string>
@@ -66,6 +70,11 @@
     <string name="chat_chat_detail_unblock">Unblock</string>
     <string name="chat_chat_detail_money">Money</string>
     <string name="chat_chat_detail_transfer">Transfer</string>
+    <string name="chat_chat_detail_incoming_call">Incoming call</string>
+    <string name="chat_chat_detail_outgoing_call">Outgoing call</string>
+    <string name="chat_chat_detail_cancelled_call">Cancelled call</string>
+    <string name="chat_chat_detail_missed_call">Missed call</string>
+    <string name="chat_chat_detail_no_answer">No answer</string>
     <string name="chat_chat_detail_enter_text">Enter text…</string>
     <string name="chat_chat_detail_delete_messages_action">Delete</string>
     <string name="chat_chat_detail_delete_messages_title">Delete message</string>

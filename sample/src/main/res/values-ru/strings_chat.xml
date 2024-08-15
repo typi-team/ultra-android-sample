@@ -27,6 +27,10 @@
     <string name="chat_chats_last_message_money">💸 перевод</string>
     <string name="chat_chats_last_message_contact">Контакт</string>
     <string name="chat_chats_last_message_location">Локация</string>
+    <string name="chat_chats_last_message_call_incoming">Входящий звонок</string>
+    <string name="chat_chats_last_message_call_outgoing">Исходящий звонок</string>
+    <string name="chat_chats_last_message_call_cancelled">Отмененый звонок</string>
+    <string name="chat_chats_last_message_call_missed">Пропущенный звонок</string>
     <string name="chat_chats_no_messages">Нет сообщений</string>
     <string name="chat_chats_delete_chat_title">Удалить чат</string>
     <string name="chat_chats_delete_chat_description">Вы действительно хотите удалить чат?</string>
@@ -66,6 +70,11 @@
     <string name="chat_chat_detail_unblock">Разблокировать</string>
     <string name="chat_chat_detail_money">Деньги</string>
     <string name="chat_chat_detail_transfer">Перевод</string>
+    <string name="chat_chat_detail_incoming_call">Входящий звонок</string>
+    <string name="chat_chat_detail_outgoing_call">Исходящий звонок</string>
+    <string name="chat_chat_detail_cancelled_call">Отмененный звонок</string>
+    <string name="chat_chat_detail_missed_call">Пропущенный звонок</string>
+    <string name="chat_chat_detail_no_answer">Нет ответа</string>
     <string name="chat_chat_detail_enter_text">Введите текст…</string>
     <string name="chat_chat_detail_delete_messages_action">Удалить</string>
     <string name="chat_chat_detail_delete_messages_title">Удалить сообщения</string>
