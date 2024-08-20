@@ -1,3 +1,9 @@
+# -> 1.2.7
+
+- Переименовано поле `linkTextColor` в `linkText`
+- Добавлены поля `codeText`, `codeBackground` в `UltraIcons.Bubble`
+- Добавлено поле `systemBubble` в `UltraColors`
+
 # -> 1.2.6
 
 - Перенесены и добавлены некоторые поля в `UltraLocalise.Chats.LastMessage`
