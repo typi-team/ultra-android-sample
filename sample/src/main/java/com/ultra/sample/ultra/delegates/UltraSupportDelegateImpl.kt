@@ -13,12 +13,20 @@ class UltraSupportDelegateImpl : UltraSupportDelegate {
             supportChats = listOf(
                 SupportChatInfo(
                     reception = 50,
-                    name = "FF Global",
+                    receptionService = 50,
+                    name = "FF Global 50/50",
+                    avatarUrl = "https://i.ibb.co.com/7JWCLz9/Icon-app.png",
+                ),
+                SupportChatInfo(
+                    reception = 50,
+                    receptionService = 35,
+                    name = "FF Global 50/35",
                     avatarUrl = "https://i.ibb.co.com/7JWCLz9/Icon-app.png",
                 ),
                 SupportChatInfo(
                     reception = 36,
-                    name = "FF Казахстан",
+                    receptionService = 36,
+                    name = "FF Казахстан 36/36",
                     avatarUrl = "https://i.ibb.co.com/7JWCLz9/Icon-app.png",
                 ),
             ),

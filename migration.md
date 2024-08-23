@@ -1,3 +1,7 @@
+# -> 1.2.8
+
+- Добавлено поле `receptionService` в `SupportChatInfo`
+
 # -> 1.2.7
 
 - Переименовано поле `linkTextColor` в `linkText`
